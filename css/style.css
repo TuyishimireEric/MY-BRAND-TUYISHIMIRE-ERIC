@@ -1,0 +1,287 @@
+/* ---------------------- Nav Section CSS start ---------------------- */
+
+nav {
+  padding: 4px;
+  width: 100%;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.logo span {
+  color: #828282;
+}
+
+.nav-links {
+  width: 30%;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.nav-links li {
+  padding: 0 10px;
+}
+
+.nav-links a {
+  color: var(--main-color);
+  transition: color 0.2s ease;
+}
+
+.nav-links li:hover a {
+  color: var(--second-color);
+}
+
+.nav-contact {
+  width: 22%;
+}
+
+.user {
+  width: 32px;
+}
+.user a span {
+  color: var(--second-color);
+  font-size: 11px;
+  font-family: "Courier Prime", monospace;
+  text-decoration: underline;
+}
+
+.user a img {
+  width: 34px;
+}
+
+#humberger {
+  display: none;
+}
+
+.bar {
+  display: block;
+  width: 30px;
+  height: 2px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.navigation.active .bar {
+  background-color: #fff;
+}
+
+.navigation.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.navigation.active .bar:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.navigation.active .bar:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+@media only screen and (max-width: 1200px) {
+  #humberger {
+    display: block;
+  }
+
+  .nav-contact {
+    display: none;
+  }
+
+  .nav-links {
+    width: 30%;
+    font-size: 1.3em;
+    font-weight: 500;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  .nav-links {
+    display: none;
+  }
+}
+
+/* ---------------------- Nav Section CSS end ---------------------- */
+
+/* ---------------------- Main Section CSS start ---------------------- */
+
+.main {
+  padding: 13vw 0 8vw;
+}
+
+.intro {
+  width: 45%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.intro h5 {
+  font-size: 1.4rem;
+}
+
+.intro h1 {
+  font-size: 4rem;
+  color: var(--second-color);
+}
+
+.intro h3 {
+  font-size: 2rem;
+}
+
+.intro div .cv {
+  color: #4f4f4f;
+  font-size: 4.5rem;
+  font-weight: 600;
+}
+
+.intro div .cv p {
+  font-size: 1.3rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #4f4f4f;
+  margin-left: 6px;
+}
+
+.main img {
+  width: 40%;
+}
+
+@media only screen and (max-width: 1220px) {
+  .main {
+    padding: 20vw 0;
+  }
+
+  .intro {
+    width: 60%;
+  }
+
+  .intro div .cv {
+    font-size: 4rem;
+  }
+
+  .intro div .cv p {
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .main {
+    padding: 20vw 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .intro {
+    order: 1;
+    width: 80%;
+  }
+
+  .main img {
+    order: 0;
+    width: 60%;
+  }
+
+  .intro div .cv {
+    background-color: #4f4f4f;
+    color: #000;
+    padding: 4px;
+  }
+
+  .intro div .cv p {
+    color: #000;
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .intro {
+    height: 340px;
+  }
+
+  .intro h5 {
+    font-size: 1.1rem;
+  }
+
+  .intro h1 {
+    font-size: 3.5rem;
+  }
+
+  .intro h3 {
+    font-size: 1.5rem;
+  }
+
+  .intro div .cv p {
+    font-size: 0.8rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .intro h1 {
+    font-size: 2.5rem;
+  }
+
+  .intro {
+    height: 240px;
+  }
+
+  .intro div .cv p {
+    font-size: 0.8rem;
+  }
+
+  .intro div .cv {
+    display: none;
+  }
+}
+
+/* ---------------------- Main Section CSS End ---------------------- */
+
+/* ---------------------- About Section CSS start ---------------------- */
+
+.about {
+  height: fit-content;
+  padding: 8vw 0;
+}
+
+.about .details {
+  width: 52%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.about .links {
+  width: 35%;
+}
+
+@media only screen and (max-width: 860px) {
+  .about {
+    padding: 20vw 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .about .details {
+    width: 80%;
+  }
+
+  .about .links {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .about .links {
+    width: 80%;
+  }
+}
+
+/* ---------------------- About Section CSS end ---------------------- */
+
+/* ---------------------- Skills CSS start ---------------------- */
