@@ -285,3 +285,49 @@ nav {
 /* ---------------------- About Section CSS end ---------------------- */
 
 /* ---------------------- Skills CSS start ---------------------- */
+
+.skills {
+  display: flex;
+  flex-direction: column;
+}
+
+.skills-list {
+  margin-top: 70px;
+  display: grid;
+  grid-template-columns: repeat(8, auto);
+  row-gap: 20px;
+}
+
+.skills-list img {
+  width: 100px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .skills-list {
+    grid-template-columns: repeat(6, auto);
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .skills-list {
+    grid-template-columns: repeat(5, auto);
+  }
+}
+
+@media only screen and (max-width: 530px) {
+  .skills-list {
+    grid-template-columns: repeat(4, auto);
+  }
+  .skills-list img {
+    width: 80px;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .skills-list {
+    grid-template-columns: repeat(3, auto);
+  }
+  .skills-list img {
+    width: 70px;
+  }
+}
