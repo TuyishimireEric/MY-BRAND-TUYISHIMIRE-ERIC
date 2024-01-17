@@ -175,11 +175,20 @@ nav {
     padding: 20vw 0;
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   .intro {
     order: 1;
     width: 80%;
+    align-items: center;
+  }
+
+  .intro h1 {
+    font-size: 4rem;
+    text-align: center;
+    color: var(--second-color);
+    white-space: nowrap;
   }
 
   .main img {
@@ -262,17 +271,18 @@ nav {
 
 @media only screen and (max-width: 860px) {
   .about {
-    padding: 20vw 0;
+    padding: 4vw 0;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 36px;
   }
   .about .details {
     width: 80%;
   }
 
   .about .links {
-    width: 60%;
+    width: 80%;
+    margin: 4vw 0;
   }
 }
 
@@ -329,5 +339,72 @@ nav {
   }
   .skills-list img {
     width: 70px;
+  }
+}
+
+/* ---------------------- skills Section CSS end ---------------------- */
+
+/* ---------------------- Contact sectionn CSS start ---------------------- */
+
+.contact {
+  padding: 8vw 15%;
+}
+
+.contact h2 {
+  width: 100%;
+  text-align: center;
+}
+
+.contactMe {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  margin-top: 4vw;
+  width: 100%;
+  gap: 20px;
+}
+
+.contactMe div{
+  gap: 40px;
+  display: flex;
+}
+
+.contactMe button {
+  height: 60px;
+  width: 200px;
+  align-self: center;
+}
+
+.contactMe .terms {
+  align-self: flex-start;
+  margin-top: -20px;
+}
+
+.contactMe .terms label {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+@media only screen and (max-width: 860px) {
+  .contact {
+    padding: 8vw 0;
+  }
+
+  .contactMe {
+    margin-top: 8vw;
+  }
+
+  .contactMe div{
+    gap: 20px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .contactMe {
+    margin-top: 8vw;
+  }
+
+  .contactMe div{
+    flex-direction: column;
   }
 }
