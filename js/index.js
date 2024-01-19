@@ -10,7 +10,9 @@ const blogContainer = document.querySelector(".blog-container");
 const arrow1 = document.querySelector(".more .arrow1");
 const arrow2 = document.querySelector(".more .arrow2");
 const searchText = document.getElementById("searchText");
-
+const humberger = document.getElementById("humberger");
+const extraMenu = document.querySelector(".extra-menu");
+const navigation = document.querySelector(".navigation");
 
 let experienceHTML = "";
 let projectsHTML = "";
@@ -103,16 +105,15 @@ const getBlogs = (filteredBlogs) => {
   });
   blogList.innerHTML = blogsHTML;
 
-  if(filteredBlogs.length<=2){
-    more.style.display= "none";
-  }else{
-    more.style.display= "block";
+  if (filteredBlogs.length <= 2) {
+    more.style.display = "none";
+  } else {
+    more.style.display = "block";
   }
 };
 
 projectList.innerHTML = projectsHTML + projectsHTML;
 experienceList.innerHTML = experienceHTML;
-
 
 const project = document.querySelector(".project");
 
@@ -125,8 +126,7 @@ project.addEventListener("mouseout", () => {
 });
 
 more.addEventListener("click", () => {
-
-  if (blogContainer.scrollTop >= (blogsLength-2)*400) {
+  if (blogContainer.scrollTop >= (blogsLength - 2) * 400) {
     blogContainer.scrollTop = 0;
   } else {
     blogContainer.scrollTop += 400;
@@ -134,7 +134,7 @@ more.addEventListener("click", () => {
 });
 
 blogContainer.addEventListener("scroll", () => {
-  if (blogContainer.scrollTop >= (blogsLength-2)*400) {
+  if (blogContainer.scrollTop >= (blogsLength - 2) * 400) {
     arrow1.style.transform = "rotate(45deg)";
     arrow2.style.transform = "rotate(-45deg)";
   } else {
@@ -157,8 +157,17 @@ searchText.addEventListener("input", (e) => {
     blogsLength = filteredBlogs;
     getBlogs(filteredBlogs);
   } else {
-      blogList.innerHTML = "<p>No matching blogs found.</p>";
+    blogList.innerHTML = "<p>No matching blogs found.</p>";
   }
 });
 
+humberger.addEventListener("click", () => {
+  extraMenu.classList.toggle("active");
+  navigation.classList.toggle("active");
+});
+
+extraMenu.addEventListener("click", ()=>{
+  extraMenu.classList.remove("active");
+  navigation.classList.remove("active");
+});
 getBlogs(blogs);
