@@ -87,8 +87,10 @@ const getBlogs = (filteredBlogs) => {
           <div class="blog-head">
             <h3 class="blog-title">${blog.title}</h3>
             <span class="likes">
+            <p>${blog.likes}</p>
               <img src="./images/heart.png" alt="heart" class="heart">
-              <p>${blog.likes} likes <span>{ }</span></p></span>
+              <p>${blog.likes} comments</p>
+            </span>
           </div>
           <div class="ratings">
             ${ratingsHTML}
@@ -158,6 +160,7 @@ searchText.addEventListener("input", (e) => {
     getBlogs(filteredBlogs);
   } else {
     blogList.innerHTML = "<p>No matching blogs found.</p>";
+    more.style.display = "none";
   }
 });
 
