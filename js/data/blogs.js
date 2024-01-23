@@ -7,7 +7,32 @@ export const blogs = [
     createBy: "Eric Tuyishimire",
     rating: 4.2,
     likes: 10,
-    comments: 2,
+    comments: [
+      {
+        id: 1,
+        name: "Mussa Muhammed",
+        comment:
+          "Fantastic read! Next.js has truly revolutionized the way we approach React applications. The seamless integration with React and the built-in features like server-side rendering and automatic code splitting make it a powerhouse for building performant and scalable web applications. I appreciate the detailed insights provided in this article, especially [mention any specific points you found interesting]. Looking forward to exploring more of Next.js's capabilities and best practices.",
+        rating: 4,
+        date: "11/Jan/2024",
+      },
+      {
+        id: 2,
+        name: "John Doe",
+        comment:
+          "Fantastic read! Next.js has truly revolutionized the way we approach React applications. The seamless integration with React and the built-in features like server-side rendering and automatic code splitting make it a powerhouse for building performant and scalable web applications. I appreciate the detailed insights provided in this article, especially [mention any specific points you found interesting]. Looking forward to exploring more of Next.js's capabilities and best practices.",
+        rating: 4,
+        date: "13/Jan/2024",
+      },
+      {
+        id: 3,
+        name: "Mucyo Eric",
+        comment:
+          "Fantastic read! Next.js has truly revolutionized the way we approach React applications. The seamless integration with React and the built-in features like server-side rendering and automatic code splitting make it a powerhouse for building performant and scalable web applications. I appreciate the detailed insights provided in this article, especially [mention any specific points you found interesting]. Looking forward to exploring more of Next.js's capabilities and best practices.",
+        rating: 4,
+        date: "15/Jan/2024",
+      },
+    ],
     description: `To build a complete web application with React from scratch, there are many important details you need to consider:
 
         Code has to be bundled using a bundler like webpack and transformed using a compiler like Babel.
@@ -75,7 +100,32 @@ export const blogs = [
     createBy: "Eric Tuyishimire",
     rating: 4,
     likes: 10,
-    comments: 2,
+    comments: [
+      {
+        id: 1,
+        name: "Mussa Muhammed",
+        comment:
+          "Fantastic read! Next.js has truly revolutionized the way we approach React applications. The seamless integration with React and the built-in features like server-side rendering and automatic code splitting make it a powerhouse for building performant and scalable web applications. I appreciate the detailed insights provided in this article, especially [mention any specific points you found interesting]. Looking forward to exploring more of Next.js's capabilities and best practices.",
+        rating: 4,
+        date: "10/Jan/2024",
+      },
+      {
+        id: 2,
+        name: "John Doe",
+        comment:
+          "Fantastic read! Next.js has truly revolutionized the way we approach React applications. The seamless integration with React and the built-in features like server-side rendering and automatic code splitting make it a powerhouse for building performant and scalable web applications. I appreciate the detailed insights provided in this article, especially [mention any specific points you found interesting]. Looking forward to exploring more of Next.js's capabilities and best practices.",
+        rating: 4,
+        date: "09/Jan/2024",
+      },
+      {
+        id: 3,
+        name: "Mucyo Eric",
+        comment:
+          "Fantastic read! Next.js has truly revolutionized the way we approach React applications. The seamless integration with React and the built-in features like server-side rendering and automatic code splitting make it a powerhouse for building performant and scalable web applications. I appreciate the detailed insights provided in this article, especially [mention any specific points you found interesting]. Looking forward to exploring more of Next.js's capabilities and best practices.",
+        rating: 4,
+        date: "18/Jan/2024",
+      },
+    ],
     description: `To build a complete web application with React from scratch, there are many important details you need to consider:
 
         Code has to be bundled using a bundler like webpack and transformed using a compiler like Babel.
@@ -143,7 +193,32 @@ export const blogs = [
     createBy: "Eric Tuyishimire",
     rating: 4,
     likes: 10,
-    comments: 2,
+    comments: [
+      {
+        id: 1,
+        name: "Mussa Muhammed",
+        comment:
+          "Fantastic read! Next.js has truly revolutionized the way we approach React applications. The seamless integration with React and the built-in features like server-side rendering and automatic code splitting make it a powerhouse for building performant and scalable web applications. I appreciate the detailed insights provided in this article, especially [mention any specific points you found interesting]. Looking forward to exploring more of Next.js's capabilities and best practices.",
+        rating: 4,
+        date: "11/Jan/2024",
+      },
+      {
+        id: 2,
+        name: "John Doe",
+        comment:
+          "Fantastic read! Next.js has truly revolutionized the way we approach React applications. The seamless integration with React and the built-in features like server-side rendering and automatic code splitting make it a powerhouse for building performant and scalable web applications. I appreciate the detailed insights provided in this article, especially [mention any specific points you found interesting]. Looking forward to exploring more of Next.js's capabilities and best practices.",
+        rating: 4,
+        date: "20/Jan/2024",
+      },
+      {
+        id: 3,
+        name: "Mucyo Eric",
+        comment:
+          "Fantastic read! Next.js has truly revolutionized the way we approach React applications. The seamless integration with React and the built-in features like server-side rendering and automatic code splitting make it a powerhouse for building performant and scalable web applications. I appreciate the detailed insights provided in this article, especially [mention any specific points you found interesting]. Looking forward to exploring more of Next.js's capabilities and best practices.",
+        rating: 4,
+        date: "22/Jan/2024",
+      },
+    ],
     description: `To build a complete web application with React from scratch, there are many important details you need to consider:
 
         Code has to be bundled using a bundler like webpack and transformed using a compiler like Babel.
@@ -204,14 +279,39 @@ export const blogs = [
         `,
   },
   {
-    id: 1,
+    id: 4,
     title: "use Clamp",
     date: "11/Jan/2024",
     image: "./images/mocha.png",
     createBy: "Eric Tuyishimire",
     rating: 4,
     likes: 10,
-    comments: 2,
+    comments: [
+      {
+        id: 1,
+        name: "Mussa Muhammed",
+        comment:
+          "Fantastic read! Next.js has truly revolutionized the way we approach React applications. The seamless integration with React and the built-in features like server-side rendering and automatic code splitting make it a powerhouse for building performant and scalable web applications. I appreciate the detailed insights provided in this article, especially [mention any specific points you found interesting]. Looking forward to exploring more of Next.js's capabilities and best practices.",
+        rating: 4,
+        date: "11/Jan/2024",
+      },
+      {
+        id: 2,
+        name: "John Doe",
+        comment:
+          "Fantastic read! Next.js has truly revolutionized the way we approach React applications. The seamless integration with React and the built-in features like server-side rendering and automatic code splitting make it a powerhouse for building performant and scalable web applications. I appreciate the detailed insights provided in this article, especially [mention any specific points you found interesting]. Looking forward to exploring more of Next.js's capabilities and best practices.",
+        rating: 4,
+        date: "10/Jan/2024",
+      },
+      {
+        id: 3,
+        name: "Mucyo Eric",
+        comment:
+          "Fantastic read! Next.js has truly revolutionized the way we approach React applications. The seamless integration with React and the built-in features like server-side rendering and automatic code splitting make it a powerhouse for building performant and scalable web applications. I appreciate the detailed insights provided in this article, especially [mention any specific points you found interesting]. Looking forward to exploring more of Next.js's capabilities and best practices.",
+        rating: 4,
+        date: "17/Jan/2024",
+      },
+    ],
     description: `To build a complete web application with React from scratch, there are many important details you need to consider:
       
         Code has to be bundled using a bundler like webpack and transformed using a compiler like Babel.

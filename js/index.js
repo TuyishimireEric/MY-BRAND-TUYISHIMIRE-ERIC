@@ -49,6 +49,12 @@ projects.forEach((project) => {
     </div>`;
 });
 
+
+const blogClicked = (blog) => {
+  console.log(blog);
+}
+
+
 const getBlogs = (filteredBlogs) => {
   let blogsHTML = "";
   filteredBlogs.forEach((blog) => {
@@ -80,30 +86,30 @@ const getBlogs = (filteredBlogs) => {
     const truncatedDescription =
       truncateDescription(blog.description, 80) || "";
 
-    blogsHTML += `
-    <div class="blog">
-      <div class="blog-details">
-        <div>
-          <div class="blog-head">
-            <h3 class="blog-title">${blog.title}</h3>
-            <span class="likes">
-            <p>${blog.likes}</p>
-              <img src="./images/heart.png" alt="heart" class="heart">
-              <p>${blog.likes} comments</p>
-            </span>
+      blogsHTML += `
+      <div class="blog" key=${blog.id}>
+        <div class="blog-details">
+          <div>
+            <div class="blog-head">
+              <h3 class="blog-title">${blog.title}</h3>
+              <span class="likes">
+                <p>${blog.likes}</p>
+                <img src="./images/heart.png" alt="heart" class="heart">
+                <p>${blog.comments.length} comments</p>
+              </span>
+            </div>
+            <div class="ratings">
+              ${ratingsHTML}
+            </div>
+            <p class="date">${blog.date}</p>
+            <p class="blog-description text-small">${truncatedDescription}</p>
           </div>
-          <div class="ratings">
-            ${ratingsHTML}
-          </div>
-          <p class="date">${blog.date}</p>
-          <p class="blog-description text-small">${truncatedDescription}</p>
+          <a href="#" target="_blank" class="button">More</a>
         </div>
-        <a href="#" target="_blank" class="button">More</a>
-      </div>
-      <div class="blog-image">
-        <img src="${blog.image}" alt="${blog.title}">
-      </div>
-    </div>`;
+        <div class="blog-image">
+          <img src="${blog.image}" alt="${blog.title}">
+        </div>
+      </div>`;
   });
   blogList.innerHTML = blogsHTML;
 
@@ -165,6 +171,7 @@ searchText.addEventListener("input", (e) => {
 });
 
 humberger.addEventListener("click", () => {
+  console.log("clicked");
   extraMenu.classList.toggle("active");
   navigation.classList.toggle("active");
 });
@@ -174,3 +181,23 @@ extraMenu.addEventListener("click", ()=>{
   navigation.classList.remove("active");
 });
 getBlogs(blogs);
+
+const blogDetails = (blog) => {
+  console.log(blog);
+}
+
+const Allblogs = document.querySelectorAll(".blog");
+Allblogs.forEach(blog => {
+  blog.addEventListener("click", (e) => {
+    const id = (e.target.closest(".blog").getAttribute("key"));
+    const findBlog = blogs.find((blog)=> blog.id === +id);
+    
+    if(!findBlog) return;
+    localStorage.setItem("selectedBlog", JSON.stringify(findBlog));
+    const urlToOpen = './blog/blogDetails.html';
+    // window.open(urlToOpen, '_blank');
+     window.location.href = urlToOpen;
+  });
+});
+
+localStorage.setItem("blogs", JSON.stringify(blogs));
