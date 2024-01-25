@@ -49,11 +49,7 @@ projects.forEach((project) => {
     </div>`;
 });
 
-
-const blogClicked = (blog) => {
-  console.log(blog);
-}
-
+const currentUrl = window.location.href;
 
 const getBlogs = (filteredBlogs) => {
   let blogsHTML = "";
@@ -66,9 +62,17 @@ const getBlogs = (filteredBlogs) => {
 
       for (let i = 0; i < 5; i++) {
         if (i < fullStars) {
-          ratingsHTML += `<img src="./images/fullStar.svg" alt="star" class="star">`;
+          if (currentUrl.includes("admin")) {
+            ratingsHTML += `<img src="../../images/fullStar.svg" alt="star" class="star">`;
+          } else {
+            ratingsHTML += `<img src="./images/fullStar.svg" alt="star" class="star">`;
+          }
         } else {
-          ratingsHTML += `<img src="./images/emptyStar.svg" alt="star" class="star">`;
+          if (currentUrl.includes("admin")) {
+            ratingsHTML += `<img src="../../images/emptyStar.svg" alt="star" class="star">`;
+          } else {
+            ratingsHTML += `<img src="./images/emptyStar.svg" alt="star" class="star">`;
+          }
         }
       }
     };
@@ -86,7 +90,7 @@ const getBlogs = (filteredBlogs) => {
     const truncatedDescription =
       truncateDescription(blog.description, 80) || "";
 
-      blogsHTML += `
+    blogsHTML += `
       <div class="blog" key=${blog.id}>
         <div class="blog-details">
           <div>
@@ -94,7 +98,11 @@ const getBlogs = (filteredBlogs) => {
               <h3 class="blog-title">${blog.title}</h3>
               <span class="likes">
                 <p>${blog.likes}</p>
-                <img src="./images/heart.png" alt="heart" class="heart">
+                ${
+                  currentUrl.includes("admin")
+                    ? `<img src="../../images/heart.png" alt="heart" class="heart">`
+                    : `<img src="./images/heart.png" alt="heart" class="heart">`
+                }
                 <p>${blog.comments.length} comments</p>
               </span>
             </div>
@@ -104,10 +112,10 @@ const getBlogs = (filteredBlogs) => {
             <p class="date">${blog.date}</p>
             <p class="blog-description text-small">${truncatedDescription}</p>
           </div>
-          <a href="#" target="_blank" class="button">More</a>
+          <a href="#" target="_blank" class="button">${currentUrl.includes("admin") ? "Edit": "More"}</a>
         </div>
         <div class="blog-image">
-          <img src="${blog.image}" alt="${blog.title}">
+          <img src="${currentUrl.includes("admin") ? `../../${blog.image}` : blog.image}" alt="${blog.title}">
         </div>
       </div>`;
   });
@@ -120,18 +128,22 @@ const getBlogs = (filteredBlogs) => {
   }
 };
 
-projectList.innerHTML = projectsHTML + projectsHTML;
-experienceList.innerHTML = experienceHTML;
+if (projectList && experienceList) {
+  projectList.innerHTML = projectsHTML + projectsHTML;
+  experienceList.innerHTML = experienceHTML;
+}
 
 const project = document.querySelector(".project");
 
-project.addEventListener("mouseover", () => {
-  project.classList.add("hover");
-});
+if (project) {
+  project.addEventListener("mouseover", () => {
+    project.classList.add("hover");
+  });
 
-project.addEventListener("mouseout", () => {
-  project.classList.remove("hover");
-});
+  project.addEventListener("mouseout", () => {
+    project.classList.remove("hover");
+  });
+}
 
 more.addEventListener("click", () => {
   if (blogContainer.scrollTop >= (blogsLength - 2) * 400) {
@@ -176,7 +188,7 @@ humberger.addEventListener("click", () => {
   navigation.classList.toggle("active");
 });
 
-extraMenu.addEventListener("click", ()=>{
+extraMenu.addEventListener("click", () => {
   extraMenu.classList.remove("active");
   navigation.classList.remove("active");
 });
@@ -184,19 +196,19 @@ getBlogs(blogs);
 
 const blogDetails = (blog) => {
   console.log(blog);
-}
+};
 
 const Allblogs = document.querySelectorAll(".blog");
-Allblogs.forEach(blog => {
+Allblogs.forEach((blog) => {
   blog.addEventListener("click", (e) => {
-    const id = (e.target.closest(".blog").getAttribute("key"));
-    const findBlog = blogs.find((blog)=> blog.id === +id);
-    
-    if(!findBlog) return;
+    const id = e.target.closest(".blog").getAttribute("key");
+    const findBlog = blogs.find((blog) => blog.id === +id);
+
+    if (!findBlog) return;
     localStorage.setItem("selectedBlog", JSON.stringify(findBlog));
-    const urlToOpen = './blog/blogDetails.html';
+    const urlToOpen = "./pages/blogDetails.html";
     // window.open(urlToOpen, '_blank');
-     window.location.href = urlToOpen;
+    window.location.href = urlToOpen;
   });
 });
 

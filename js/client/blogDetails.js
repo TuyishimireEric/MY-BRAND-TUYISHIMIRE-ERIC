@@ -40,6 +40,13 @@ blogContainer.innerHTML = `
         <img src="../${selectedBlog.image}" alt="${
   selectedBlog.title
 }" class="mainImage"/>
+        <div class="comment_head">
+            <img src="../images/myProfile.png" alt="user" class="profilePicture"/>
+            <div class="comment_details">
+                <h3 class="userName">Eric Tuyishimire</h3>
+                <p class="date">11/Jan/2023</p>
+            </div>
+        </div>
         <div class="blogDetails_content">
             <h1 class="title">${selectedBlog.title}</h1>
             <p class="text">${selectedBlog.description}</p>
