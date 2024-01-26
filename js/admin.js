@@ -3,11 +3,13 @@ import { sideNavigation } from "./data/sideNavigation.js";
 const sideNav = document.querySelector(".sideNav");
 const sideNavSwitch = document.querySelector(".sideNavSwitch");
 const dashboard = document.querySelector(".dashboard");
+const queriesContainer = document.querySelector(".queries-container");
 
 sideNavSwitch.addEventListener('click', function() {
     sideNavSwitch.classList.toggle('closed');
     sideNav.classList.toggle('closed');
     dashboard.classList.toggle('wide');
+    queriesContainer.classList.toggle('wide');
 });
 
 let sideNavHtml = "";

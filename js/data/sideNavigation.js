@@ -78,8 +78,8 @@ export const sideNavigation = [
         subMenu: []
     },
     {
-        name: 'Querries',
-        path: '/querries',
+        name: 'Queries',
+        path: './queries.html',
         icon: '../../images/querries.png',
         subMenu: []
     },
