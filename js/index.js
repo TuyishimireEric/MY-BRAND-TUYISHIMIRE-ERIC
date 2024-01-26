@@ -139,7 +139,7 @@ const getBlogs = (filteredBlogs) => {
 };
 
 if (projectList ) {
-  experienceList.innerHTML = experienceHTML;
+  projectList.innerHTML = projectsHTML + projectsHTML;
 }
 
 if (experienceList) {
