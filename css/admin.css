@@ -1,0 +1,456 @@
+.nav {
+    background: none;
+}
+
+.nav-contact {
+    width: 10%;
+}
+
+.search {
+    display: none;
+}
+
+.sideNavSwitch {
+    background-color: var(--fourth-color);
+    padding: 14px;
+    position: fixed;
+    border-top-right-radius: 15px;
+    top: 7vh;
+    left: 0;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.sideNavSwitch .bar:nth-child(1) {
+    width: 14px;
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.sideNavSwitch .bar:nth-child(2) {
+    width: 14px;
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.sideNavSwitch.closed .bar:nth-child(1) {
+    width: 14px;
+    transform: rotate(-45deg) translate(-5px, 5px);
+}
+
+.sideNavSwitch.closed .bar:nth-child(2) {
+    width: 14px;
+    transform: rotate(45deg) translate(-6px, -7px);
+}
+
+.sideNavSwitch:hover {
+    opacity: 0.8;
+}
+
+.sideNav {
+    position: fixed;
+    left: 0;
+    top: 12vh;
+    bottom: 4vh;
+    width: 20%;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background-color: var(--fourth-color);
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 4vw;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sideNav.closed {
+    width: 10%;
+}
+
+.sideNav.closed .navName {
+    display: none;
+}
+
+.sideNav.closed .subNavBtn {
+    display: none;
+}
+
+.sideNav.closed .change {
+    width: 30%;
+}
+
+.change {
+    position: absolute;
+    bottom: 4vw;
+    display: flex;
+    width: 60%;
+    gap: 10px;
+    height: 40px;
+    border: 1px solid var(--main-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.change img {
+    width: 20px;
+    height: 20px;
+}
+
+.change:hover {
+    background-color: var(--dark-color);
+}
+
+.navList {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navList .navLink {
+    width: 60%;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.navLink:hover .navName {
+    color: var(--second-color);
+}
+
+.navLink:hover .navIcon {
+    padding: 4px;
+    border: 1px solid var(--second-color);
+}
+
+.navList .subNavBtn {
+    width: 5%;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.navList a img {
+    object-fit: cover;
+    width: 24px;
+}
+
+.dashboard {
+    min-width: 60vw;
+    min-height: 60vh;
+    margin-left: 20%;
+    margin-top: 14vh;
+    padding-top: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 7vh;
+    transition: width 0.3s ease-in-out;
+}
+
+.dashboard.wide {
+    min-width: 80vw;
+    margin-left: 10%;
+}
+
+.dashboard .header {
+    position: relative;
+    background-color: var(--fourth-color);
+    width: 100%;
+    border: 1px solid var(--second-color);
+}
+
+.title {
+    font-size: 32px;
+    width: 100%;
+    margin-bottom: -20px;
+}
+
+.search {
+    top: 6vw;
+    right: 4vw;
+}
+
+.general {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    height: 350px;
+    gap: 40px;
+    overflow-x: scroll;
+    border-radius: 20px;
+    overflow-y: hidden;
+}
+
+.general .mainChart {
+    height: 100%;
+    width: 65%;
+    min-width: 650px;
+    min-height: 350px;
+}
+
+.general .mainChart img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.general .calendar {
+    width: 35%;
+    height: 100%;
+    min-width: 300px;
+    min-height: 350px;
+}
+
+.general .calendar img {
+    width: 100%;
+    height: 100%;
+    object-fit: fit;
+}
+
+.metrics {
+    min-height: 231px;
+    max-width: 100%;
+    overflow-x: scroll;
+    gap: 40px;
+    scroll-behavior: smooth;
+    display: flex;
+    border-radius: 20px;
+}
+
+.metrics .data {
+    padding: 20px;
+    align-items: start;
+    min-height: 231px;
+    min-width: 265px;
+    background-color: var(--fourth-color);
+    border-radius: 20px;
+    background-position: center;
+    background-size: cover;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.metrics .data.visits {
+    min-width: 320px;
+    background-image: url(../images/Visits.png);
+}
+
+.metrics .data.likes {
+    background-image: url(../images/Likes.png);
+}
+
+.metrics .data.messages {
+    background-image: url(../images/Messages.png);
+}
+
+.metrics .data.comments {
+    background-image: url(../images/Messages.png);
+}
+
+.metrics .data.blogs {
+    background-image: url(../images/Blogs1.png);
+}
+
+.metrics .data .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-direction: column;
+    width: fit-content;
+    padding: 0;
+    margin: 0;
+    gap: 10px;
+}
+
+.info span {
+    font-size: 30px;
+    color: var(--main-color);
+    font-weight: 600;
+}
+
+.Top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    height: 300px;
+    gap: 40px;
+}
+
+.bestProjects,
+.bestBlogs {
+    width: 50%;
+    height: 100%;
+    border-radius: 20px;
+    background-position: center;
+    background-size: cover;
+    background-color: var(--fourth-color);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+
+.highTable {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    background-color: var(--fourth-color);
+    background-position: center;
+    background-size: cover;
+}
+
+.highTable tr {
+    height: 20px;
+}
+
+.title-small {
+    font-size: 16px;
+    width: 40%;
+    color: var(--main-color);
+    white-space: nowrap;
+}
+
+.highTable tr td,
+.highTable tr th {
+    text-align: left;
+    font-size: 13px;
+}
+
+.highTable tr th {
+    color: var(--fith-color);
+    font-weight: 400;
+}
+
+.back {
+    display: block;
+    position: relative;
+    width: 100px; 
+    height: 6px;
+    border-radius: 5px;
+    background-color: var(--main-color);
+}
+
+.front {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 78%; 
+    background-color: var(--fith-color);
+}
+
+.highTable .data {
+    padding: 4px 8px;
+    width: fit-content;
+    height: 40px;
+    border-radius: 3px;
+    border: 1px solid var(--fith-color);
+    font-size: 10px;
+}
+
+@media only screen and (max-width: 970px) {
+    .Top {
+        flex-direction: column;
+        gap: 20px;
+        min-height: 600px;
+    }
+
+    .bestProjects,
+    .bestBlogs {
+        width: 100%;
+        min-width: 400px;
+    }
+}
+
+@media only screen and (max-width: 789px) {
+    .dashboard {
+        gap: 20px;
+    }
+
+    .general {
+        height: 250px;
+    }
+    
+    .general .mainChart {
+        min-width: 500px;
+        min-height: 250px;
+    }
+    
+    .general .calendar {
+        min-width: 250px;
+        min-height: 250px;
+    }
+
+    .metrics {
+        min-height: 150px;
+        gap: 20px;
+    }
+    
+    .metrics .data {
+        min-height: 150px;
+        min-width: 180px;
+    }
+    
+    .metrics .data.visits {
+        min-width: 220px;
+    }
+
+    .bestProjects,
+    .bestBlogs {
+        width: 100%;
+        min-width: 200px;
+    }
+
+    .title-small {
+        font-size: 12px;
+    }
+
+    .info span {
+        font-size: 24px;
+    }
+
+    .title {
+        font-size: 25px;
+        margin-bottom: 5px;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .back {
+        display: none;
+    }
+
+    .slider {
+        display: none;
+    }
+    .sideNav {
+        width: 20%;
+        padding: 6vw 1vw;
+    }
+
+    .navIcon {
+        width: 16px;
+    }
+
+    .change {
+        gap: 10px;
+        height: 16px;
+        width: 16;
+        padding: 10px;
+        border: none;
+     }
+    
+    .change img {
+        width: 16px;
+        height: 16px;
+    }
+}
