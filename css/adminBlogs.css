@@ -1,8 +1,7 @@
 .adminBlogs {
-    min-height: 90vh;
+    min-height: fit-content;
     width: 100%;
-    padding: 4vw 0;
-    margin-top: 8vw;
+    padding: 0;
 }
 
 .header {
@@ -21,4 +20,49 @@
 
 .skills-list .flex-col a {
     color: var(--second-color);
+}
+
+.metrics {
+    margin-top: 20px;
+}
+
+.blog-container {
+    margin-top: 20px;
+    padding: 0;
+}
+
+.blog {
+    position: relative;
+}
+
+.remove {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    border: 1.5px solid var(--second-color);
+    background-color: red;
+    transition: all 0.3s ease-in-out;
+}
+
+.remove:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.remove .bar:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);  
+}
+
+.remove .bar:nth-child(2) {
+    transform: translateY(2px) rotate(-45deg);
+}
+  
+
+.blog-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
 }

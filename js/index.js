@@ -117,6 +117,16 @@ const getBlogs = (filteredBlogs) => {
         <div class="blog-image">
           <img src="${currentUrl.includes("admin") ? `../../${blog.image}` : blog.image}" alt="${blog.title}">
         </div>
+        ${
+          currentUrl.includes("admin")
+            ? `
+              <span class="remove">
+                <span class="bar"></span>
+                <span class="bar"></span>
+              </span>
+            `
+            : ``
+        }
       </div>`;
   });
   blogList.innerHTML = blogsHTML;
@@ -128,8 +138,11 @@ const getBlogs = (filteredBlogs) => {
   }
 };
 
-if (projectList && experienceList) {
-  projectList.innerHTML = projectsHTML + projectsHTML;
+if (projectList ) {
+  experienceList.innerHTML = experienceHTML;
+}
+
+if (experienceList) {
   experienceList.innerHTML = experienceHTML;
 }
 
@@ -145,23 +158,29 @@ if (project) {
   });
 }
 
-more.addEventListener("click", () => {
-  if (blogContainer.scrollTop >= (blogsLength - 2) * 400) {
-    blogContainer.scrollTop = 0;
-  } else {
-    blogContainer.scrollTop += 400;
-  }
-});
+if(more){
+  more.addEventListener("click", () => {
+    if (blogContainer.scrollTop >= (blogsLength - 2) * 400) {
+      blogContainer.scrollTop = 0;
+    } else {
+      blogContainer.scrollTop += 400;
+    }
+  });
+}
 
-blogContainer.addEventListener("scroll", () => {
-  if (blogContainer.scrollTop >= (blogsLength - 2) * 400) {
-    arrow1.style.transform = "rotate(45deg)";
-    arrow2.style.transform = "rotate(-45deg)";
-  } else {
-    arrow1.style.transform = "rotate(-45deg)";
-    arrow2.style.transform = "rotate(45deg)";
-  }
-});
+if (blogContainer) {
+  blogContainer.addEventListener("scroll", () => {
+    if (blogContainer.scrollTop >= (blogsLength - 2) * 400) {
+      arrow1.style.transform = "rotate(45deg)";
+      arrow2.style.transform = "rotate(-45deg)";
+    } else {
+      arrow1.style.transform = "rotate(-45deg)";
+      arrow2.style.transform = "rotate(45deg)";
+    }
+  });
+
+  getBlogs(blogs);
+}
 
 searchText.addEventListener("input", (e) => {
   const searchTerm = e.target.value.toLowerCase();
@@ -192,11 +211,6 @@ extraMenu.addEventListener("click", () => {
   extraMenu.classList.remove("active");
   navigation.classList.remove("active");
 });
-getBlogs(blogs);
-
-const blogDetails = (blog) => {
-  console.log(blog);
-};
 
 const Allblogs = document.querySelectorAll(".blog");
 Allblogs.forEach((blog) => {
@@ -213,3 +227,15 @@ Allblogs.forEach((blog) => {
 });
 
 localStorage.setItem("blogs", JSON.stringify(blogs));
+
+// const loader = document.getElementById('loader');
+
+// function isPageLoading() {
+//   return document.readyState === 'loading';
+// }
+
+// if (isPageLoading()) {
+//   console.log('The page is still loading.');
+// } else {
+//   console.log('The page has finished loading.');
+// }

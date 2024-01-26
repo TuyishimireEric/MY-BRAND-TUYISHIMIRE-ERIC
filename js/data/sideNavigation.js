@@ -29,7 +29,7 @@ export const sideNavigation = [
     },
     {
         name: 'Skills',
-        path: '/skills',
+        path: './skills.html',
         icon: '../../images/skills.png',
         subMenu: [
             {
@@ -51,7 +51,7 @@ export const sideNavigation = [
     },
     {
         name: 'Projects',
-        path: '/projects',
+        path: './projects.html',
         icon: '../../images/project.png',
         subMenu: [
             {

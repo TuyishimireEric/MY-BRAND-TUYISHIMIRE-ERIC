@@ -3,11 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
+    <title>Blogs</title>
     <link rel="icon" href="../../images/myProfile.png" type="image/x-icon">
     <link rel="stylesheet" href="../../css/global.css" />
     <link rel="stylesheet" href="../../css/style.css" />
     <link rel="stylesheet" href="../../css/admin.css" />
+    <link rel="stylesheet" href="../../css/adminBlogs.css" />
+    
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
@@ -74,6 +76,10 @@
 
     <section class="dashboard">
       <h2 class="title">blogs <span>( )</span</h2>
+        <a class="add">
+            <span>Add new</span>
+            <img src="../../images/add.png" alt="add" />
+        </a>
         <div class="search">
             <form id="searchBlog">
               <input type="text" placeholder="Search blog here ..." id="searchText"/>
@@ -82,6 +88,37 @@
               </button>
             </form>
           </div>
+          <div class="metrics">
+            <li class="data visits flex">
+                <div class="info">
+                    <h3 class="title-small">Visits</h3>
+                    <span>42</span>
+                </div>
+                <img src="../../images/users.png" alt="visits" />
+            </li>
+            <li class="data comments flex">
+              <div class="info">
+                  <h3 class="title-small">published</h3>
+                  <span>8</span>
+              </div>
+              <img src="../../images/blogs.png" alt="visits" />
+          </li>
+            <li class="data likes flex">  
+                <div class="info">
+                    <h3 class="title-small">Likes</h3>
+                    <span>32</span>
+                </div>
+                <img src="../../images/Liked.png" alt="visits" />
+            </li>
+            <li class="data comments flex">
+                <div class="info">
+                    <h3 class="title-small">Comments</h3>
+                    <span>8</span>
+                </div>
+                <img src="../../images/messaged.png" alt="visits" />
+            </li>
+        </div>
+          
       <div id="blogs" class="blog-container"></div>
       <div class="more">
         <span class="arrow1"></span>

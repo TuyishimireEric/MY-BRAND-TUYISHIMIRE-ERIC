@@ -12,9 +12,11 @@ sideNavSwitch.addEventListener('click', function() {
 
 let sideNavHtml = "";
 
+const currentPath = window.location.pathname;
+
 sideNavigation.forEach((item) => {
     sideNavHtml += `
-        <li class="navList">
+        <li class="${currentPath.includes(item.name.toLocaleLowerCase())? "navList current": "navList" }">
             <a href="${item.path}" class="navLink">
                 <img src="${item.icon}" class="navIcon"/>
                 <span class="navName">${item.name}</span>
