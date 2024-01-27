@@ -73,10 +73,15 @@ body {
   padding: 4px 14px;
   white-space: nowrap;
   cursor: pointer;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.3s ease-in-out;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.button:hover {
+  color: var(--main-color);
+  transform: scaleX(1.03);
 }
 
 .icon {
@@ -309,6 +314,8 @@ button {
   form .input-text select {
     height: 48px;
   }
+
+  
 }
 
 @media only screen and (max-width: 500px) {

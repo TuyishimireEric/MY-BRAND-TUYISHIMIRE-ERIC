@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blogs</title>
+    <title>Create blog</title>
     <link rel="icon" href="../../images/myProfile.png" type="image/x-icon">
     <link rel="stylesheet" href="../../css/global.css" />
     <link rel="stylesheet" href="../../css/style.css" />
@@ -14,6 +14,9 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
     />
+    <link rel="stylesheet" href="/richtexteditor/rte_theme_default.css" />
+    <script type="text/javascript" src="/richtexteditor/rte.js"></script>
+    <script type="text/javascript" src='/richtexteditor/plugins/all_plugins.js'></script>
   </head>
   <body>
     <nav class="flex">
@@ -75,55 +78,29 @@
     <!---------------------- dashboard section start --------------------->
 
     <section class="dashboard">
-      <h2 class="title">blogs <span>( )</span</h2>
-        <a class="add" href="./createBlogs.html">
-            <span>Add new</span>
-            <img src="../../images/add.png" alt="add" />
-        </a>
-        <div class="search">
-            <form id="searchBlog">
-              <input type="text" placeholder="Search blog here ..." id="searchText"/>
-              <button type="submit">
-                <img src="../../images/search.png" alt="search" />
-              </button>
-            </form>
+      <h2 class="title">create a blog <span>( )</span</h2>
+      <form class="createBlog">
+        <div class="blogIntro flex">
+          <div class="imageInput">
+            <img src="../../images/addImage.png"/>
           </div>
-          <div class="metrics">
-            <li class="data visits flex">
-                <div class="info">
-                    <h3 class="title-small">Visits</h3>
-                    <span>42</span>
-                </div>
-                <img src="../../images/users.png" alt="visits" />
-            </li>
-            <li class="data comments flex">
-              <div class="info">
-                  <h3 class="title-small">published</h3>
-                  <span>8</span>
-              </div>
-              <img src="../../images/blogs.png" alt="visits" />
-          </li>
-            <li class="data likes flex">  
-                <div class="info">
-                    <h3 class="title-small">Likes</h3>
-                    <span>32</span>
-                </div>
-                <img src="../../images/Liked.png" alt="visits" />
-            </li>
-            <li class="data comments flex">
-                <div class="info">
-                    <h3 class="title-small">Comments</h3>
-                    <span>8</span>
-                </div>
-                <img src="../../images/messaged.png" alt="visits" />
-            </li>
+          <div class="blogTitle">
+            <span class="input-text">
+              <label for="username">Blog Title:</label>
+              <input type="text" id="username" name="username">
+            </span>
+            <span class="input-text">
+              <label for="username">Topic:</label>
+              <input type="text" id="username" name="username">
+            </span>
+          </div>
         </div>
-          
-      <div id="blogs" class="blog-container"></div>
-      <div class="more">
-        <span class="arrow1"></span>
-        <span class="arrow2"></span>
-      </div>
+        <textarea id="inp_editor1" >
+          &lt;p&gt;Write the blog...&lt;/p&gt;
+        </textarea>
+        <button type="submit" class="button">Publish</button>
+      </form>
+        
       </section>
 
     <!---------------------- footer section start --------------------->
@@ -131,5 +108,8 @@
     <script type="module" src="../../js/common.js"></script>
     <script type="module" src="../../js/admin.js"></script>
     <script type="module" src="../../js/index.js"></script>
+    <script>
+      var editor1 = new RichTextEditor("#inp_editor1");
+  </script>
   </body>
 </html>
