@@ -140,6 +140,26 @@ const getBlogs = (filteredBlogs) => {
 
 if (projectList ) {
   projectList.innerHTML = projectsHTML + projectsHTML;
+
+  let isHovered = false;
+
+  const scrollProject = () => {
+    if (!isHovered) {
+      projectList.scrollLeft += 300;
+      if (projectList.scrollLeft + projectList.clientWidth >= projectList.scrollWidth) {
+        projectList.scrollLeft = 0;
+      }
+    }
+  };
+  projectList.addEventListener('mouseenter', () => {
+    isHovered = true;
+  });
+
+  projectList.addEventListener('mouseleave', () => {
+    isHovered = false;
+  });
+
+  setInterval(scrollProject, 5000);
 }
 
 if (experienceList) {
@@ -222,7 +242,7 @@ Allblogs.forEach((blog) => {
 
     if (!findBlog) return;
     localStorage.setItem("selectedBlog", JSON.stringify(findBlog));
-    const urlToOpen = "./pages/blogDetails.html";
+    const urlToOpen = currentUrl.includes("admin")? "./updateBlog.html":"./pages/blogDetails.html";
     // window.open(urlToOpen, '_blank');
     window.location.href = urlToOpen;
   });
@@ -230,14 +250,29 @@ Allblogs.forEach((blog) => {
 
 localStorage.setItem("blogs", JSON.stringify(blogs));
 
-// const loader = document.getElementById('loader');
 
-// function isPageLoading() {
-//   return document.readyState === 'loading';
-// }
 
-// if (isPageLoading()) {
-//   console.log('The page is still loading.');
-// } else {
-//   console.log('The page has finished loading.');
-// }
+const navLinks = document.querySelectorAll('.link');
+const sections = document.querySelectorAll('section');
+
+window.onscroll = () => {
+  sections.forEach(sect => {
+    let top = window.scrollY;
+    let offset = sect.offsetTop;
+    let height = sect.offsetHeight;
+    let id = sect.getAttribute("id");
+
+    if (top >= offset && top < offset + height) {
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+      });
+      const linkWithTextContent = Array.from(navLinks).find(link => link.textContent.toLowerCase() === id.toLowerCase());
+      if (linkWithTextContent) {
+        linkWithTextContent.classList.add("active");
+      }
+      // document.querySelector('a[href*=' + id + ']').classList.add("active");
+      console.log(navLinks[0].value);
+    }
+  });
+};
+

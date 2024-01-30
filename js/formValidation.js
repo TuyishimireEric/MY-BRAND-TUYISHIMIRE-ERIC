@@ -11,8 +11,8 @@ const blogContent = document.querySelector("#blogContainer");
 
 const checkInput = (regEx, input) => {
   const nearestCorrectIcon = input.closest(".input-text");
-  
-  if (regEx.test(input.value)) {
+
+  if (regEx.test(input.value) && input.value.trim() !== "") {
     nearestCorrectIcon.classList.add("correct");
     nearestCorrectIcon.classList.remove("notCorrect");
   } else if (!regEx.test(input.value) && input.value.length > 0) {
@@ -27,7 +27,7 @@ const checkInput = (regEx, input) => {
 const checkConfirmPassword = (regEx, input, password)=>{
   const nearestCorrectIcon = input.closest(".input-text");
   
-  if (regEx.test(input.value) && input.value == password) {
+  if (regEx.test(input.value.trim()) && input.value == password) {
     nearestCorrectIcon.classList.add("correct");
     nearestCorrectIcon.classList.remove("notCorrect");
   } else if ( input.value != password&& input.value.length > 0) {

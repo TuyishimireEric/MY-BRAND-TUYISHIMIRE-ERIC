@@ -81,9 +81,7 @@
       <h2 class="title">update blog <span>( )</span</h2>
       <form class="createBlog">
         <div class="blogIntro flex">
-          <div class="imageInput">
-            <img src="../../images/addImage.png"/>
-          </div>
+          <div class="imageInput"></div>
           <div class="blogTitle">
             <span class="input-text">
               <label for="blogTitle">Blog Title:</label>
@@ -94,6 +92,7 @@
           </div>
         </div>
         <textarea id="blogContainer" >
+            <p></p>
         </textarea>
         <button type="submit" class="button">Publish</button>
       </form>
@@ -106,6 +105,7 @@
     <script type="module" src="../../js/admin.js"></script>
     <script type="module" src="../../js/index.js"></script>
     <script type="module" src="../../js/formValidation.js"></script>
+    <script type="module" src="../../js/updateBlog.js"></script>
     <script>
       var editor1 = new RichTextEditor("#blogContainer");
     </script>

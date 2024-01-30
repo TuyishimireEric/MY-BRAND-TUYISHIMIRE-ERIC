@@ -23,7 +23,7 @@ nav {
 
 .nav-links {
   width: 20%;
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: 500;
 }
 
@@ -37,6 +37,10 @@ nav {
 }
 
 .nav-links li:hover a {
+  color: var(--second-color);
+}
+
+.nav-links li .active {
   color: var(--second-color);
 }
 
@@ -131,9 +135,8 @@ nav {
   }
 
   .nav-links {
-    right: 0;
-    width: 30%;
-    font-size: 1.3em;
+    right: 40px;
+    width: 40%;
     font-weight: 500;
   }
 
@@ -708,6 +711,10 @@ nav {
   margin-top: 4vw;
   display: flex;
   scroll-behavior: smooth;
+}
+
+.projectList {
+  transition: all 0.8s ease-in-out;
 }
 
 .project {
