@@ -92,12 +92,17 @@
           <h2 class="title">login <span>( )</span</h2>
           <form class="contactMe">
               <span class="input-text">
-                <label for="username">Full name:</label>
-                <input type="text" id="username" name="username">
+                <label for="email">Email:</label>
+                <input type="text" id="emailInput" name="username">
+                <span class="error-message">Please enter your email. example@gmai.com</span>
+                <span class="formIcon"></span>
               </span>
               <span class="input-text">
-                <label for="username">Email:</label>
-                <input type="text" id="username" name="username">
+                <label for="username">Password:</label>
+                <input type="password" id="passwordInput" name="username">
+                <span class="error-message">Please enter your password
+                    </span>
+                <span class="formIcon"></span>
               </span>
             <div class="flex">
               <span class="terms">
@@ -106,9 +111,9 @@
               </span>
               <a href="#" class="forgot text-small">Forgot Password?</a>
             </div>
-            <a href="./admin/dashboard.html" class="button">
-              Login
-            </a>
+            <button type="submit" class="button">
+                Login
+            </button>
           </form>
           <div class="switch">
             <a href="./signUp.html">Don't have account? <span>Create one</span></a>
@@ -154,5 +159,6 @@
       </ul>
     </footer>
     <script type="module" src="../js/common.js"></script>
+    <script type="module" src="../js/formValidation.js"></script>
   </body>
 </html>

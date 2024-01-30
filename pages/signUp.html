@@ -93,23 +93,34 @@
           <form class="contactMe">
               <span class="input-text">
                 <label for="username">Full name:</label>
-                <input type="text" id="username" name="username">
+                <input type="text" id="fullNameInput" name="username">
+                <span class="error-message">Please enter your full name</span>
+                <span class="formIcon"></span>
               </span>
               <span class="input-text">
                 <label for="username">Email:</label>
-                <input type="text" id="username" name="username">
+                <input type="text" id="emailInput" name="username">
+                <span class="error-message">Please enter your email. example@gmai.com</span>
+                <span class="formIcon"></span>
               </span>
               <span class="input-text">
                 <label for="username">Password:</label>
-                <input type="text" id="username" name="username">
+                <input type="password" id="passwordInput" name="username">
+                <span class="error-message">Please use a strong password with atleast,
+                   6 characters,
+                    1letter, 1number and 1 special character
+                    </span>
+                <span class="formIcon"></span>
               </span>
               <span class="input-text">
                 <label for="username">confirm password:</label>
-                <input type="text" id="username" name="username">
+                <input type="password" id="confirmPassword" name="username">
+                <span class="error-message">Your password doesn't match!</span>
+                <span class="formIcon"></span>
               </span>
-            <a href="./admin/dashboard.html" class="button">
+            <button type="submit" class="button">
               sign Up
-            </a>
+            </button>
           </form>
           <div class="switch">
             <a href="./login.html">already have account? <span>Login</span></a>
@@ -155,5 +166,6 @@
       </ul>
     </footer>
     <script type="module" src="../js/common.js"></script>
+    <script type="module" src="../js/formValidation.js"></script>
   </body>
 </html>

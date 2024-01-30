@@ -1,14 +1,8 @@
-export const generateStars = (rating) => {
-    const fullStars = Math.floor(rating);
-    const halfStar = rating % 1 !== 0;
-    let ratingsHTML = "";
-  
-    for (let i = 0; i < 5; i++) {
-      if (i < fullStars) {
-        ratingsHTML += `<img src="./images/fullStar.svg" alt="star" class="star">`;
-      } else {
-        ratingsHTML += `<img src="./images/emptyStar.svg" alt="star" class="star">`;
-      }
-    }
-    return ratingsHTML;
-  };
+export const regExPatterns = {
+  email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+  fullName: /^[a-zA-Z\s]{3,30}$/,
+  message: /^.{3,500}$/,
+  password: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@#$%^&+=!]).{6,}$/,
+  blogTitle: /^.{3,100}$/,
+  blogContent: /^.{3,10000}$/
+};

@@ -182,24 +182,26 @@ if (blogContainer) {
   getBlogs(blogs);
 }
 
-searchText.addEventListener("input", (e) => {
-  const searchTerm = e.target.value.toLowerCase();
-  const filteredBlogs = blogs.filter((blog) => {
-    return (
-      blog.title.toLowerCase().includes(searchTerm) ||
-      blog.description.toLowerCase().includes(searchTerm)
-    );
-  });
-
-  blogList.innerHTML = "";
-  if (filteredBlogs.length > 0) {
-    blogsLength = filteredBlogs;
-    getBlogs(filteredBlogs);
-  } else {
-    blogList.innerHTML = "<p>No matching blogs found.</p>";
-    more.style.display = "none";
-  }
-});
+if(searchText){
+  searchText.addEventListener("input", (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    const filteredBlogs = blogs.filter((blog) => {
+      return (
+        blog.title.toLowerCase().includes(searchTerm) ||
+        blog.description.toLowerCase().includes(searchTerm)
+      );
+    });
+  
+    blogList.innerHTML = "";
+    if (filteredBlogs.length > 0) {
+      blogsLength = filteredBlogs;
+      getBlogs(filteredBlogs);
+    } else {
+      blogList.innerHTML = "<p>No matching blogs found.</p>";
+      more.style.display = "none";
+    }
+  });  
+}
 
 humberger.addEventListener("click", () => {
   console.log("clicked");

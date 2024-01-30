@@ -165,6 +165,7 @@ form .input-text {
   align-items: flex-start;
   gap: 4px;
   width: 100%;
+  position: relative;
 }
 
 form .input-text label {
@@ -208,6 +209,58 @@ form .input-text textarea:focus {
 form .input-text select:focus option {
   background-color: var(--second-color);
   color: var(--second-color);
+}
+
+.input-text .formIcon {
+  position: absolute;
+  right: 10px;
+  top: 40px;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-text .formIcon {
+  display: none;
+}
+
+.input-text.correct .formIcon {
+  display: block;
+  background-image: url("../images/correct.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.input-text.notCorrect .formIcon {
+  display: block;
+  background-image: url("../images/notCorrect.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.error-message,
+.passwordHint {
+  color: var(--fith-color);
+  font-size: 12px;
+  font-weight: 100;
+  margin-top: 5px;
+  display: none;
+}
+
+.passwordHint.show {
+  display: block;
+}
+
+.contactMe.submitted .input-text .error-message {
+  display: block;
+}
+
+.contactMe.submitted .input-text.correct .error-message {
+  display: none;
 }
 
 button {
