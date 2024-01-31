@@ -2,6 +2,15 @@ const humberger = document.getElementById("humberger");
 const extraMenu = document.querySelector(".extra-menu");
 const navigation = document.querySelector(".navigation");
 
+const currentUrl = new URL(window.location.href);
+const searchParams = new URLSearchParams(currentUrl.search);
+const blogId = searchParams.get('id');
+
+
+const allBlogs = JSON.parse(localStorage.getItem("blogs")) || {};
+const selectedBlog = allBlogs.find(blog=>blog.id == blogId)
+if(selectedBlog == -1) window.location.href = "../index.html";
+
 humberger.addEventListener("click", () => {
     console.log("clicked");
     extraMenu.classList.toggle("active");
@@ -13,7 +22,7 @@ humberger.addEventListener("click", () => {
     navigation.classList.remove("active");
   });
 
-const selectedBlog = JSON.parse(localStorage.getItem("selectedBlog")) || {};
+
 
 const addRatings = document.querySelector(".addRatings");
 

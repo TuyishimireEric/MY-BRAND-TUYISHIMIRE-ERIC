@@ -159,7 +159,7 @@ if (projectList ) {
     isHovered = false;
   });
 
-  setInterval(scrollProject, 5000);
+  setInterval(scrollProject, 2000);
 }
 
 if (experienceList) {
@@ -241,8 +241,7 @@ Allblogs.forEach((blog) => {
     const findBlog = blogs.find((blog) => blog.id === +id);
 
     if (!findBlog) return;
-    localStorage.setItem("selectedBlog", JSON.stringify(findBlog));
-    const urlToOpen = currentUrl.includes("admin")? "./updateBlog.html":"./pages/blogDetails.html";
+    const urlToOpen = currentUrl.includes("admin")? `./updateBlog.html?id=${id}`:`./pages/blogDetails.html?id=${id}`;
     // window.open(urlToOpen, '_blank');
     window.location.href = urlToOpen;
   });
@@ -261,7 +260,6 @@ window.onscroll = () => {
     let offset = sect.offsetTop;
     let height = sect.offsetHeight;
     let id = sect.getAttribute("id");
-
     if (top >= offset && top < offset + height) {
       navLinks.forEach(link => {
         link.classList.remove("active");
@@ -270,8 +268,6 @@ window.onscroll = () => {
       if (linkWithTextContent) {
         linkWithTextContent.classList.add("active");
       }
-      // document.querySelector('a[href*=' + id + ']').classList.add("active");
-      console.log(navLinks[0].value);
     }
   });
 };
