@@ -21,12 +21,11 @@ html {
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
-  list-style: none;
-  color: var(--main-color);
   scroll-behavior: smooth;
 }
 
 body {
+  color: var(--main-color);
   font-family: "Roboto", sans-serif;
   width: 100vw;
   min-height: 100vh;
@@ -64,7 +63,7 @@ body {
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  height: 45px;
+  height: 40px;
   width: 160px;
   min-height: 40px;
   min-width: 140px;
@@ -77,11 +76,16 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--main-color);
 }
 
 .button:hover {
   color: var(--main-color);
   transform: scaleX(1.03);
+}
+
+.button span {
+  color: var(--main-color);
 }
 
 .icon {
@@ -102,12 +106,14 @@ body {
   font-size: 1.5rem;
   text-align: justify;
   font-weight: 300;
+  color: var(--main-color);
 }
 
 .text-small {
   font-size: 16px;
   text-align: justify;
   font-weight: 200;
+  color: var(--main-color);
 }
 
 .date {
@@ -120,6 +126,7 @@ body {
 }
 
 .sticker {
+  color: var(--main-color);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -166,6 +173,8 @@ form .input-text {
   gap: 4px;
   width: 100%;
   position: relative;
+
+  color: var(--main-color);
 }
 
 form .input-text label {
@@ -185,6 +194,7 @@ form .input-text textarea {
   border: 2px solid var(--second-color);
   padding: 12px;
   font-size: large;
+  color: var(--main-color);
 }
 
 form .input-text textarea {
@@ -255,11 +265,11 @@ form .input-text select:focus option {
   display: block;
 }
 
-.contactMe.submitted .input-text .error-message {
+form.submitted .input-text .error-message {
   display: block;
 }
 
-.contactMe.submitted .input-text.correct .error-message {
+form.submitted .input-text.correct .error-message {
   display: none;
 }
 
@@ -267,6 +277,10 @@ button {
   outline: none;
   background: none;
   border: none;
+}
+
+a {
+  color: var(--main-color);
 }
 
 .more {

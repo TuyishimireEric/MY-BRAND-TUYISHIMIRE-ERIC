@@ -9,14 +9,12 @@
     <link rel="stylesheet" href="../../css/style.css" />
     <link rel="stylesheet" href="../../css/admin.css" />
     <link rel="stylesheet" href="../../css/adminBlogs.css" />
-    
+    <link rel="stylesheet" href="../../css/textEditor.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>   
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
     />
-    <link rel="stylesheet" href="/richtexteditor/rte_theme_default.css" />
-    <script type="text/javascript" src="/richtexteditor/rte.js"></script>
-    <script type="text/javascript" src='/richtexteditor/plugins/all_plugins.js'></script>
   </head>
   <body>
     <nav class="flex">
@@ -80,8 +78,10 @@
     <section class="dashboard">
       <h2 class="title">update blog <span>( )</span</h2>
       <form class="createBlog">
-        <div class="blogIntro flex">
-          <div class="imageInput"></div>
+        <div class="blogIntro">
+          <div class="imageInput">
+            <i class="fa fa-image"></i>
+          </div>
           <div class="blogTitle">
             <span class="input-text">
               <label for="blogTitle">Blog Title:</label>
@@ -91,9 +91,48 @@
             </span>
           </div>
         </div>
-        <textarea id="blogContainer" >
-            <p></p>
-        </textarea>
+        <div class="textEditor">
+          <div class="textEditorHeader">
+            <button type="button" class="editorBtn" data-element="bold">
+              <i class="fa fa-bold"></i> 
+            </button> 
+            <button type="button" class="editorBtn" data-element="italic">
+              <i class="fa fa-italic"></i>
+            </button> 
+            <button type="button" class="editorBtn underline" data-element="underline">
+              <i class="fa fa-underline"></i>
+            </button> 
+            <button type="button" class="editorBtn" data-element="insertUnorderedList">
+              <i class="fa fa-list-ul"></i>
+            </button> 
+            <button type="button" class="editorBtn" data-element="insertOrderedList">
+              <i class="fa fa-list-ol"></i>
+            </button> 
+            <button type="button" class="editorBtn" data-element="createLink">
+              <i class="fa fa-link"></i>
+            </button> 
+            <button type="button" class="editorBtn" data-element="justifyLeft">
+              <i class="fa fa-align-left"></i>
+            </button> 
+            <button type="button" class="editorBtn" data-element="justifyCenter">
+              <i class="fa fa-align-center"></i>
+            </button> 
+            <button type="button" class="editorBtn" data-element="justifyRight">
+              <i class="fa fa-align-right"></i>
+            </button> 
+            <button type="button" class="editorBtn" data-element="justifyFull">
+              <i class="fa fa-align-justify"></i>
+            </button> 
+            <button type="button" class="editorBtn" data-element="insertImage">
+              <i class="fa fa-image"></i>
+            </button> 
+            <input type="color" class="colorInput">
+            </input>
+          </div>
+              <div class="editorContent" contenteditable="true"></div>
+              <span class="error-message">Please enter blog content.</span>
+        </div>
+
         <button type="submit" class="button">Publish</button>
       </form>
         
@@ -104,10 +143,11 @@
     <script type="module" src="../../js/common.js"></script>
     <script type="module" src="../../js/admin.js"></script>
     <script type="module" src="../../js/index.js"></script>
-    <script type="module" src="../../js/formValidation.js"></script>
-    <script type="module" src="../../js/updateBlog.js"></script>
-    <script>
+    <script type="module" src="../../js/textEditor.js"></script>
+    <!-- <script type="module" src="../../js/formValidation.js"></script> -->
+    <script type="module" src="../../js/admin/blogs/updateBlog.js"></script>
+    <!-- <script>
       var editor1 = new RichTextEditor("#blogContainer");
-    </script>
+    </script> -->
   </body>
 </html>

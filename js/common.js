@@ -3,7 +3,6 @@ const extraMenu = document.querySelector(".extra-menu");
 const navigation = document.querySelector(".navigation");
 
 humberger.addEventListener("click", () => {
-    console.log("clicked");
     extraMenu.classList.toggle("active");
     navigation.classList.toggle("active");
   });

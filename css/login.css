@@ -37,6 +37,10 @@
     color: var(--second-color);
 }
 
+.switch a {
+  color: var(--main-color);
+}
+
 .switch:hover span {
     text-decoration: underline;
 }

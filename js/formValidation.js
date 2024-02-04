@@ -7,12 +7,12 @@ const message = document.querySelector("#messageInput");
 const password = document.querySelector("#passwordInput");
 const confirmPassword = document.querySelector("#confirmPassword");
 const blogTitle = document.querySelector("#blogTitle");
-const blogContent = document.querySelector("#blogContainer");
+const blogContent = document.querySelector(".editorContent");
 
-const checkInput = (regEx, input) => {
+export const checkInput = (regEx, input) => {
   const nearestCorrectIcon = input.closest(".input-text");
 
-  if (regEx.test(input.value) && input.value.trim() !== "") {
+  if (regEx.test(input.value) && input.value !== "") {
     nearestCorrectIcon.classList.add("correct");
     nearestCorrectIcon.classList.remove("notCorrect");
   } else if (!regEx.test(input.value) && input.value.length > 0) {
@@ -76,11 +76,6 @@ if (blogTitle) {
   });
 }
 
-if (blogContent) {
-  blogContent.addEventListener("input", (e) => {
-    checkInput(regExPatterns.blogContent, e.target);
-  });
-}
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -93,12 +88,14 @@ form.addEventListener("submit", (e) => {
   if (allValid) {
     form.classList.remove("submitted");
     allInputs.forEach((input) => input.classList.remove("correct"));
-    if(fullName) fullName.value = "";
-    if(email) email.value = "";
-    if(message) message.value = "";
-    if(password) password.value = "";
-    if(confirmPassword) confirmPassword.value = "";
-    if(blogTitle) blogTitle.value = "";
-    if(blogContent) blogContent.value="";
+    // if(fullName) fullName.value = "";
+    // if(email) email.value = "";
+    // if(message) message.value = "";
+    // if(password) password.value = "";
+    // if(confirmPassword) confirmPassword.value = "";
+    // if(blogTitle) blogTitle.value = "";
+    // if(blogContent) blogContent.value="";
+  }else{
+    return
   }
 });

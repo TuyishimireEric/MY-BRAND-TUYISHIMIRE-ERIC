@@ -1,11 +1,11 @@
 import { experience } from "./data/experience.js";
 import { projects } from "./data/projects.js";
-import { blogs } from "./data/blogs.js";
+
+const allBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
 
 const experienceList = document.getElementById("experiences");
 const projectList = document.getElementById("projects");
 const blogList = document.getElementById("blogs");
-const more = document.querySelector(".more");
 const blogContainer = document.querySelector(".blog-container");
 const arrow1 = document.querySelector(".more .arrow1");
 const arrow2 = document.querySelector(".more .arrow2");
@@ -16,7 +16,7 @@ const navigation = document.querySelector(".navigation");
 
 let experienceHTML = "";
 let projectsHTML = "";
-let blogsLength = blogs.length;
+let blogsLength = allBlogs.length;
 
 experience.forEach((experience) => {
   experienceHTML += `
@@ -62,17 +62,9 @@ const getBlogs = (filteredBlogs) => {
 
       for (let i = 0; i < 5; i++) {
         if (i < fullStars) {
-          if (currentUrl.includes("admin")) {
-            ratingsHTML += `<img src="../../images/fullStar.svg" alt="star" class="star">`;
-          } else {
-            ratingsHTML += `<img src="./images/fullStar.svg" alt="star" class="star">`;
-          }
+            ratingsHTML += `<i class="fa fa-star"></i>`;
         } else {
-          if (currentUrl.includes("admin")) {
-            ratingsHTML += `<img src="../../images/emptyStar.svg" alt="star" class="star">`;
-          } else {
-            ratingsHTML += `<img src="./images/emptyStar.svg" alt="star" class="star">`;
-          }
+            ratingsHTML += `<i class="fa-regular fa-star"></i>`;
         }
       }
     };
@@ -88,54 +80,36 @@ const getBlogs = (filteredBlogs) => {
     };
 
     const truncatedDescription =
-      truncateDescription(blog.description, 80) || "";
+      truncateDescription(JSON.parse(blog.description), 40) || "";
 
     blogsHTML += `
-      <div class="blog" key=${blog.id}>
-        <div class="blog-details">
-          <div>
-            <div class="blog-head">
-              <h3 class="blog-title">${blog.title}</h3>
-              <span class="likes">
-                <p>${blog.likes}</p>
-                ${
-                  currentUrl.includes("admin")
-                    ? `<img src="../../images/heart.png" alt="heart" class="heart">`
-                    : `<img src="./images/heart.png" alt="heart" class="heart">`
-                }
-                <p>${blog.comments.length} comments</p>
-              </span>
-            </div>
-            <div class="ratings">
-              ${ratingsHTML}
-            </div>
-            <p class="date">${blog.date}</p>
-            <p class="blog-description text-small">${truncatedDescription}</p>
-          </div>
-          <a href="#" target="_blank" class="button">${currentUrl.includes("admin") ? "Edit": "More"}</a>
-        </div>
+      <article class="blog" key=${blog.id}>
         <div class="blog-image">
-          <img src="${currentUrl.includes("admin") ? `../../${blog.image}` : blog.image}" alt="${blog.title}">
+          <img src="./${blog.image}" alt="${blog.title}">
         </div>
-        ${
-          currentUrl.includes("admin")
-            ? `
-              <span class="remove">
-                <span class="bar"></span>
-                <span class="bar"></span>
-              </span>
-            `
-            : ``
-        }
-      </div>`;
+        <div class="blog-details">
+          <h3 class="blog-title">${blog.title}</h3>
+          <div class="summary">
+            <p class="date">${blog.date}</p>
+            <article class="blog-description text-small">${truncatedDescription}</article>
+            <span class="readMore">read more </span>
+          </div>
+          <div class="reviews flex">
+            <span>${ratingsHTML}</span>
+            <span class="likes flex">
+              <p>${blog.likes}
+              <i class="fa fa-heart"></i>
+              </p>
+              <p>${blog.comments.length} 
+                <i class="fa fa-comment"></i>
+              </p>
+            </span>
+          </div>
+        </div>
+      </article>`;
   });
   blogList.innerHTML = blogsHTML;
 
-  if (filteredBlogs.length <= 2) {
-    more.style.display = "none";
-  } else {
-    more.style.display = "block";
-  }
 };
 
 if (projectList ) {
@@ -178,16 +152,6 @@ if (project) {
   });
 }
 
-if(more){
-  more.addEventListener("click", () => {
-    if (blogContainer.scrollTop >= (blogsLength - 2) * 400) {
-      blogContainer.scrollTop = 0;
-    } else {
-      blogContainer.scrollTop += 400;
-    }
-  });
-}
-
 if (blogContainer) {
   blogContainer.addEventListener("scroll", () => {
     if (blogContainer.scrollTop >= (blogsLength - 2) * 400) {
@@ -199,7 +163,7 @@ if (blogContainer) {
     }
   });
 
-  getBlogs(blogs);
+  getBlogs(allBlogs);
 }
 
 if(searchText){
@@ -224,7 +188,6 @@ if(searchText){
 }
 
 humberger.addEventListener("click", () => {
-  console.log("clicked");
   extraMenu.classList.toggle("active");
   navigation.classList.toggle("active");
 });
@@ -234,41 +197,41 @@ extraMenu.addEventListener("click", () => {
   navigation.classList.remove("active");
 });
 
-const Allblogs = document.querySelectorAll(".blog");
-Allblogs.forEach((blog) => {
-  blog.addEventListener("click", (e) => {
-    const id = e.target.closest(".blog").getAttribute("key");
-    const findBlog = blogs.find((blog) => blog.id === +id);
-
-    if (!findBlog) return;
-    const urlToOpen = currentUrl.includes("admin")? `./updateBlog.html?id=${id}`:`./pages/blogDetails.html?id=${id}`;
-    // window.open(urlToOpen, '_blank');
-    window.location.href = urlToOpen;
+const Allblogs = document.querySelectorAll(".blog-details");
+if(allBlogs){
+  Allblogs.forEach((blog) => {
+    blog.addEventListener("click", (e) => {
+      const id = e.target.closest(".blog").getAttribute("key");
+      const urlToOpen = currentUrl.includes("admin")? `./updateBlog.html?id=${id}`:`./pages/blogDetails.html?id=${id}`;
+      // window.open(urlToOpen, '_blank');
+      window.location.href = urlToOpen;
+    });
   });
-});
 
-localStorage.setItem("blogs", JSON.stringify(blogs));
+}
 
+// ------------------- NavLinks selection ----------------- //
 
+if(currentUrl.includes('index')){
 
-const navLinks = document.querySelectorAll('.link');
-const sections = document.querySelectorAll('section');
-
-window.onscroll = () => {
-  sections.forEach(sect => {
-    let top = window.scrollY;
-    let offset = sect.offsetTop;
-    let height = sect.offsetHeight;
-    let id = sect.getAttribute("id");
-    if (top >= offset && top < offset + height) {
-      navLinks.forEach(link => {
-        link.classList.remove("active");
-      });
-      const linkWithTextContent = Array.from(navLinks).find(link => link.textContent.toLowerCase() === id.toLowerCase());
-      if (linkWithTextContent) {
-        linkWithTextContent.classList.add("active");
+  const navLinks = document.querySelectorAll('.link');
+  const sections = document.querySelectorAll('section');
+  window.onscroll = () => {
+    sections.forEach(sect => {
+      let top = window.scrollY;
+      let offset = sect.offsetTop;
+      let height = sect.offsetHeight;
+      let id = sect.getAttribute("id");
+      if (top >= offset && top < offset + height) {
+        navLinks.forEach(link => {
+          link.classList.remove("active");
+        });
+        const linkWithTextContent = Array.from(navLinks).find(link => link.textContent.toLowerCase() === id.toLowerCase());
+        if (linkWithTextContent) {
+          linkWithTextContent.classList.add("active");
+        }
       }
-    }
-  });
-};
+    });
+  };
+}
 
