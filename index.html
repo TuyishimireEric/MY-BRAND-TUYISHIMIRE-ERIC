@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>   
     <link rel="stylesheet" href="css/global.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
   <body>
     <nav class="flex">
@@ -108,13 +109,18 @@
           </span>
         </div>
       </div>
-      <img src="./images/myPic.png" />
+      <div class="mainImage">
+        <img src="./images/myPic.png" />
+        <i class="fa-brands fa-node-js" id="nodeIcon"></i>
+        <i class="fa-brands fa-react" id="reactIcon"></i>
+        <i class="fa-brands fa-github" id="gitIcon"></i>
+      </div>
     </section>
 
     <!---------------------- About section start --------------------->
 
     <section class="about flex" id="about">
-      <div class="details">
+      <div class="details" data-aos="zoom-in-right">
         <h2 class="title">aboutMe <span>( )</span></h2>
         <p class="text">
           Hello! My name is Eric Tuyishimire, I am a full stack developer based
@@ -125,7 +131,7 @@
           to finish.
         </p>
       </div>
-      <div class="links flex-col">
+      <div class="links flex-col" data-aos="zoom-in-left">
         <div class="sticker">
           <span>
             <span>Fullstack Developer</span>
@@ -148,17 +154,17 @@
     <section class="skills bg-black" id="skills">
       <h2 class="title">skills <span>( )</span</h2>
       <div class="skills-list">
-        <img src="./images/js.png">
-        <img src="./images/typescript.png">
-        <img src="./images/html.png">
-        <img src="./images/css.png">
-        <img src="./images/react.png">
-        <img src="./images/redux.png">
-        <img src="./images/nodejs.png">
-        <img src="./images/next.png">
-        <img src="./images/linux.png">
-        <img src="./images/ruby.png">
-        <img src="./images/rails.png">
+        <img src="./images/js.png" data-aos="zoom-in">
+        <img src="./images/typescript.png" data-aos="zoom-in">
+        <img src="./images/html.png" data-aos="zoom-in">
+        <img src="./images/css.png" data-aos="zoom-in">
+        <img src="./images/react.png" data-aos="zoom-in">
+        <img src="./images/redux.png" data-aos="zoom-in">
+        <img src="./images/nodejs.png" data-aos="zoom-in">
+        <img src="./images/next.png" data-aos="zoom-in">
+        <img src="./images/linux.png" data-aos="zoom-in">
+        <img src="./images/ruby.png" data-aos="zoom-in">
+        <img src="./images/rails.png" data-aos="zoom-in">
       </div>
     </section>
 
@@ -166,7 +172,8 @@
 
     <section class="experience bg-black" id="experience">
       <h2 class="title">experience <span>( )</span</h2>
-        <div id="experiences" class="exp-container"></div>
+        <div id="experiences" class="exp-container" data-aos="fade-up"
+        data-aos-duration="2000"></div>
         <span class="exp-bg"></span>
     </section>
 
@@ -174,7 +181,7 @@
 
     <section class="projects" id="Projects">
       <h2 class="title">projects <span>( )</span</h2>
-        <div id="projects" class="proj-container"></div>
+        <div id="projects" class="proj-container" data-aos="fade-left"></div>
     </section>
 
      <!---------------------- blog section start --------------------->
@@ -189,7 +196,7 @@
 
      <section class="contact flex-col" id="contact">
         <h2 class="title">contactMe <span>( )</span</h2>
-          <form class="contactMe">
+          <form class="contactMe" data-aos="zoom-out-up">
             <span class="input-text" id="fullName">
               <label for="username">Full name:</label>
               <input type="text" id="fullNameInput" name="fullName" maxlength="30">
@@ -238,7 +245,10 @@
           </li>
         </ul>
       </footer>
-
+      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+      <script>
+        AOS.init();
+      </script>
      <script type="module" src="js/index.js"></script>
      <script type="module" src="js/formValidation.js"></script>
   </body>

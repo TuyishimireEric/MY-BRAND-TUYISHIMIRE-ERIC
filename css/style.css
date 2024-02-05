@@ -279,19 +279,6 @@ ul {
   color: var(--second-color);
 }
 
-
-@keyframes animated-text{
-  from{width: 0;}
-  to{width: 472px;}
-}
-
-/* cursor animations */
-
-@keyframes animated-cursor{
-  from{border-right-color: rgba(0,255,0,.75);}
-  to{border-right-color: transparent;}
-}
-
 .intro h3 {
   font-size: 2rem;
 }
@@ -310,8 +297,60 @@ ul {
   margin-left: 6px;
 }
 
-.main img {
+.mainImage {
   width: 40%;
+  position: relative;
+}
+
+.mainImage img {
+  width: 100%;
+  height: 100%;
+}
+
+.mainImage i {
+  background-color: var(--fourth-color);
+  
+  padding: 15px;
+  border-radius: 50%;
+  position: absolute;
+  font-size: 72px;
+}
+
+.mainImage #nodeIcon {
+  color: var(--fith-color);
+  left: 5%;
+  bottom: 20%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.mainImage #reactIcon {
+  color: var(--main-color);
+  right: 2%;
+  top: 20%;
+  animation: float 3s ease-in-out infinite;
+}
+
+.mainImage #gitIcon {
+  color: var(--dark-color-color);
+  right: 8%;
+  font-size: 70px;
+  bottom: 8%;
+  box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+}
+
+@keyframes float {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px) scale(1);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-20px) scale(0.96);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px) scale(1);
+	}
 }
 
 @media only screen and (max-width: 1220px) {

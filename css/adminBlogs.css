@@ -112,6 +112,10 @@
     margin-top: 10px;
 }
 
+.blogComments {
+    margin-top: 40px;
+}
+
 @media only screen and (max-width: 650px) {
     .createBlog .blogIntro {
         flex-direction: column;

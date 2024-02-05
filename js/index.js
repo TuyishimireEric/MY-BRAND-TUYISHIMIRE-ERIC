@@ -83,7 +83,7 @@ const getBlogs = (filteredBlogs) => {
       truncateDescription(JSON.parse(blog.description), 40) || "";
 
     blogsHTML += `
-      <article class="blog" key=${blog.id}>
+      <article class="blog" key=${blog.id} data-aos="zoom-in-up">
         <div class="blog-image">
           <img src="./${blog.image}" alt="${blog.title}">
         </div>

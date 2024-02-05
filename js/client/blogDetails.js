@@ -48,7 +48,7 @@ const generateStars = (rating) => {
 };
 
 blogContainer.innerHTML = `
-    <div class="blogDetails">
+    <div class="blogDetails" data-aos="zoom-out">
         <img src="../${selectedBlog.image}" alt="${
   selectedBlog.title
 }" class="mainImage"/>
@@ -66,7 +66,8 @@ blogContainer.innerHTML = `
             )}</article>
         </div>
         <div class="comments">
-            <div class="sticker" id="likeButton">
+            <div class="sticker" id="likeButton" data-aos="fade-up"
+            data-aos-duration="1000">
                 <img src="../images/heart.png" alt="heart" />
                 <span>${selectedBlog.likes} Likes</span>
             </div>
@@ -81,7 +82,8 @@ blogContainer.innerHTML = `
                   .map((comment) => {
                     generateStars(comment.rating);
                     return `
-                        <div class="comment">
+                        <div class="comment" data-aos="fade-up"
+                        data-aos-duration="1000">
                             <div class="comment_head">
                                 <img src="../images/user.png" alt="user" class="profilePicture"/>
                                 <div class="comment_details">
