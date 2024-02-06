@@ -49,7 +49,7 @@ const generateStars = (rating) => {
 
 blogContainer.innerHTML = `
     <div class="blogDetails" data-aos="zoom-out">
-        <img src="../${selectedBlog.image}" alt="${
+        <img src="${selectedBlog.image}" alt="${
   selectedBlog.title
 }" class="mainImage"/>
         <div class="comment_head">

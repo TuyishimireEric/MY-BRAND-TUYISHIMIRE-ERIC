@@ -2,6 +2,25 @@ const createBlogForm = document.querySelector(".createBlog");
 const blogTitle = document.querySelector("#blogTitle");
 const blogContent = document.querySelector(".editorContent");
 const imageInput = document.querySelector(".imageInput");
+const fileInput = document.querySelector("#fileInput");
+let imageUrl = "";
+
+
+imageInput.addEventListener("click", () => {
+  fileInput.click();
+});
+
+fileInput.addEventListener("change", (e) => {
+  const file = e.target.files[0];
+  const reader = new FileReader();
+
+  reader.onloadend = () => {
+    imageInput.style.backgroundImage = `url(${reader.result})`;
+    imageUrl = reader.result;
+  };
+
+  reader.readAsDataURL(file);
+});
 
 const currentUrl = new URL(window.location.href);
 const searchParams = new URLSearchParams(currentUrl.search);
@@ -26,7 +45,7 @@ const generateStars = (rating) => {
 
 if (selectedBlogIndex !== -1) {
   const selectedBlog = allBlogs[selectedBlogIndex];
-  imageInput.innerHTML = ` <img src="../../${selectedBlog.image}" alt="${selectedBlog.title}" id="selectedImage">`;
+  imageInput.style.backgroundImage = `url(${selectedBlog.image})`;
   blogTitle.value = selectedBlog.title;
   blogContent.innerHTML = JSON.parse(selectedBlog.description);
 
@@ -35,6 +54,7 @@ if (selectedBlogIndex !== -1) {
 
     const updatedBlog = {
       ...selectedBlog,
+      image: imageUrl || selectedBlog.image,
       title: blogTitle.value,
       description: JSON.stringify(blogContent.innerHTML),
     };

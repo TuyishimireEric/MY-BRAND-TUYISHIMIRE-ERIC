@@ -1,4 +1,3 @@
-import getBlogs from "./getBlogs.js";
 const removeBlogs = document.querySelectorAll(".removeBlogs");
 
 removeBlogs.forEach((removeButton) => {

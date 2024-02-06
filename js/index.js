@@ -85,7 +85,7 @@ const getBlogs = (filteredBlogs) => {
     blogsHTML += `
       <article class="blog" key=${blog.id} data-aos="zoom-in-up">
         <div class="blog-image">
-          <img src="./${blog.image}" alt="${blog.title}">
+          <img src="${blog.image}" alt="${blog.title}">
         </div>
         <div class="blog-details">
           <h3 class="blog-title">${blog.title}</h3>

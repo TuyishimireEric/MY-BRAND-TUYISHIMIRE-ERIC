@@ -71,7 +71,7 @@ const getBlogs = (filteredBlogs) => {
           <a href="#" target="_blank" class="button">${currentUrl.includes("admin") ? "Edit": "More"}</a>
         </div>
         <div class="blog-image">
-          <img src="${currentUrl.includes("admin") ? `../../${blog.image}` : blog.image}" alt="${blog.title}">
+          <img src="${blog.image}" alt="${blog.title}">
         </div>
         ${
           currentUrl.includes("admin")

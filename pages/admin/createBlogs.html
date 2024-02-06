@@ -79,8 +79,10 @@
       <h2 class="title">create a blog <span>( )</span</h2>
       <form class="createBlog">
         <div class="blogIntro">
-          <div class="imageInput">
-            <i class="fa fa-image"></i>
+            <div class="imageInput"></div>
+
+          <div class="hidden">
+            <input type="file" id="fileInput" accept="image/*"/>
           </div>
           <div class="blogTitle">
             <span class="input-text" id="titleInput">
@@ -91,52 +93,49 @@
             </span>
           </div>
         </div>
-        <!-- <textarea id="blogContainer" >
-          &lt;p&gt;Write the blog...&lt;/p&gt;
-        </textarea> -->
-        <div class="textEditor">
-          <div class="textEditorHeader">
-            <button type="button" class="editorBtn" data-element="bold">
-              <i class="fa fa-bold"></i> 
-            </button> 
-            <button type="button" class="editorBtn" data-element="italic">
-              <i class="fa fa-italic"></i>
-            </button> 
-            <button type="button" class="editorBtn underline" data-element="underline">
-              <i class="fa fa-underline"></i>
-            </button> 
-            <button type="button" class="editorBtn" data-element="insertUnorderedList">
-              <i class="fa fa-list-ul"></i>
-            </button> 
-            <button type="button" class="editorBtn" data-element="insertOrderedList">
-              <i class="fa fa-list-ol"></i>
-            </button> 
-            <button type="button" class="editorBtn" data-element="createLink">
-              <i class="fa fa-link"></i>
-            </button> 
-            <button type="button" class="editorBtn" data-element="justifyLeft">
-              <i class="fa fa-align-left"></i>
-            </button> 
-            <button type="button" class="editorBtn" data-element="justifyCenter">
-              <i class="fa fa-align-center"></i>
-            </button> 
-            <button type="button" class="editorBtn" data-element="justifyRight">
-              <i class="fa fa-align-right"></i>
-            </button> 
-            <button type="button" class="editorBtn" data-element="justifyFull">
-              <i class="fa fa-align-justify"></i>
-            </button> 
-            <button type="button" class="editorBtn" data-element="insertImage">
-              <i class="fa fa-image"></i>
-            </button> 
-            <input type="color" class="colorInput">
-            </input>
+          <div class="textEditor">
+            <div class="textEditorHeader">
+              <button type="button" class="editorBtn" data-element="bold">
+                <i class="fa fa-bold"></i> 
+              </button> 
+              <button type="button" class="editorBtn" data-element="italic">
+                <i class="fa fa-italic"></i>
+              </button> 
+              <button type="button" class="editorBtn underline" data-element="underline">
+                <i class="fa fa-underline"></i>
+              </button> 
+              <button type="button" class="editorBtn" data-element="insertUnorderedList">
+                <i class="fa fa-list-ul"></i>
+              </button> 
+              <button type="button" class="editorBtn" data-element="insertOrderedList">
+                <i class="fa fa-list-ol"></i>
+              </button> 
+              <button type="button" class="editorBtn" data-element="createLink">
+                <i class="fa fa-link"></i>
+              </button> 
+              <button type="button" class="editorBtn" data-element="justifyLeft">
+                <i class="fa fa-align-left"></i>
+              </button> 
+              <button type="button" class="editorBtn" data-element="justifyCenter">
+                <i class="fa fa-align-center"></i>
+              </button> 
+              <button type="button" class="editorBtn" data-element="justifyRight">
+                <i class="fa fa-align-right"></i>
+              </button> 
+              <button type="button" class="editorBtn" data-element="justifyFull">
+                <i class="fa fa-align-justify"></i>
+              </button> 
+              <button type="button" class="editorBtn" data-element="insertImage">
+                <i class="fa fa-image"></i>
+              </button> 
+              <input type="color" class="colorInput">
+              </input>
+            </div>
+            <div class="input-text" id="contentInput">
+              <div class="editorContent" contenteditable="true"></div>
+              <span class="error-message">Please enter blog content.</span>
+            </div>
           </div>
-          <div class="input-text" id="contentInput">
-            <div class="editorContent" contenteditable="true"></div>
-            <span class="error-message">Please enter blog content.</span>
-          </div>
-        </div>
         <button type="submit" class="button">Publish</button>
       </form>
         
@@ -148,10 +147,6 @@
     <script type="module" src="../../js/admin.js"></script>
     <script type="module" src="../../js/index.js"></script>
     <script type="module" src="../../js/textEditor.js"></script>
-    <!-- <script type="module" src="../../js/formValidation.js"></script> -->
     <script type="module" src="../../js/admin/blogs/createBlog.js"></script>
-    <!-- <script>
-      var editor1 = new RichTextEditor("#blogContainer");
-    </script> -->
   </body>
 </html>

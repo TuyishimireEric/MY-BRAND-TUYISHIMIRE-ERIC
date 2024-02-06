@@ -4,6 +4,26 @@ const createBlogForm = document.querySelector(".createBlog");
 const blogTitle = document.querySelector("#blogTitle");
 const blogContent = document.querySelector(".editorContent");
 const form = document.querySelector("form");
+const imageInput = document.querySelector(".imageInput");
+const fileInput = document.querySelector("#fileInput");
+let imageUrl = "";
+
+
+imageInput.addEventListener("click", () => {
+  fileInput.click();
+});
+
+fileInput.addEventListener("change", (e) => {
+  const file = e.target.files[0];
+  const reader = new FileReader();
+
+  reader.onloadend = () => {
+    imageInput.style.backgroundImage = `url(${reader.result})`;
+    imageUrl = reader.result;
+  };
+
+  reader.readAsDataURL(file);
+});
 
 export const checkInput = (regEx, input) => {
   const nearestCorrectIcon = input.closest(".input-text");
@@ -56,7 +76,7 @@ createBlogForm.addEventListener("submit", (e) => {
       id: uniqueId,
       title: blogTitle.value,
       date: formattedDate,
-      image: "./images/nextJS.png",
+      image: imageUrl,
       createBy: "Eric Tuyishimire",
       rating: 0,
       likes: 0,

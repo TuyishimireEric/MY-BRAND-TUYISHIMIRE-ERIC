@@ -93,15 +93,11 @@
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     overflow: hidden;
-}
-
-.imageInput i {
-    font-size: 68px;
-    transition: all 0.3s ease-in-out;
-}
-
-.imageInput:hover i {
-    transform: scale(1.1);
+    background-image: url("../images/add.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: cadetblue;
 }
 
 .blogTitle {
@@ -114,6 +110,10 @@
 
 .blogComments {
     margin-top: 40px;
+}
+
+.hidden {
+    display: none;
 }
 
 @media only screen and (max-width: 650px) {

@@ -38,11 +38,11 @@ const getBlogs = (filteredBlogs) => {
 
     const truncatedDescription =
       truncateDescription(JSON.parse(blog.description), 40) || "";
-
+    
     blogsHTML += `
     <article class="blog" key=${blog.id}>
     <div class="blog-image">
-      <img src="../../${blog.image}" alt="${blog.title}">
+       <img src="${blog.image}" alt="${blog.title}">
     </div>
     <div class="blog-details">
       <h3 class="blog-title">${blog.title}</h3>

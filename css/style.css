@@ -928,7 +928,8 @@ ul {
 }
 
 .blog-image {
-  width: 100%;
+  min-width: 100%;
+  max-width: 400px;
   height: 300px;
   display: flex;
   align-items: center;
