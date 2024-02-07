@@ -1,0 +1,30 @@
+.skill {
+    position: relative;
+}
+
+.skill .remove {
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@media only screen and (max-width: 570px) {
+    .skills-list {
+      grid-template-columns: repeat(4, auto);
+    }
+    .skills-list img {
+      width: 80px;
+    }
+    .skill .remove {
+       transform: scale(0.8) translateX(-50%);
+    }
+}
+
+@media only screen and (max-width: 387px) {
+    .skills-list img {
+      width: 60px;
+    }
+    .skill .remove {
+       transform: scale(0.6) translateX(-50%);
+    }
+}

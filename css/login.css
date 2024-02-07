@@ -1,0 +1,78 @@
+.login {
+    min-height: 90vh;
+    width: 100%;
+    padding: 4vw 0;
+}
+
+.login .userInput {
+    width: 50%;
+    margin-top: 4vw;
+}
+
+.login .ninja {
+    width: 45%;
+    min-height: 100%;
+}
+
+.login .ninja img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.terms label {
+    color: var(--second-color);
+}
+
+.forgot:hover {
+    color: var(--second-color);
+}
+
+.switch {
+    margin-top: 2vw;
+    font-size: 21px;
+    width: 100%;
+}
+
+.switch span {
+    color: var(--second-color);
+}
+
+.switch a {
+  color: var(--main-color);
+}
+
+.switch:hover span {
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 900px) {
+    .login {
+        min-height: 100vh;
+    }
+    .login .userInput {
+        width: 80%;
+        margin: auto;
+    }
+
+    .switch {
+        margin-top: 5vw;
+        font-size: 18px;
+    }
+
+    .login .ninja {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .login .userInput {
+        width: 100%;
+        margin: auto;
+    }
+
+    .switch {
+        margin-top: 50px;
+        font-size: 18px;
+    }
+
+}

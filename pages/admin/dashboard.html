@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="icon" href="../../images/myProfile.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../css/global.css" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/admin.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+    />
+  </head>
+  <body>
+    <nav class="flex">
+      <a class="logo" href="../../index.html#">
+        <h4><span>ERIC</span> TUYISHIMIRE</h4>
+      </a>
+      <ul class="nav-contact flex">
+        <li class="user">
+            <a href="../../index.html" id="user" class="user flex-col">
+              <img src="../../images/notificationM.png" alt="user" />
+            </a>
+          </li>
+          <li class="user">
+            <a href="../../index.html" id="user" class="user flex-col">
+              <img src="../../images/notification.png" alt="user" />
+            </a>
+          </li>
+        <li class="user">
+          <a href="../../index.html" id="user" class="user flex-col">
+            <img src="../../images/myProfile.png" alt="user" />
+          </a>
+        </li>
+      </ul>
+      <div id="humberger" class="navigation">
+        <span class="bar top"></span>
+        <span class="bar middle"></span>
+        <span class="bar bottom"></span>
+      </div>
+      <div class="extra-menu">
+        <div class="nav-contact">
+          <ul>
+            <li class="user">
+                <a href="../../index.html" id="user" class="user flex-col">
+                  <img src="../../images/notificationM.png" alt="user" />
+                </a>
+              </li>
+              <li class="user">
+                <a href="../../index.html" id="user" class="user flex-col">
+                  <img src="../../images/notification.png" alt="user" />
+                </a>
+              </li>
+            <li class="user">
+              <a href="../../index.html" id="user" class="user flex-col">
+                <img src="../../images/myProfile.png" alt="user" />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <span class="sideNavSwitch">
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </span>
+    <nav class="sideNav">     
+    </nav>
+
+    <!---------------------- dashboard section start --------------------->
+
+    <section class="dashboard">
+        <div>
+            <h2 class="title">dashboard <span>( )</span</h2>
+        </div>
+        <div class="general">
+            <div class="mainChart">
+                <img src="../../images/mainChart.png" alt="chart" />
+            </div>
+            <div class="calendar">
+                <img src="../../images/calendar.png" alt="calendar" />
+            </div>
+        </div>
+        <div class="metrics">
+            <li class="data visits flex">
+                <div class="info">
+                    <h3 class="title-small">Visits</h3>
+                    <span>42</span>
+                </div>
+                <img src="../../images/users.png" alt="visits" />
+            </li>
+            <li class="data likes flex">  
+                <div class="info">
+                    <h3 class="title-small">Likes</h3>
+                    <span>32</span>
+                </div>
+                <img src="../../images/Liked.png" alt="visits" />
+            </li>
+            <li class="data messages flex">  
+                <div class="info">
+                    <h3 class="title-small">Messages</h3>
+                    <span>12</span>
+                </div>
+                <img src="../../images/messaged.png" alt="visits" />
+            </li>
+            <li class="data blogs flex">
+                <div class="info">
+                    <h3 class="title-small">Blogs visits</h3>
+                    <span>3</span>
+                </div>
+                <img src="../../images/read.png" alt="visits" />
+            </li>
+            <li class="data visits flex">
+                <div class="info">
+                    <h3 class="title-small">Visits</h3>
+                    <span>42</span>
+                </div>
+                <img src="../../images/users.png" alt="visits" />
+            </li>
+            <li class="data messages flex">
+                <div class="info">
+                    <h3 class="title-small">Messages</h3>
+                    <span>12</span>
+                </div>
+                <img src="../../images/messaged.png" alt="visits" />
+            </li>
+            <li class="data comments flex">
+                <div class="info">
+                    <h3 class="title-small">Comments</h3>
+                    <span>8</span>
+                </div>
+                <img src="../../images/messaged.png" alt="visits" />
+            </li>
+            <li class="data likes flex">
+                <div class="info">
+                    <h3 class="title-small">Likes</h3>
+                    <span>12</span>
+                </div>
+                <img src="../../images/Liked.png" alt="visits" />
+            </li>
+        </div>
+        <div class="Top">
+            <div class="bestProjects">
+                <h3 class="title-small">Top projects</h3>
+                <table class="highTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th class="slider">Popularity</th>
+                            <th>Visits</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01</td>
+                            <td>Etch a sketch</td>
+                            <td class="slider">
+                                <span class="back">
+                                    <span class="front"></span>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="data">78%</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>02</td>
+                            <td>Math magician</td>
+                            <td class="slider">
+                                <span class="back">
+                                    <span class="front"></span>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="data">60%</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>03</td>
+                            <td>Paper Scissor Rock</td>
+                            <td class="slider">
+                                <span class="back">
+                                    <span class="front"></span>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="data">58%</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>04</td>
+                            <td>Weather App</td>
+                            <td class="slider">
+                                <span class="back">
+                                    <span class="front"></span>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="data">40%</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="bestBlogs">
+                <h3 class="title-small">Top blogs</h3>
+                <table class="highTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th class="slider">Popularity</th>
+                            <th>Visits</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01</td>
+                            <td>Next js</td>
+                            <td class="slider">
+                                <span class="back">
+                                    <span class="front"></span>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="data">78%</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>02</td>
+                            <td>Use of Mocha</td>
+                            <td class="slider">
+                                <span class="back">
+                                    <span class="front"></span>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="data">60%</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>03</td>
+                            <td>UI design</td>
+                            <td class="slider">
+                                <span class="back">
+                                    <span class="front"></span>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="data">58%</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>04</td>
+                            <td>Dynamic content</td>
+                            <td class="slider">
+                                <span class="back">
+                                    <span class="front"></span>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="data">40%</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!---------------------- footer section start --------------------->
+
+    <script type="module" src="../../js/common.js"></script>
+    <script type="module" src="../../js/admin.js"></script>
+  </body>
+</html>

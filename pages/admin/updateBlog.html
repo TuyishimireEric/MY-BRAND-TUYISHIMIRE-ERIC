@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>update blog</title>
+    <link rel="icon" href="../../images/myProfile.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../css/global.css" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/admin.css" />
+    <link rel="stylesheet" href="../../css/adminBlogs.css" />
+    <link rel="stylesheet" href="../../css/textEditor.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>   
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+    />
+  </head>
+  <body>
+    <nav class="flex">
+      <a class="logo" href="../../index.html#">
+        <h4><span>ERIC</span> TUYISHIMIRE</h4>
+      </a>
+      <ul class="nav-contact flex">
+        <li class="user">
+            <a href="../../index.html" id="user" class="user flex-col">
+              <img src="../../images/notificationM.png" alt="user" />
+            </a>
+          </li>
+          <li class="user">
+            <a href="../../index.html" id="user" class="user flex-col">
+              <img src="../../images/notification.png" alt="user" />
+            </a>
+          </li>
+        <li class="user">
+          <a href="../../index.html" id="user" class="user flex-col">
+            <img src="../../images/myProfile.png" alt="user" />
+          </a>
+        </li>
+      </ul>
+      <div id="humberger" class="navigation">
+        <span class="bar top"></span>
+        <span class="bar middle"></span>
+        <span class="bar bottom"></span>
+      </div>
+      <div class="extra-menu">
+        <div class="nav-contact">
+          <ul>
+            <li class="user">
+                <a href="../../index.html" id="user" class="user flex-col">
+                  <img src="../../images/notificationM.png" alt="user" />
+                </a>
+              </li>
+              <li class="user">
+                <a href="../../index.html" id="user" class="user flex-col">
+                  <img src="../../images/notification.png" alt="user" />
+                </a>
+              </li>
+            <li class="user">
+              <a href="../../index.html" id="user" class="user flex-col">
+                <img src="../../images/myProfile.png" alt="user" />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <span class="sideNavSwitch">
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </span>
+    <nav class="sideNav">     
+    </nav>
+
+    <!---------------------- dashboard section start --------------------->
+
+    <section class="dashboard">
+      <h2 class="title">update blog <span>( )</span</h2>
+      <form class="createBlog">
+        <div class="blogIntro">
+          <div class="imageInput">
+          </div>
+          <div class="hidden">
+            <input type="file" id="fileInput" accept="image/*"/>
+          </div>
+          <div class="blogTitle">
+            <span class="input-text">
+              <label for="blogTitle">Blog Title:</label>
+              <input type="text" id="blogTitle" name="username">
+              <span class="error-message">Please enter blog title.</span>
+              <span class="formIcon"></span>
+            </span>
+          </div>
+        </div>
+        <div class="textEditor">
+          <div class="textEditorHeader">
+            <button type="button" class="editorBtn" data-element="bold">
+              <i class="fa fa-bold"></i> 
+            </button> 
+            <button type="button" class="editorBtn" data-element="italic">
+              <i class="fa fa-italic"></i>
+            </button> 
+            <button type="button" class="editorBtn underline" data-element="underline">
+              <i class="fa fa-underline"></i>
+            </button> 
+            <button type="button" class="editorBtn" data-element="insertUnorderedList">
+              <i class="fa fa-list-ul"></i>
+            </button> 
+            <button type="button" class="editorBtn" data-element="insertOrderedList">
+              <i class="fa fa-list-ol"></i>
+            </button> 
+            <button type="button" class="editorBtn" data-element="createLink">
+              <i class="fa fa-link"></i>
+            </button> 
+            <button type="button" class="editorBtn" data-element="justifyLeft">
+              <i class="fa fa-align-left"></i>
+            </button> 
+            <button type="button" class="editorBtn" data-element="justifyCenter">
+              <i class="fa fa-align-center"></i>
+            </button> 
+            <button type="button" class="editorBtn" data-element="justifyRight">
+              <i class="fa fa-align-right"></i>
+            </button> 
+            <button type="button" class="editorBtn" data-element="justifyFull">
+              <i class="fa fa-align-justify"></i>
+            </button> 
+            <button type="button" class="editorBtn" data-element="insertImage">
+              <i class="fa fa-image"></i>
+            </button> 
+            <input type="color" class="colorInput">
+            </input>
+          </div>
+              <div class="editorContent" contenteditable="true"></div>
+              <span class="error-message">Please enter blog content.</span>
+        </div>
+
+        <button type="submit" class="button">Publish</button>
+      </form>
+
+        
+      </section>
+
+    <!---------------------- footer section start --------------------->
+
+    <script type="module" src="../../js/common.js"></script>
+    <script type="module" src="../../js/admin.js"></script>
+    <script type="module" src="../../js/index.js"></script>
+    <script type="module" src="../../js/textEditor.js"></script>
+    <script type="module" src="../../js/admin/blogs/updateBlog.js"></script>
+  </body>
+</html>

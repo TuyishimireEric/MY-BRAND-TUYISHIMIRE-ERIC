@@ -1,0 +1,177 @@
+body {
+    overflow: hidden;
+}
+
+.queries-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.dashboard .filters {
+    width: 30%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: end;
+}
+
+.dashboard .filters .count {
+    max-height: 100px;
+    gap: 20px;
+    width: 80%;
+}
+
+.dashboard .filters .count div {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--fourth-color);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.count h5 {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.filters .calendar img {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    border-radius: 30px;
+    width: 100%;
+}  
+
+.queries-container {
+    width: 69%;
+    max-height: 70vh;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    overflow-y: scroll;
+    padding-right: 12px;
+}
+
+.queries-container.wide {
+    width: 69%;
+}
+
+.queries-container .querry {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.querry-header {
+    width: 100%;
+    gap: 20px;
+    align-items: center;
+}
+
+.querry-header-left {
+    width: 50%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.querry-header-left img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.querry-header-left-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.querry-header-left-info h5 {
+    font-size: 16px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.querry-header-left-info span {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--second-color);
+}
+
+.querry-header-right {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: end;
+    gap: 5px;
+}
+
+.querry-header-right span {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+@media only screen and (max-width: 1000px) {
+    .dashboard .filters .count {
+        width: 100%;
+    }
+
+    .count h5 {
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    .count span {
+        font-size: 24px;
+        font-weight: 600;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .queries-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .dashboard .filters {
+        order: 0;
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .queries-container {
+        order: 1;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .dashboard .filters .calendar {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .querry-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .querry-header-right span {
+        font-size: 12px;
+    }
+
+    .querry-header-left-info span {
+        font-size: 12px;
+    }
+}

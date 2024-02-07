@@ -1,0 +1,133 @@
+.adminBlogs {
+    min-height: fit-content;
+    width: 100%;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4vw;
+}
+
+.skills-list .flex-col {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.skills-list .flex-col a {
+    color: var(--second-color);
+}
+
+.metrics {
+    margin-top: 20px;
+}
+
+.blog-container {
+    margin-top: 20px;
+    padding: 0;
+}
+
+.blog {
+    position: relative;
+}
+
+.remove {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    border: 1.5px solid var(--second-color);
+    background-color: red;
+    transition: all 0.3s ease-in-out;
+    z-index: 50;
+}
+
+.remove:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.remove .bar:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);  
+}
+
+.remove .bar:nth-child(2) {
+    transform: translateY(2px) rotate(-45deg);
+}
+  
+
+.blog-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.createBlog {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.createBlog .blogIntro {
+    width: 100%;
+    min-height: fit-content;
+    gap: 20px;
+}
+
+.imageInput {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 70%;
+    height: 300px;
+    background-color: var(--fourth-color);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    background-image: url("../images/placeholder.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: cadetblue;
+}
+
+.blogTitle {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.blogComments {
+    margin-top: 40px;
+}
+
+.hidden {
+    display: none;
+}
+
+@media only screen and (max-width: 650px) {
+    .createBlog .blogIntro {
+        flex-direction: column;
+    }
+
+    .blogTitle {
+        width: 100%;
+    }
+    
+    .imageInput {
+        width: 100%;
+    }
+
+    
+}
