@@ -958,7 +958,8 @@ ul {
   justify-content: space-between;
   background-color: var(--fourth-color);
   padding: 10px;
-  transition: all 0.2s ease-in-out;
+  border: 0.5px solid var(--third-color);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .blog .blog-details:hover {
@@ -1129,3 +1130,63 @@ footer {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-top: 1px solid var(--second-color);
 }
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal .modal-content {
+  width: 50%;
+  height: 50%;
+  background-color: var(--dark-color);
+  border: 1px solid var(--second-color);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.modal .modal-content h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--main-color);
+}
+
+.modal .modal-content p {
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--main-color);
+}
+
+.modal .modal-content button {
+  width: 100px;
+  height: 40px;
+  background-color: var(--second-color);
+  border: none;
+  border-radius: 10px;
+  color: var(--dark-color);
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.modal .modal-content button:hover {
+  background-color: var(--main-color);
+}
+

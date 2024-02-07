@@ -34,12 +34,16 @@ This portfolio is a reflection of my journey in software development and showcas
 
 
 # 🧾 Features
-Clean: The "Clean" button allows users to clear the selected.
-Reset: The "Back" button enables users to undo their last drawing action, helping them correct mistakes or remove unwanted lines.
+ The user can view some basic information ( profile picture, profession, skills, experience, physical address, social media, blogs/articles) about me and can view all articles on the blog.
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://tuyishimireeric.github.io/Etch-a-sketch/)
+- [Live Demo Link](https://tuyishimireeric.github.io/my-brand-tuyishimire-eric/)
+
+## Design
+
+<img width="1427" alt="Screen Shot 2024-02-07 at 11 25 52" src="https://github.com/TuyishimireEric/my-brand-tuyishimire-eric/assets/102757126/88c83082-c97a-4158-b781-03a07bfaf760">
+
 
 <!-- GETTING STARTED -->
 
@@ -47,9 +51,6 @@ Reset: The "Back" button enables users to undo their last drawing action, helpin
 
 - Clone the repository or download the source code.
 - Open the index.html file in a web browser.
-- Use your mouse or touchpad to draw on the canvas.
-- Click the "Clean" button to clear the canvas.
-- Click the "Back" button to reset the drawing.
 
 ## 👥 Author <a name="authors"></a>
 
@@ -67,7 +68,7 @@ Reset: The "Back" button enables users to undo their last drawing action, helpin
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/TuyishimireEric/Etch-a-sketch/issues).
+Feel free to check the [issues page](https://github.com/TuyishimireEric/my-brand-tuyishimire-eric/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
