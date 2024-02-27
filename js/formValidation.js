@@ -88,13 +88,18 @@ form.addEventListener("submit", (e) => {
   if (allValid) {
     form.classList.remove("submitted");
     allInputs.forEach((input) => input.classList.remove("correct"));
-    // if(fullName) fullName.value = "";
-    // if(email) email.value = "";
-    // if(message) message.value = "";
-    // if(password) password.value = "";
-    // if(confirmPassword) confirmPassword.value = "";
-    // if(blogTitle) blogTitle.value = "";
-    // if(blogContent) blogContent.value="";
+    if(fullName) fullName.value = "";
+    if(email) email.value = "";
+    if(message) message.value = "";
+    if(password) password.value = "";
+    if(confirmPassword) confirmPassword.value = "";
+    if(blogTitle) blogTitle.value = "";
+    if(blogContent) blogContent.value="";
+  
+    const currentUrl = window.location.href;
+    if(currentUrl.includes("login") || currentUrl.includes("signUp")){
+      window.open("./admin/dashboard.html", '_blank');
+    }
   }else{
     return
   }

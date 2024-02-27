@@ -298,7 +298,7 @@ ul {
 }
 
 .mainImage {
-  width: 40%;
+  width: 35%;
   position: relative;
 }
 
@@ -309,7 +309,6 @@ ul {
 
 .mainImage i {
   background-color: var(--fourth-color);
-  
   padding: 15px;
   border-radius: 50%;
   position: absolute;
@@ -357,7 +356,15 @@ ul {
   .main {
     padding: 20vw 0;
   }
-
+  
+  .mainImage i {
+    padding: 12px;
+    font-size: 50px;
+  }
+  .mainImage #gitIcon {
+    font-size: 50px;
+  }
+  
   .intro {
     width: 60%;
   }
@@ -394,9 +401,18 @@ ul {
 
   .main img {
     order: 0;
-    width: 60%;
+    width: 100%;
   }
 
+  .mainImage i {
+    padding: 10px;
+    font-size: 40px;
+  }
+
+  .mainImage #gitIcon {
+    font-size: 40px;
+  }
+  
   .intro div .cv {
     background-color: #4f4f4f;
     color: #000;
@@ -429,6 +445,23 @@ ul {
   .intro div .cv p {
     font-size: 0.8rem;
   }
+
+  .mainImage i {
+    padding: 8px;
+    font-size: 32px;
+  }
+
+  .mainImage #nodeIcon {
+    display: none;
+  }
+  
+  .mainImage #reactIcon {
+    display: none;
+  }
+
+  .mainImage #gitIcon {
+    font-size: 32px;
+  }
 }
 
 @media only screen and (max-width: 500px) {
@@ -460,6 +493,15 @@ ul {
 
   .intro h3 {
     font-size: 1.2rem;
+  }
+
+  .mainImage i {
+    padding: 6px;
+    font-size: 28px;
+  }
+
+  .mainImage #gitIcon {
+    font-size: 28px;
   }
 }
 /* ---------------------- Main Section CSS End ---------------------- */

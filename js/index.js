@@ -1,15 +1,14 @@
 import { experience } from "./data/experience.js";
 import { projects } from "./data/projects.js";
 
-const allBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
+const storedBlogs = localStorage.getItem("blogs");
+const allBlogs = storedBlogs ? JSON.parse(storedBlogs) : [];
+console.log(allBlogs);
 
 const experienceList = document.getElementById("experiences");
 const projectList = document.getElementById("projects");
 const blogList = document.getElementById("blogs");
 const blogContainer = document.querySelector(".blog-container");
-const arrow1 = document.querySelector(".more .arrow1");
-const arrow2 = document.querySelector(".more .arrow2");
-const searchText = document.getElementById("searchText");
 const humberger = document.getElementById("humberger");
 const extraMenu = document.querySelector(".extra-menu");
 const navigation = document.querySelector(".navigation");
@@ -152,39 +151,8 @@ if (project) {
   });
 }
 
-if (blogContainer) {
-  blogContainer.addEventListener("scroll", () => {
-    if (blogContainer.scrollTop >= (blogsLength - 2) * 400) {
-      arrow1.style.transform = "rotate(45deg)";
-      arrow2.style.transform = "rotate(-45deg)";
-    } else {
-      arrow1.style.transform = "rotate(-45deg)";
-      arrow2.style.transform = "rotate(45deg)";
-    }
-  });
-
+if (blogContainer && allBlogs.length > 0) {
   getBlogs(allBlogs);
-}
-
-if(searchText){
-  searchText.addEventListener("input", (e) => {
-    const searchTerm = e.target.value.toLowerCase();
-    const filteredBlogs = blogs.filter((blog) => {
-      return (
-        blog.title.toLowerCase().includes(searchTerm) ||
-        blog.description.toLowerCase().includes(searchTerm)
-      );
-    });
-  
-    blogList.innerHTML = "";
-    if (filteredBlogs.length > 0) {
-      blogsLength = filteredBlogs;
-      getBlogs(filteredBlogs);
-    } else {
-      blogList.innerHTML = "<p>No matching blogs found.</p>";
-      more.style.display = "none";
-    }
-  });  
 }
 
 humberger.addEventListener("click", () => {
