@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/global.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   </head>
   <body>
     <nav class="flex">
@@ -45,7 +46,7 @@
         <li class="user">
           <a href="./pages/login.html" id="user" class="user flex-col">
             <img src="images/user.png" alt="user" />
-            <span>SignIn</span>
+            <span id="currentUser">SignIn</span>
           </a>
         </li>
       </ul>
@@ -189,14 +190,23 @@
      <section class="blogs bg-black" id="Blogs">
         <h2 class="title">blogs <span>( )</span</h2>
   
-      <div id="blogs" class="blog-container"></div>
+      <div id="blogs" class="blog-container">
+        <div class="over"></div>
+        <div class="over" id="loading">
+            <div class="spinner">
+              <div class="bounce1"></div>
+              <div class="bounce2"></div>
+              <div class="bounce3"></div>
+            </div>
+        </div>
+      </div>
     </section>
 
     <!---------------------- contact section start --------------------->
 
      <section class="contact flex-col" id="contact">
         <h2 class="title">contactMe <span>( )</span</h2>
-          <form class="contactMe" data-aos="zoom-out-up">
+          <form class="contactMe" data-aos="zoom-out-up" id="queryForm">
             <span class="input-text" id="fullName">
               <label for="username">Full name:</label>
               <input type="text" id="fullNameInput" name="fullName" maxlength="30">
@@ -215,7 +225,8 @@
               <span class="error-message">Please add comment here.</span>
               <span class="formIcon"></span>
             </span>
-            <button type="submit" class="button">
+            <button type="submit" class="button" id="submitButton">
+              <span class="loader"></span>
               submit
             </button>
           </form>
@@ -250,6 +261,9 @@
         AOS.init();
       </script>
      <script type="module" src="js/index.js"></script>
-     <script type="module" src="js/formValidation.js"></script>
+     <!-- <script type="module" src="js/formValidation.js"></script> -->
+     <script type="module" src="./ts/formValidation.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   </body>
 </html>

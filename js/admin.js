@@ -14,7 +14,7 @@ sideNavSwitch.addEventListener('click', function() {
 
 let sideNavHtml = "";
 
-const currentPath = window.location.pathname;
+const currentPath = window.location.pathname.toLowerCase();
 
 sideNavigation.forEach((item) => {
     sideNavHtml += `

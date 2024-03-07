@@ -298,7 +298,7 @@ ul {
 }
 
 .mainImage {
-  width: 40%;
+  width: 35%;
   position: relative;
 }
 
@@ -309,7 +309,6 @@ ul {
 
 .mainImage i {
   background-color: var(--fourth-color);
-  
   padding: 15px;
   border-radius: 50%;
   position: absolute;
@@ -357,7 +356,15 @@ ul {
   .main {
     padding: 20vw 0;
   }
-
+  
+  .mainImage i {
+    padding: 12px;
+    font-size: 50px;
+  }
+  .mainImage #gitIcon {
+    font-size: 50px;
+  }
+  
   .intro {
     width: 60%;
   }
@@ -394,9 +401,18 @@ ul {
 
   .main img {
     order: 0;
-    width: 60%;
+    width: 100%;
   }
 
+  .mainImage i {
+    padding: 10px;
+    font-size: 40px;
+  }
+
+  .mainImage #gitIcon {
+    font-size: 40px;
+  }
+  
   .intro div .cv {
     background-color: #4f4f4f;
     color: #000;
@@ -429,6 +445,23 @@ ul {
   .intro div .cv p {
     font-size: 0.8rem;
   }
+
+  .mainImage i {
+    padding: 8px;
+    font-size: 32px;
+  }
+
+  .mainImage #nodeIcon {
+    display: none;
+  }
+  
+  .mainImage #reactIcon {
+    display: none;
+  }
+
+  .mainImage #gitIcon {
+    font-size: 32px;
+  }
 }
 
 @media only screen and (max-width: 500px) {
@@ -460,6 +493,15 @@ ul {
 
   .intro h3 {
     font-size: 1.2rem;
+  }
+
+  .mainImage i {
+    padding: 6px;
+    font-size: 28px;
+  }
+
+  .mainImage #gitIcon {
+    font-size: 28px;
   }
 }
 /* ---------------------- Main Section CSS End ---------------------- */
@@ -848,54 +890,9 @@ ul {
 /* ---------------------- blog sectionn CSS start ---------------------- */
 
 .blogs {
-  padding: 8vw 8vw 4vw;
+  padding: 8vw 8vw;
   position: relative;
   color: var(--main-color)
-}
-
-.search {
-  position: absolute;
-  right: 8vw;
-  top: 8vw;
-  width: fit-content;
-}
-
-.search input {
-  width: 400px;
-  height: 40px;
-  border: none;
-  border-bottom: 1px solid var(--main-color);
-  padding: 0 20px;
-  font-size: 16px;
-  font-weight: 300;
-  color: var(--main-color);
-  outline: none;
-  background: none;
-  background-color: transparent;
-}
-
-.search input::placeholder {
-  color: var(--second-color);
-  opacity: 0.5;
-  font-size: 16px;
-}
-
-.search form {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.search form button {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  height: 100%;
-  width: 40px;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
 }
 
 .blogs .title {
@@ -1021,6 +1018,64 @@ ul {
   font-size: 14px;
 }
 
+.over {
+  position: absolute;
+  /* margin: 0; */
+  margin-top: -8vw;
+  width: 100vw;
+  height: 100%;
+}
+
+#loading {
+  z-index: 50;
+  animation: ease-in-out;
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  text-align: center;
+}
+
+.spinner > div {
+  width: 18px;
+  height: 18px;
+  background-color: #fff;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% { 
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 40% { 
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+}
+
+
 @media only screen and (max-width: 1220px) {
   .blog .blog-details  h3 {
     font-size: 18px;
@@ -1046,6 +1101,7 @@ ul {
     grid-template-columns: repeat(1, auto);
   }
 }
+
 
 /* ---------------------- blog Section CSS End ---------------------- */
 
@@ -1190,3 +1246,27 @@ footer {
   background-color: var(--main-color);
 }
 
+.loader {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #FFF;
+  border-bottom-color: transparent;
+  margin-right: 6px;
+  border-radius: 50%;
+  display: none;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  }
+
+  .loader.show {
+    display: inline-block;
+  }
+
+  @keyframes rotation {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+  } 

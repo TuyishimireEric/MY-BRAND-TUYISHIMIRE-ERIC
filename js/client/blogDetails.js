@@ -1,22 +1,18 @@
-import { v4 as uuidv4 } from 'https://cdn.skypack.dev/uuid';
 import { regExPatterns } from "../utils.js";
+import { formatedDate } from "../utils.js";
+import {
+  getABlog,
+  getBlogLikes,
+  getBlogComments,
+  addBlogComment,
+} from "../api/index.js";
+
 const humberger = document.getElementById("humberger");
 const extraMenu = document.querySelector(".extra-menu");
 const navigation = document.querySelector(".navigation");
+const loader = document.querySelector(".loader");
 
-const currentUrl = new URL(window.location.href);
-const searchParams = new URLSearchParams(currentUrl.search);
-const blogId = searchParams.get("id");
-
-const getBlogsData = ()=>{
-  return JSON.parse(localStorage.getItem("blogs")) || {};
-}
-
-const allBlogs = getBlogsData();
-
-const selectedBlog = allBlogs.find((blog) => blog.id == blogId);
-if (selectedBlog == -1) window.location.href = "../index.html";
-
+let blogId = "";
 humberger.addEventListener("click", () => {
   extraMenu.classList.toggle("active");
   navigation.classList.toggle("active");
@@ -47,11 +43,10 @@ const generateStars = (rating) => {
   }
 };
 
-blogContainer.innerHTML = `
+const showBlog = (blog) => {
+  blogContainer.innerHTML = `
     <div class="blogDetails" data-aos="zoom-out">
-        <img src="${selectedBlog.image}" alt="${
-  selectedBlog.title
-}" class="mainImage"/>
+        <img src="${blog.image}" alt="${blog.title}" class="mainImage"/>
         <div class="comment_head">
             <img src="../images/myProfile.png" alt="user" class="profilePicture"/>
             <div class="comment_details">
@@ -60,70 +55,59 @@ blogContainer.innerHTML = `
             </div>
         </div>
         <div class="blogDetails_content">
-            <h1 class="title">${selectedBlog.title}</h1>
-            <article class="text">${JSON.parse(
-              selectedBlog.description
-            )}</article>
-        </div>
-        <div class="comments">
-            <div class="sticker" id="likeButton" data-aos="fade-up"
-            data-aos-duration="1000">
-                <img src="../images/heart.png" alt="heart" />
-                <span>${selectedBlog.likes} Likes</span>
-            </div>
-            
-            <div>
-                <h2 class="title">${
-                  selectedBlog.comments.length
-                } Comments <span>( )</span</h2>
-            </div>
-            <div class="blogComments">
-                ${selectedBlog.comments
-                  .map((comment) => {
-                    generateStars(comment.rating);
-                    return `
-                        <div class="comment" data-aos="fade-up"
-                        data-aos-duration="1000">
-                            <div class="comment_head">
-                                <img src="../images/user.png" alt="user" class="profilePicture"/>
-                                <div class="comment_details">
-                                    <h3 class="userName">${comment.name}</h3>
-                                    <p class="date">${comment.date}</p>
-                                </div>
-                            </div>
-                            <div class="ratings">
-                            ${ratingsHTML}
-                            </div>
-                            <p class="text-small">${comment.description}</p>
-                        </div>
-                   `;
-                  })
-                  .join("")}
-            </div>
+            <h1 class="title">${blog.title}</h1>
+            <article class="text">${blog.description}</article>
         </div>
     </div>
     `;
 
-generateStars(0);
-addRatings.innerHTML = `
+  generateStars(4.4);
+  addRatings.innerHTML = `
   <div class="ratings">
   ${ratingsHTML}
   </div>
   `;
-
+};
 
 const like = document.querySelector("#likeButton");
+const liked = document.querySelector("#liked");
+const commented = document.querySelector(".blogComments");
 const leaveAComment = document.querySelector("#leaveAComment");
 const messageInput = document.querySelector("#messageInput");
 const emailInput = document.querySelector("#emailInput");
 const fullNameInput = document.querySelector("#fullNameInput");
 const form = document.querySelector("form");
 
-like.addEventListener("click", (e)=>{
+const showLikes = (likes) => {
+  liked.innerHTML = `${likes}
+  `;
+};
+
+const showComments = (comments) => {
+  let commentsHTML = "";
+
+  commentsHTML += `${comments
+    .map((comment) => {
+      return `
+            <div class="comment" data-aos="fade-up"  data-aos-duration="1000">
+                <div class="comment_head">
+                    <img src="../images/user.png" alt="user" class="profilePicture"/>
+                    <div class="comment_details">
+                        <h3 class="userName">${comment.commentedBy}</h3>
+                        <p class="date">${formatedDate(comment.updatedAt)}</p>
+                    </div>
+                </div>
+                <p class="text-small">${comment.description}</p>
+            </div>
+        `;
+    })
+    .join("")}`;
+  commented.innerHTML = commentsHTML;
+};
+
+like.addEventListener("click", async(e)=>{
   e.preventDefault();
-  selectedBlog.likes += 1;
-  localStorage.setItem("blogs", JSON.stringify(allBlogs));
-  location.reload();
+  const liked = await likeABlog(blogId);
 })
 
 export const checkInput = (regEx, input) => {
@@ -141,13 +125,13 @@ export const checkInput = (regEx, input) => {
   }
 };
 
-if(fullNameInput){
+if (fullNameInput) {
   fullNameInput.addEventListener("input", (e) => {
     checkInput(regExPatterns.fullName, e.target);
   });
 }
 
-if(emailInput){
+if (emailInput) {
   emailInput.addEventListener("input", (e) => {
     checkInput(regExPatterns.email, e.target);
   });
@@ -155,11 +139,12 @@ if(emailInput){
 
 if (messageInput) {
   messageInput.addEventListener("input", (e) => {
-    checkInput(regExPatterns.message, e.target);
+    checkInput(regExPatterns.blogContent, e.target);
   });
 }
 
-leaveAComment.addEventListener("submit", (e)=>{
+
+leaveAComment.addEventListener("submit", async (e) => {
   e.preventDefault();
   form.classList.add("submitted");
   const allInputs = form.querySelectorAll(".input-text");
@@ -168,27 +153,71 @@ leaveAComment.addEventListener("submit", (e)=>{
   );
 
   if (allValid) {
+    loader.classList.add("show");
     form.classList.remove("submitted");
-    const uniqueId = uuidv4();
-    const currentDate = new Date();
-    const formattedDate = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`;
 
-    const comment = {
-      id: uniqueId,
-      date: formattedDate,
-      name: fullNameInput.value,
-      email: emailInput.value,
-      description: messageInput.value
+    const formData = {
+      commentedBy: fullNameInput.value,
+      description: messageInput.value,
+    };
+
+    const result = await addBlogComment(blogId, formData);
+    if (result.data) {
+      loader.classList.remove("show");
+      Toastify({
+        text: result.message,
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+        stopOnFocus: true,
+    }).showToast();
+    loader.classList.remove("show");
+      const comments = await getBlogComments(blogId);
+      if (comments.data) showComments(comments.data);
+      messageInput.value = "";
+      emailInput.value = "";
+      fullNameInput.value = "";
+      form.classList.remove("submitted");
+      allInputs.forEach((input) => {
+        input.classList.remove("correct");
+      });
+    } else {
+      Toastify({
+        text: result.message || result.error,
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+        stopOnFocus: true,
+      }).showToast();
     }
-    
-    const allBlogs = getBlogsData();
-    const selectedBlog = allBlogs.find((blog) => blog.id == blogId);
-    selectedBlog.comments.push(comment);
-    localStorage.setItem("blogs", JSON.stringify(allBlogs));
-
-    location.reload();
-
-  }else{
-    return
+  } else {
+    return;
   }
-})
+});
+
+
+window.onload = async () => {
+  const currentUrl = new URL(window.location.href);
+  const searchParams = new URLSearchParams(currentUrl.search);
+  blogId = searchParams.get("id");
+
+  const selectedBlog = await getABlog(blogId);
+
+  if (selectedBlog.data) {
+    showBlog(selectedBlog.data);
+  } else {
+    window.location.href = "../index.html";
+  }
+
+  const likes = await getBlogLikes(blogId);
+
+  if (likes.data) showLikes(likes.data);
+
+  const comments = await getBlogComments(blogId);
+
+  if (comments.data) showComments(comments.data);
+};

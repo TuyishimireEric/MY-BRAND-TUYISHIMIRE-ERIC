@@ -1,6 +1,5 @@
 import { regExPatterns } from "./utils.js";
 
-const form = document.querySelector("form");
 const fullName = document.querySelector("#fullNameInput");
 const email = document.querySelector("#emailInput");
 const message = document.querySelector("#messageInput");
@@ -8,6 +7,7 @@ const password = document.querySelector("#passwordInput");
 const confirmPassword = document.querySelector("#confirmPassword");
 const blogTitle = document.querySelector("#blogTitle");
 const blogContent = document.querySelector(".editorContent");
+
 
 export const checkInput = (regEx, input) => {
   const nearestCorrectIcon = input.closest(".input-text");
@@ -77,25 +77,30 @@ if (blogTitle) {
 }
 
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  form.classList.add("submitted");
-  const allInputs = form.querySelectorAll(".input-text");
-  const allValid = Array.from(allInputs).every((input) =>
-    input.classList.contains("correct")
-  );
+// form.addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   form.classList.add("submitted");
+//   const allInputs = form.querySelectorAll(".input-text");
+//   const allValid = Array.from(allInputs).every((input) =>
+//     input.classList.contains("correct")
+//   );
 
-  if (allValid) {
-    form.classList.remove("submitted");
-    allInputs.forEach((input) => input.classList.remove("correct"));
-    // if(fullName) fullName.value = "";
-    // if(email) email.value = "";
-    // if(message) message.value = "";
-    // if(password) password.value = "";
-    // if(confirmPassword) confirmPassword.value = "";
-    // if(blogTitle) blogTitle.value = "";
-    // if(blogContent) blogContent.value="";
-  }else{
-    return
-  }
-});
+//   if (allValid) {
+//     form.classList.remove("submitted");
+//     allInputs.forEach((input) => input.classList.remove("correct"));
+//     if(fullName) fullName.value = "";
+//     if(email) email.value = "";
+//     if(message) message.value = "";
+//     if(password) password.value = "";
+//     if(confirmPassword) confirmPassword.value = "";
+//     if(blogTitle) blogTitle.value = "";
+//     if(blogContent) blogContent.value="";
+  
+//     const currentUrl = window.location.href;
+//     if(currentUrl.includes("login") || currentUrl.includes("signUp")){
+//       window.open("./admin/dashboard.html", '_blank');
+//     }
+//   }else{
+//     return
+//   }
+// });

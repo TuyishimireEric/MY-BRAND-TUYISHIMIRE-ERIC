@@ -13,6 +13,8 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
     />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   </head>
   <body>
     <nav class="flex">
@@ -90,7 +92,29 @@
 
     <!---------------------- blog section start --------------------->
 
-    <section class="blogs" id="Blogs"></section>
+    <section class="blogs" id="Blogs">
+        <div class="over full"></div>
+        <div class="over" id="loading">
+            <div class="spinner">
+              <div class="bounce1"></div>
+              <div class="bounce2"></div>
+              <div class="bounce3"></div>
+            </div>
+        </div>
+      </section>
+      <div class="comments">
+        <div class="sticker" id="likeButton" data-aos="fade-up" data-aos-duration="1000">
+            <img src="../images/heart.png" alt="heart" />
+            <div><span id="liked">0</span> Likes</div>
+        </div>
+        
+        <div>
+            <h2 class="title"> Comments <span>( )</span</h2>
+            <div class="blogComments">
+            </div>
+        </div>
+        
+    </div>
 
     <section class="contact flex-col" id="leaveAComment">
         <h2 class="title">leaveAComment <span>( )</span</h2>
@@ -115,6 +139,7 @@
             <span class="formIcon"></span>
           </span>
           <button type="submit" class="button">
+            <span class="loader"></span>
             submit
           </button>
         </form>
@@ -154,10 +179,12 @@
         </li>
       </ul>
     </footer>
+
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
       <script>
         AOS.init();
       </script>
     <script type="module" src="../js/client/blogDetails.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   </body>
 </html>

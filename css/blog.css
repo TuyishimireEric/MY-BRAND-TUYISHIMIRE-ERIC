@@ -46,6 +46,7 @@
     display: flex;
     flex-direction: column;
     gap: 40px;
+    margin-top: 40px;
 }
 
 .blogComments .comment {
@@ -90,6 +91,19 @@
 .addRatings {
     margin-top: 40px;
 }
+
+.over {
+    position: absolute;
+    top: 0;
+    left: -8vw;
+    right: -8vw;
+    bottom:0;
+    width: 120vw;
+    height: 120vh;
+    background-color: #0009;
+    background-blend-mode: multiply;
+  }
+  
 
 @media only screen and (max-width: 1100px) {
     .blogs {
