@@ -7,8 +7,8 @@ export const regExPatterns = {
   blogContent: /^[\s\S]{3,1000}$/
 };
 
-export const API_URL = 'http://localhost:5000';
-// export const API_URL = 'https://mybrand-be-95he.onrender.com';
+// export const API_URL = 'http://localhost:5000';
+export const API_URL = 'https://mybrand-be-95he.onrender.com';
 
 
 export const formatedDate = (date) => {
@@ -17,3 +17,24 @@ export const formatedDate = (date) => {
     dateCreated.getMonth() + 1
   }/${dateCreated.getFullYear()}`;
 };
+
+export const formattedPastDate = (date) => {
+  const now = new Date();
+  const dateCreated = new Date(date);
+  const diffInMilliseconds = now - dateCreated;
+ 
+  const diffInSeconds = Math.floor(diffInMilliseconds / 1000);
+  const diffInMinutes = Math.floor(diffInSeconds / 60);
+  const diffInHours = Math.floor(diffInMinutes / 60);
+  const diffInDays = Math.floor(diffInHours / 24);
+ 
+  if (diffInDays > 0) {
+     return `${diffInDays} days`;
+  } else if (diffInHours > 0) {
+     return `${diffInHours} hours`;
+  } else if (diffInMinutes > 0) {
+     return `${diffInMinutes} min`;
+  } else {
+     return `${diffInSeconds} sec`;
+  }
+ };

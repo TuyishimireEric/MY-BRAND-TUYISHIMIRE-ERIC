@@ -50,43 +50,9 @@ export const sideNavigation = [
         ]
     },
     {
-        name: 'Projects',
-        path: './projects.html',
-        icon: '../../images/project.png',
-        subMenu: [
-            {
-                name: 'All Projects',
-                path: '/projects/all',
-                icon: 'users',
-            },
-            {
-                name: 'Add Project',
-                path: '/projects/add',
-                icon: 'users',
-            },
-            {
-                name: 'Update Project',
-                path: '/projects/update',
-                icon: 'users',
-            }
-        ]
-    },
-    {
-        name: 'Users',
-        path: '/users',
-        icon: '../../images/users.png',
-        subMenu: []
-    },
-    {
         name: 'Queries',
         path: './queries.html',
         icon: '../../images/querries.png',
-        subMenu: []
-    },
-    {
-        name: 'Settings',
-        path: '/setting',
-        icon: '../../images/settings.png',
         subMenu: []
     }
 ];

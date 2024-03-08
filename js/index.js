@@ -63,13 +63,13 @@ projects.forEach((project) => {
   projectsHTML += `
     <div class="project">
       <div class="project-image">
-        <img src="${project.image}" alt="${project.name}">
+        <img src="${project.image}" alt="${project.name}" onerror="this.onerror=null; this.src='https://www.signfix.com.au/wp-content/uploads/2017/09/placeholder-600x400.png';">
       </div>
       <h3 class="proj-name">
         ${project.name}
       </h3>
       <a href="${project.link}" target="_blank" class="proj-link">
-        <img src="./images/link.png" alt="arrow" class="arrow">
+        <img src="./images/link.png" alt="arrow" class="arrow" onerror="this.onerror=null; this.src='https://www.signfix.com.au/wp-content/uploads/2017/09/placeholder-600x400.png';">
       </a>
     </div>`;
 });
@@ -113,7 +113,7 @@ const getBlogs = (blogs, likesMap, commentsMap) => {
     blogsHTML += `
       <article class="blog" key=${blog._id} data-aos="zoom-in-up">
         <div class="blog-image">
-          <img src="${blog.image}" alt="${blog.title}">
+          <img src="${blog.image}" alt="${blog.title}" onerror="this.onerror=null; this.src='https://www.signfix.com.au/wp-content/uploads/2017/09/placeholder-600x400.png';">
         </div>
         <div class="blog-details">
           <h3 class="blog-title">${blog.title}</h3>
@@ -218,6 +218,7 @@ if (currentUrl.includes("index")) {
   };
 
   window.onload = async () => {
+    document.getElementById("preLoader").style.display = "none";
     const token = JSON.parse(localStorage.getItem("token")) || "";
     if (token) {
       const validated = await validateToken();

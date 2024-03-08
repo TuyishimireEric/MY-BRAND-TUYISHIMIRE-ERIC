@@ -132,4 +132,6 @@ createBlogForm.addEventListener("submit", async (e) => {
   }
 });
 
-
+window.onload = async () => {
+  document.getElementById("preLoader").style.display = "none";
+}

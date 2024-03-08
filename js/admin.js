@@ -37,11 +37,11 @@ sideNavigation.forEach((item) => {
             : "navList"
         }">
             <a href="${item.path}" class="navLink">
-                <img src="${item.icon}" class="navIcon"/>
+                <img src="${item.icon}" class="navIcon" onerror="this.onerror=null; this.src='https://www.signfix.com.au/wp-content/uploads/2017/09/placeholder-600x400.png';"/>
                 <span class="navName">${item.name}</span>
             </a>
             <a href="#" class="subNavBtn">
-                <img src="../../images/right.png" class="subNavIcon"/>
+                <img src="../../images/right.png" class="subNavIcon" onerror="this.onerror=null; this.src='https://www.signfix.com.au/wp-content/uploads/2017/09/placeholder-600x400.png';"/>
             </a>
         </li>
     `;
@@ -49,7 +49,7 @@ sideNavigation.forEach((item) => {
 
 const change = `
     <a href="../../index.html" class="change">
-        <img src="../../images/views.png" class="navIcon"/>
+        <img src="../../images/views.png" class="navIcon" onerror="this.onerror=null; this.src='https://www.signfix.com.au/wp-content/uploads/2017/09/placeholder-600x400.png';"/>
         <span class="navName">Change mode</span>
     </a>
 `;
@@ -74,6 +74,7 @@ updateNavListState();
 window.addEventListener("resize", updateNavListState);
 
 window.onload = async () => {
+  document.getElementById("preLoader").style.display = "none";
   const token = JSON.parse(localStorage.getItem("token")) || "";
   if (token) {
     const validated = await validateToken();

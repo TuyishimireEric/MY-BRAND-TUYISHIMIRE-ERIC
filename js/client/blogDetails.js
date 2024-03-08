@@ -64,9 +64,9 @@ const showBlog = (blog) => {
   blog.description = JSON.parse(blog.description) || blog.description;
   blogContainer.innerHTML = `
     <div class="blogDetails" data-aos="zoom-out">
-        <img src="${blog.image}" alt="${blog.title}" class="mainImage"/>
+        <img src="${blog.image}" alt="${blog.title}" class="mainImage" onerror="this.onerror=null; this.src='https://www.signfix.com.au/wp-content/uploads/2017/09/placeholder-600x400.png';"/>
         <div class="comment_head">
-            <img src="../images/myProfile.png" alt="user" class="profilePicture"/>
+            <img src="../images/myProfile.png" alt="user" class="profilePicture" onerror="this.onerror=null; this.src='https://www.signfix.com.au/wp-content/uploads/2017/09/placeholder-600x400.png';"/>
             <div class="comment_details">
                 <h3 class="userName">${blog.createdBy}</h3>
                 <p class="date">${formatedDate(blog.createdAt)}</p>
@@ -109,7 +109,7 @@ const showComments = (comments) => {
       return `
             <div class="comment" data-aos="fade-up"  data-aos-duration="1000">
                 <div class="comment_head">
-                    <img src="../images/user.png" alt="user" class="profilePicture"/>
+                    <img src="../images/user.png" alt="user" class="profilePicture" onerror="this.onerror=null; this.src='https://www.signfix.com.au/wp-content/uploads/2017/09/placeholder-600x400.png';"/>
                     <div class="comment_details">
                         <h3 class="userName">${comment.commentedBy}</h3>
                         <p class="date">${formatedDate(comment.updatedAt)}</p>
@@ -265,6 +265,7 @@ like.addEventListener("click", async (e) => {
 });
 
 window.onload = async () => {
+  document.getElementById("preLoader").style.display = "none";
   const currentUrl = new URL(window.location.href);
   const searchParams = new URLSearchParams(currentUrl.search);
   blogId = searchParams.get("id");

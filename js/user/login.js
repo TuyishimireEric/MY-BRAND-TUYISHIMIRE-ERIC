@@ -70,3 +70,7 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 });
+
+window.onload = async () => {
+  document.getElementById("preLoader").style.display = "none";
+}

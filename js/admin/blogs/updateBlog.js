@@ -49,18 +49,6 @@ export const checkInput = (regEx, input) => {
   }
 };
 
-// if (blogTitle) {
-//   blogTitle.addEventListener("input", (e) => {
-//     checkInput(regExPatterns.blogTitle, e.target);
-//   });
-// }
-
-// if (blogContent) {
-//   blogContent.addEventListener("input", (e) => {
-//     checkInput(regExPatterns.blogContent, e.target);
-//   });
-// }
-
 const showLikes = (likes) => {
   liked.innerHTML = `${likes}
   `;
@@ -75,7 +63,7 @@ export const showComments = (comments) => {
       return `
             <div class="comment" data-aos="fade-up"  data-aos-duration="1000">
                 <div class="comment_head">
-                    <img src="../../images/user.png" alt="user" class="profilePicture"/>
+                    <img src="../../images/user.png" alt="user" class="profilePicture" onerror="this.onerror=null; this.src='https://www.signfix.com.au/wp-content/uploads/2017/09/placeholder-600x400.png';"/>
                     <div class="comment_details">
                         <h3 class="userName">${comment.commentedBy}</h3>
                         <p class="date">${formatedDate(comment.updatedAt)}</p>
@@ -176,6 +164,7 @@ createBlogForm.addEventListener("submit", async (e) => {
 });
 
 window.onload = async () => {
+  document.getElementById("preLoader").style.display = "none";
   const currentUrl = new URL(window.location.href);
   const searchParams = new URLSearchParams(currentUrl.search);
   blogId = searchParams.get("id");
@@ -187,14 +176,6 @@ window.onload = async () => {
     blogContent.innerHTML = JSON.parse(selectedBlog.data.description) || selectedBlog.data.description;
     imageInput.style.backgroundImage = `url(${selectedBlog.data.image})`;
     imageUrl = selectedBlog.data.image;
-
-    // const response = await fetch(imageUrl);
-    // if (!response.ok) {
-    //     throw new Error('Failed to fetch the image');
-    // }
-    // const blob = await response.blob();
-    // const file = new File([blob], "blogImage", { type: blob.type });
-    // fileInput.files[0] = file;
 
     blogTitle.closest(".input-text").classList.add("correct");
 

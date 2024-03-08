@@ -128,6 +128,7 @@ export const getBlogsData = async () => {
 };
 
 window.onload = async () => {
+  document.getElementById("preLoader").style.display = "none";
   const token = JSON.parse(localStorage.getItem("token")) || "";
   if (token) {
     const validated = await validateToken();

@@ -93,7 +93,7 @@
 }
 
 .over {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: -8vw;
     right: -8vw;

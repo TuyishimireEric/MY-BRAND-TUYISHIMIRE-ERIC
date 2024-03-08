@@ -65,12 +65,12 @@ form.addEventListener("submit", async (e) => {
         }).showToast();
     }
 
-    // const currentUrl = window.location.href;
-    // if(currentUrl.includes("login") || currentUrl.includes("signUp")){
-    //   window.open("./admin/dashboard.html", '_blank');
-    // }
   }else{
     return
   }
 }
 );
+
+window.onload = async () => {
+  document.getElementById("preLoader").style.display = "none";
+}
