@@ -1,7 +1,7 @@
 <a name="readme-top"></a>
 
-<div align="center">
-  <h3><b>ERIC TUYISHIMIRE</b></h3>
+<div align="left">
+  <img src="https://github.com/TuyishimireEric/MyBrand-BE/assets/102757126/b8360d06-9a6f-44cd-9f77-533057e25845" title="React" alt="React" width="140" height="140"/>
 </div>
 
 <!-- TABLE OF CONTENTS -->
@@ -9,21 +9,15 @@
 # 📗 Table of Contents
 
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 final-capstone-project-front-end ](#-final-capstone-project-front-end-)
-  - [🛠 Built With ](#-built-with-)
-    - [Tech Stack ](#tech-stack-)
-    - [Key Features ](#key-features-)
-  - [🚀 Live Demo ](#-live-demo-)
+  - [📖 About Project](#-about-project-)
+  - [🧾 Key Features ](#-key-features-)
+  - [🚀 Documentation ](#-documentation-)
   - [💻 Getting Started ](#-getting-started-)
-    - [Prerequisites](#prerequisites)
-    - [Setup](#setup)
-    - [Install](#install)
-    - [Usage](#usage)
+  - [🛠 Built With ](#-built-with)
   - [👥 Authors ](#-authors-)
   - [🤝 Contributing ](#-contributing-)
   - [⭐️ Show your support ](#️-show-your-support-)
   - [🙏 Acknowledgments ](#-acknowledgments-)
-  - [📝 License ](#-license-)
 
 <!-- PROJECT DESCRIPTION -->
 
@@ -33,7 +27,7 @@ I am Eric Tuyishime, a passionate fullstack developer based in Rwanda. With 3 ye
 This portfolio is a reflection of my journey in software development and showcases my commitment to continuous learning and improvement. Feel free to explore my projects and get to know me better!
 
 
-# 🧾 Features
+# 🧾 Key Features <a name="key-features"></a>
  The user can view some basic information ( profile picture, profession, skills, experience, physical address, social media, blogs/articles) about me and can view all articles on the blog.
 
 ## 🚀 Live Demo <a name="live-demo"></a>
@@ -50,7 +44,17 @@ This portfolio is a reflection of my journey in software development and showcas
 ## 💻 Getting Started <a name="getting-started"></a>
 
 - Clone the repository or download the source code.
-- Open the index.html file in a web browser.
+  `git@github.com:TuyishimireEric/MyBrand-BE.git`
+
+- Install Dependencies:
+  `npm install`
+- Open index.html with live server
+
+## 💻 Built with <a name="built-with-"></a>
+
+- HTML
+- CSS
+- JS
 
 ## 👥 Author <a name="authors"></a>
 
@@ -68,7 +72,7 @@ This portfolio is a reflection of my journey in software development and showcas
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/TuyishimireEric/my-brand-tuyishimire-eric/issues).
+Feel free to check the [issues page](https://github.com/TuyishimireEric/MyBrand-BE/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -87,8 +91,6 @@ If you like this project please consider giving us a star.
 I would like to thank **Andela** a for the guidance 🙏🙏
 
 
-## 📝 License <a name="license"></a>
-
-This project is [MIT](./LICENSE) licensed.
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
