@@ -13,7 +13,7 @@ export const showBlogs = (blogs) => {
 
   let blogsHTML = "";
   blogs.map((blog) => {
-    blog.description = JSON.parse(blog.description) || blog.description;
+    blog.description =  blog.description || JSON.parse(blog.description);
     let ratingsHTML = "";
 
     const generateStars = (rating) => {
