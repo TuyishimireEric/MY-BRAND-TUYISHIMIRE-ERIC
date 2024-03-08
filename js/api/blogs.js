@@ -28,7 +28,7 @@ export const getABlog = async (blogId) => {
 
 export const deleteABlog = async (blogId) => {
     try {
-        const token = JSON.parse(localStorage.getItem('token')) || "";
+        const token = JSON.parse(localStorage.getItem('token')|| "") || "";
         const response = await fetch(`${API_URL}/api/blogs/${blogId}`,{
             method: 'DELETE',
             headers: {
@@ -46,7 +46,7 @@ export const deleteABlog = async (blogId) => {
 
 export const createABlog = async (blogData) => {
     try {
-        const token = JSON.parse(localStorage.getItem('token')) || "";
+        const token = JSON.parse(localStorage.getItem('token')|| "") || "";
         const response = await fetch(`${API_URL}/api/blogs`,{
             method: 'POST',
             headers: {
@@ -64,7 +64,7 @@ export const createABlog = async (blogData) => {
 
 export const updateABlog = async (blogData, blogId) => {
     try {
-        const token = JSON.parse(localStorage.getItem('token')) || "";
+        const token = JSON.parse(localStorage.getItem('token')|| "") || "";
         const response = await fetch(`${API_URL}/api/blogs/${blogId}`,{
             method: 'PATCH',
             headers: {

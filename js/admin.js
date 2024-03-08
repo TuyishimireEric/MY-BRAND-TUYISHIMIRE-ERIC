@@ -75,7 +75,7 @@ window.addEventListener("resize", updateNavListState);
 
 window.onload = async () => {
   document.getElementById("preLoader").style.display = "none";
-  const token = JSON.parse(localStorage.getItem("token")) || "";
+  const token = JSON.parse(localStorage.getItem("token") || "") || "";
   if (token) {
     const validated = await validateToken();
     if (validated.data.role != "admin") {

@@ -33,7 +33,7 @@ export const logIn = async (user) => {
 }
 
 export const validateToken = async () => {
-    const token = JSON.parse(localStorage.getItem('token'))||"";
+    const token = JSON.parse(localStorage.getItem('token')|| "")||"";
     try {
         const response = await fetch(`${API_URL}/api/users/validate`, {
             method: "POST",

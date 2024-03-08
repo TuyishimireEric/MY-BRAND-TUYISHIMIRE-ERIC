@@ -36,7 +36,7 @@ export const updateAComment = async (commentId, blogId) => {
     visible: false,
   };
   try {
-    const token = JSON.parse(localStorage.getItem("token")) || "";
+    const token = JSON.parse(localStorage.getItem("token") || "") || "";
     const response = await fetch(
       `${API_URL}/api/blogs/${blogId}/comments/${commentId}`,
       {

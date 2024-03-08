@@ -270,7 +270,7 @@ window.onload = async () => {
   const searchParams = new URLSearchParams(currentUrl.search);
   blogId = searchParams.get("id");
 
-  const token = JSON.parse(localStorage.getItem("token")) || "";
+  const token = JSON.parse(localStorage.getItem("token") || "") || "";
   if (token) {
     const validated = await validateToken();
     if (!validated.data) {
