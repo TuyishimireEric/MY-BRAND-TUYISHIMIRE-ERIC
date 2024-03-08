@@ -15,6 +15,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
     />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   </head>
   <body>
     <nav class="flex">
@@ -32,10 +33,11 @@
               <img src="../../images/notification.png" alt="user" />
             </a>
           </li>
-        <li class="user">
-          <a href="../../index.html" id="user" class="user flex-col">
-            <img src="../../images/myProfile.png" alt="user" />
-          </a>
+          <li class="user">
+            <a id="user" class="user flex">
+              <img src="../../images/myProfile.png" alt="user" />
+              <span id="currentUser">Logout</span>
+            </a>
         </li>
       </ul>
       <div id="humberger" class="navigation">
@@ -56,10 +58,11 @@
                   <img src="../../images/notification.png" alt="user" />
                 </a>
               </li>
-            <li class="user">
-              <a href="../../index.html" id="user" class="user flex-col">
-                <img src="../../images/myProfile.png" alt="user" />
-              </a>
+              <li class="user">
+                <a id="user" class="user flex">
+                  <img src="../../images/myProfile.png" alt="user" />
+                  <span id="currentUser">Logout</span>
+                </a>
             </li>
           </ul>
         </div>
@@ -82,12 +85,12 @@
             <div class="imageInput"></div>
 
           <div class="hidden">
-            <input type="file" id="fileInput" accept="image/*"/>
+            <input type="file" id="fileInput" accept="image/*" />
           </div>
           <div class="blogTitle">
             <span class="input-text" id="titleInput">
               <label for="blogTitle">Blog Title:</label>
-              <input type="text" id="blogTitle" name="username">
+              <input type="text" id="blogTitle" name="title">
               <span class="error-message">Please enter blog title.</span>
               <span class="formIcon"></span>
             </span>
@@ -132,11 +135,13 @@
               </input>
             </div>
             <div class="input-text" id="contentInput">
-              <div class="editorContent" contenteditable="true"></div>
+              <div class="editorContent" contenteditable="true" name="description"></div>
               <span class="error-message">Please enter blog content.</span>
             </div>
           </div>
-        <button type="submit" class="button">Publish</button>
+        <button type="submit" class="button">
+          <span class="loader"></span>
+          Publish</button>
       </form>
         
       </section>
@@ -147,7 +152,8 @@
     <script type="module" src="../../js/admin.js"></script>
     <script type="module" src="../../js/index.js"></script>
     <script type="module" src="../../js/textEditor.js"></script>
-    <!-- <script type="module" src="../../js/admin/blogs/createBlog.js"></script> -->
-    <script type="module" src="../../ts/admin/createBlogs.js"></script>
+    <script type="module" src="../../js/admin/blogs/createBlog.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <!-- <script type="module" src="../../ts/admin/createBlogs.js"></script> -->
   </body>
 </html>

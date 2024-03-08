@@ -1,13 +1,16 @@
 import { regExPatterns } from "../../utils.js";
-import { v4 as uuidv4 } from "https://cdn.skypack.dev/uuid";
+import { createABlog } from "../../api/index.js";
+
 const createBlogForm = document.querySelector(".createBlog");
 const blogTitle = document.querySelector("#blogTitle");
 const blogContent = document.querySelector(".editorContent");
 const form = document.querySelector("form");
 const imageInput = document.querySelector(".imageInput");
 const fileInput = document.querySelector("#fileInput");
-let imageUrl = "";
+const loader = document.querySelector(".loader");
+const submitButton = document.querySelector(".button");
 
+let imageUrl = "";
 
 imageInput.addEventListener("click", () => {
   fileInput.click();
@@ -52,7 +55,7 @@ if (blogContent) {
   });
 }
 
-createBlogForm.addEventListener("submit", (e) => {
+createBlogForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   form.classList.add("submitted");
@@ -62,35 +65,71 @@ createBlogForm.addEventListener("submit", (e) => {
   );
 
   if (allValid) {
-    form.classList.remove("submitted");
-    allInputs.forEach((input) => input.classList.remove("correct"));
+    loader.classList.add("show");
+    submitButton.disabled = true;
+    
+    const formData = new FormData(createBlogForm);
+    formData.append("description", JSON.stringify(blogContent.innerHTML));
+    formData.append('image', fileInput.files[0]);
 
-    const allBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
-    const uniqueId = uuidv4();
-    const currentDate = new Date();
-    const formattedDate = `${currentDate.getFullYear()}-${
-      currentDate.getMonth() + 1
-    }-${currentDate.getDate()}`;
+    for(let [key, value] of formData) {
+     console.log(key, value);
+    }
+    
+    const result = await createABlog(formData);
 
-    const newBlog = {
-      id: uniqueId,
-      title: blogTitle.value,
-      date: formattedDate,
-      image: imageUrl,
-      createBy: "Eric Tuyishimire",
-      rating: 0,
-      likes: 0,
-      comments: [],
-      description: JSON.stringify(blogContent.innerHTML),
-    };
+    if (result.data) {
+      loader.classList.remove("show");
+      submitButton.disabled = false;
+      Toastify({
+        text: result.message,
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+        stopOnFocus: true,
+      }).showToast();
 
-    allBlogs.push(newBlog);
+      fileInput.value = "";
+      form.classList.remove("submitted");
+      allInputs.forEach((input) => input.classList.remove("correct"));
 
-    localStorage.setItem("blogs", JSON.stringify(allBlogs));
-
-    blogTitle.value = "";
-    blogContent.innerHTML = "";
-
-    window.location.href = "./blogs.html";
+      imageInput.style.backgroundImage = "url(../../images/image.png)";
+      blogTitle.value = "";
+      blogContent.innerHTML = "";
+      setTimeout(() => {
+        window.location.href = "./blogs.html";
+      }, 1500);
+    } else if (result.error === "jwt expired") {
+      submitButton.disabled = false;
+      loader.classList.remove("show");
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      window.location.href = "../login.html";
+      Toastify({
+        text: "Please login to continue",
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+        stopOnFocus: true,
+      }).showToast();
+    } else {
+      submitButton.disabled = false;
+      loader.classList.remove("show");
+      Toastify({
+        text: result.error || result.message || "An error occurred",
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+        stopOnFocus: true,
+      }).showToast();
+    }
   }
 });
+
+

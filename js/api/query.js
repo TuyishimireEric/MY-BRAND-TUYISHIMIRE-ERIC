@@ -16,3 +16,19 @@ export const addQuery = async (formData) => {
     }
 }
 
+export const getQueries = async () => {
+    const token = JSON.parse(localStorage.getItem('token'))||"";
+    try {
+        const response = await fetch(`${API_URL}/api/query/`,{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": `Bearer ${token}`
+            }
+        });
+        const result = await response.json();
+        return result;
+    } catch (error) {
+        return error.message;
+    }
+}

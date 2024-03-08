@@ -315,6 +315,14 @@ ul {
   font-size: 72px;
 }
 
+#user {
+  cursor: pointer;
+}
+
+#user:hover #currentUser {
+  color: #FFF;
+}
+
 .mainImage #nodeIcon {
   color: var(--fith-color);
   left: 5%;
@@ -1186,7 +1194,6 @@ footer {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-top: 1px solid var(--second-color);
 }
-
 .modal {
   position: fixed;
   top: 0;
@@ -1194,19 +1201,24 @@ footer {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  display: none;
+  opacity: 0; 
+  visibility: hidden; 
   justify-content: center;
   align-items: center;
-  z-index: 100;
-}
-
-.modal.active {
   display: flex;
-}
+  z-index: 100;
+  transition: opacity 0.5s ease, visibility 0.5s; 
+ }
+ 
+ .modal.active {
+  opacity: 1; 
+  visibility: visible; 
+ }
 
 .modal .modal-content {
   width: 50%;
   height: 50%;
+  transform: scale(0);
   background-color: var(--dark-color);
   border: 1px solid var(--second-color);
   border-radius: 20px;
@@ -1216,14 +1228,19 @@ footer {
   align-items: center;
   gap: 20px;
   padding: 20px;
-}
+   transition: all 0.5s ease;
+ }
+ 
+ .modal.active .modal-content {
+  transform: scale(1);
+  transition: all 0.5s ease;
+ }
 
-.modal .modal-content h3 {
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--main-color);
-}
-
+ .modal-header {
+  margin-bottom: 26px;
+ 
+ }
+ 
 .modal .modal-content p {
   font-size: 18px;
   font-weight: 300;
@@ -1240,6 +1257,15 @@ footer {
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  padding: 20px;
+
 }
 
 .modal .modal-content button:hover {

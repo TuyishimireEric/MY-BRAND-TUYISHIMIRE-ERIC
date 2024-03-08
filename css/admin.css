@@ -500,3 +500,24 @@
         display: none;
     }
 }
+
+.counter {
+    color: var(--main-color);
+}
+
+#delete {
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px;
+    min-width: 100px;
+    justify-content: center;
+  }
+
+  .over {
+    margin-left: -8vw;
+  }

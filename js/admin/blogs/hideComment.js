@@ -1,5 +1,5 @@
-import { deleteABlog } from "../../api/index.js";
-import { showBlogs } from "./getBlogs.js";
+import { updateAComment } from "../../api/index.js";
+import { showComments } from "./updateBlog.js";
 
 const modal = document.querySelector("#modal");
 const modalContent = document.querySelector(".modal-content");
@@ -9,7 +9,7 @@ const blogList = document.querySelector(".blog-list");
 const loader = document.querySelector(".loader");
 
 
-export const removeBlog = async (blogId, blogs) => {
+export const hideComment = async (commentId, comments, blogId) => {
 
 modal.classList.add("active");
 
@@ -30,7 +30,7 @@ modal.classList.add("active");
     e.stopPropagation();
     loader.classList.add("show");
     yes.disabled = true;
-    const deleted = await deleteABlog(blogId);
+    const deleted = await updateAComment(commentId, blogId);
     if (!deleted.error) {
       
       Toastify({
@@ -46,8 +46,8 @@ modal.classList.add("active");
       loader.classList.remove("show");
       yes.disabled = false;
 
-      const updateBlog = blogs.filter((blog) => blog._id !== blogId);
-      showBlogs(updateBlog);
+      const updateComments = comments.filter((comment) => comment._id !== commentId);
+      showComments(updateComments);
 
     } else if (deleted.error === "jwt expired"){
       localStorage.removeItem("token");

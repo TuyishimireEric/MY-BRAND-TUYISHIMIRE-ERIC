@@ -36,7 +36,7 @@
         <li class="icon">
           <a target="_blank" href="https://github.com/TuyishimireEric"><img src="../images/github.png" alt="github" /></a>
         </li>
-        <li class="button flex">
+        <li id="changeMode" class="button flex">
           <a href="../index.html#contact">
             <img src="../images/gmail.png" alt="gmail" />
           </a>
@@ -45,9 +45,9 @@
         </a>
         </li>
         <li class="user">
-          <a href="./login.html" id="user" class="user flex-col">
+          <a id="user" class="user flex-col">
             <img src="../images/user.png" alt="user" />
-            <span>SignIn</span>
+            <span id="currentUser">Login</span>
           </a>
         </li>
       </ul>
@@ -74,13 +74,13 @@
               <a  target="_blank" href="https://github.com/TuyishimireEric"><img src="../images/github.png" alt="github" /></a>
             </li>
             <li class="user">
-              <a href="#home" id="user" class="user flex-col">
+              <a id="user" class="user flex-col">
                 <img src="../images/user.png" alt="user" />
-                <span>SignIn</span>
+                <span id="currentUser">Login</span>
               </a>
             </li>
           </ul>
-          <span class="button flex">
+          <span id="changeMode" class="button flex">
             <a href="#contact">
               <img src="../images/gmail.png" alt="gmail" />
             </a>
@@ -102,22 +102,20 @@
             </div>
         </div>
       </section>
+
+    <section class="contact flex-col" id="leaveAComment" data-aos="fade-up" data-aos-duration="1000">
+      <h2 class="title" data-aos="fade-up" data-aos-duration="1000"> Reactions <span>( )</span</h2>
+
       <div class="comments">
         <div class="sticker" id="likeButton" data-aos="fade-up" data-aos-duration="1000">
             <img src="../images/heart.png" alt="heart" />
             <div><span id="liked">0</span> Likes</div>
         </div>
-        
-        <div>
-            <h2 class="title"> Comments <span>( )</span</h2>
-            <div class="blogComments">
-            </div>
-        </div>
+        <div class="blogComments"></div>
         
     </div>
 
-    <section class="contact flex-col" id="leaveAComment">
-        <h2 class="title">leaveAComment <span>( )</span</h2>
+      <h2 class="title">leaveAComment <span>( )</span</h2>
         <span class="addRatings"></span>
         <form class="contactMe">
           <span class="input-text" id="fullName">

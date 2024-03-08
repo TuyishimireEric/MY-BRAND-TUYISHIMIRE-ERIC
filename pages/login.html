@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/login.css" />
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
@@ -45,7 +46,7 @@
         <li class="user">
           <a href="./login.html" id="user" class="user flex-col">
             <img src="../images/user.png" alt="user" />
-            <span>SignIn</span>
+            <span>Login</span>
           </a>
         </li>
       </ul>
@@ -74,7 +75,7 @@
             <li class="user">
               <a href="./admin/dashboard.html" id="user" class="user flex-col">
                 <img src="../images/user.png" alt="user" />
-                <span>SignIn</span>
+                <span>Login</span>
               </a>
             </li>
           </ul>
@@ -92,7 +93,7 @@
     <section class="login flex">
       <div class="userInput">
           <h2 class="title">login <span>( )</span</h2>
-          <form class="contactMe">
+          <form class="contactMe" id="loginForm">
               <span class="input-text">
                 <label for="email">Email:</label>
                 <input type="text" id="emailInput" name="username">
@@ -107,13 +108,10 @@
                 <span class="formIcon"></span>
               </span>
             <div class="flex">
-              <span class="terms">
-                <input type="checkbox">
-                <label>Remember me</label>
-              </span>
               <a href="#" class="forgot text-small">Forgot Password?</a>
             </div>
             <button type="submit" class="button">
+              <span class="loader"></span>
                 Login
             </button>
           </form>
@@ -162,5 +160,7 @@
     </footer>
     <script type="module" src="../js/common.js"></script>
     <script type="module" src="../js/formValidation.js"></script>
+    <script type="module" src="../js/user/login.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   </body>
 </html>

@@ -16,14 +16,15 @@ export const getBlogLikes = async (blogId) => {
     }
 }
 
-export const addALike = async (blogId, like) => {
+export const likeABlog = async (blogId) => {
+    const token = JSON.parse(localStorage.getItem('token'))||"";
     try {
         const response = await fetch(`${API_URL}/api/blogs/${blogId}/likes`,{
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(like)
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
         });
         const result = await response.json();
         return result;

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../../css/admin.css" />
     <link rel="stylesheet" href="../../css/queries.css" />
     
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
@@ -31,10 +32,11 @@
               <img src="../../images/notification.png" alt="user" />
             </a>
           </li>
-        <li class="user">
-          <a href="../../index.html" id="user" class="user flex-col">
-            <img src="../../images/myProfile.png" alt="user" />
-          </a>
+          <li class="user">
+            <a id="user" class="user flex">
+              <img src="../../images/myProfile.png" alt="user" />
+              <span id="currentUser">Logout</span>
+            </a>
         </li>
       </ul>
       <div id="humberger" class="navigation">
@@ -55,10 +57,11 @@
                   <img src="../../images/notification.png" alt="user" />
                 </a>
               </li>
-            <li class="user">
-              <a href="../../index.html" id="user" class="user flex-col">
-                <img src="../../images/myProfile.png" alt="user" />
-              </a>
+              <li class="user">
+                <a id="user" class="user flex">
+                  <img src="../../images/myProfile.png" alt="user" />
+                  <span id="currentUser">Logout</span>
+                </a>
             </li>
           </ul>
         </div>
@@ -77,150 +80,18 @@
     <section class="dashboard">
         <h2 class="title">queries <span>( )</span</h2>
         <div class="queries-body">
-        <div class="queries-container">
-            <div class="querry">
-                <div class="querry-header flex">
-                    <div class="querry-header-left">
-                        <img src="../../images/syed.png" alt="user" />
-                        <div class="querry-header-left-info">
-                            <h5>Iradukunda Emmanuel</h5>
-                            <span>
-                                iradukundaemm@gmail.com
-                            </span>
-                        </div> 
-                    </div>
-                    <div class="querry-header-right">
-                        <span>26/01/2024</span>
-                    </div> 
-                </div> 
-                <p class="text-small">
-                    Fantastic read! Next.js has truly revolutionized the way we approach React applications. The seamless integration with React and the built-in features like server-side rendering and automatic code splitting make it a powerhouse for building performant and scalable web applications.
-                </p>
-            </div>
-            <div class="querry">
-                <div class="querry-header flex">
-                    <div class="querry-header-left">
-                        <img src="../../images/user.png" alt="user" />
-                        <div class="querry-header-left-info">
-                            <h5>Amani</h5>
-                            <span>
-                                amani@gmail.com
-                            </span>
-                        </div> 
-                    </div>
-                    <div class="querry-header-right">
-                        <span>26/01/2024</span>
-                    </div> 
-                </div> 
-                <p class="text-small">
-                    Fantastic read! Next.js has truly revolutionized the way we approach React applications. The seamless integration with React and the built-in features like server-side rendering and automatic code splitting make it a powerhouse for building performant and scalable web applications.
-                </p>
-            </div>
-            <div class="querry">
-                <div class="querry-header flex">
-                    <div class="querry-header-left">
-                        <img src="../../images/user.png" alt="user" />
-                        <div class="querry-header-left-info">
-                            <h5>Biganiro</h5>
-                            <span>
-                                biganiro@gmail.com
-                            </span>
-                        </div> 
-                    </div>
-                    <div class="querry-header-right">
-                        <span>26/01/2024</span>
-                    </div> 
-                </div> 
-                <p class="text-small">
-                    Fantastic read! Next.js has truly revolutionized the way we approach React applications. The seamless integration with React and the built-in features like server-side rendering and automatic code splitting make it a powerhouse for building performant and scalable web applications.
-                </p>
-            </div>
-            <div class="querry">
-                <div class="querry-header flex">
-                    <div class="querry-header-left">
-                        <img src="../../images/syed.png" alt="user" />
-                        <div class="querry-header-left-info">
-                            <h5>Iradukunda Emmanuel</h5>
-                            <span>
-                                iradukundaemm@gmail.com
-                            </span>
-                        </div> 
-                    </div>
-                    <div class="querry-header-right">
-                        <span>26/01/2024</span>
-                    </div> 
-                </div> 
-                <p class="text-small">
-                    Fantastic read! Next.js has truly revolutionized the way we approach React applications. The seamless integration with React and the built-in features like server-side rendering and automatic code splitting make it a powerhouse for building performant and scalable web applications.
-                </p>
-            </div>
-            <div class="querry">
-                <div class="querry-header flex">
-                    <div class="querry-header-left">
-                        <img src="../../images/syed.png" alt="user" />
-                        <div class="querry-header-left-info">
-                            <h5>Iradukunda Emmanuel</h5>
-                            <span>
-                                iradukundaemm@gmail.com
-                            </span>
-                        </div> 
-                    </div>
-                    <div class="querry-header-right">
-                        <span>26/01/2024</span>
-                    </div> 
-                </div> 
-                <p class="text-small">
-                    Fantastic read! Next.js has truly revolutionized the way we approach React applications. I appreciate the detailed insights provided in this article, especially [mention any specific points you found interesting]. Looking forward to exploring more of Next.js's capabilities and best practices.
-                </p>
-            </div>
-            <div class="querry">
-                <div class="querry-header flex">
-                    <div class="querry-header-left">
-                        <img src="../../images/syed.png" alt="user" />
-                        <div class="querry-header-left-info">
-                            <h5>Iradukunda Emmanuel</h5>
-                            <span>
-                                iradukundaemm@gmail.com
-                            </span>
-                        </div> 
-                    </div>
-                    <div class="querry-header-right">
-                        <span>26/01/2024</span>
-                    </div> 
-                </div> 
-                <p class="text-small">
-                    Fantastic read! Next.js has truly revolutionized the way we approach React applications. The seamless integration with React and the built-in features like server-side rendering and automatic code splitting make it a powerhouse for building performant and scalable web applications. 
-                </p>
-            </div>
-            <div class="querry">
-                <div class="querry-header flex">
-                    <div class="querry-header-left">
-                        <img src="../../images/user.png" alt="user" />
-                        <div class="querry-header-left-info">
-                            <h5>Iradukunda Emmanuel</h5>
-                            <span>
-                                iradukundaemm@gmail.com
-                            </span>
-                        </div> 
-                    </div>
-                    <div class="querry-header-right">
-                        <span>26/01/2024</span>
-                    </div> 
-                </div> 
-                <p class="text-small">
-                    Fantastic read! Next.js has truly revolutionized the way we approach React applications. The seamless integration with React and the built-in features like server-side rendering and automatic code splitting make it a powerhouse for building performant and scalable web applications. I appreciate the detailed insights provided in this article, especially [mention any specific points you found interesting]. Looking forward to exploring more of Next.js's capabilities and best practices.
-                </p>
-            </div>
-        </div>
+        <div class="queries-container"></div>
         <div class="filters">
             <div class="count flex">
                 <div>
                     <h5>Visits</h5>
-                    <span>42</span>
+                    <span class="counter">42</span>
                 </div>
                 <div>
                     <h5>Queries</h5>
-                    <span>12</span>
+                    <span id="queriesCounter" class="counter">
+                        0
+                    </span>
                 </div>
             </div>
             <div class="calendar">
@@ -231,7 +102,11 @@
       </section>
 
     <!---------------------- footer section start --------------------->
-
+    <script type="module" src="../../js/admin/queries.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
     <script type="module" src="../../js/common.js"></script>
     <script type="module" src="../../js/admin.js"></script>
     <script type="module" src="../../js/index.js"></script>

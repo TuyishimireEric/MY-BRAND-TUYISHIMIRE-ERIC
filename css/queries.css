@@ -94,15 +94,16 @@ body {
 }
 
 .querry-header-left-info h5 {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
     white-space: nowrap;
+    color: var(--second-color);
 }
 
 .querry-header-left-info span {
     font-size: 14px;
     font-weight: 400;
-    color: var(--second-color);
+    color: var(--main-color);
 }
 
 .querry-header-right {

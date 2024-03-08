@@ -5,6 +5,7 @@ import {
   getBlogLikes,
   getBlogComments,
   addQuery,
+  validateToken,
 } from "./api/index.js";
 import { formatedDate } from "./utils.js";
 
@@ -24,9 +25,23 @@ const form = document.querySelector("#queryForm");
 const loader = document.querySelector(".loader");
 const fullNameInput = document.querySelector("#fullNameInput");
 const messageInput = document.querySelector("#messageInput");
+const userIcon = document.querySelector("#user");
+const changeMode = document.querySelector("#changeMode");
 
 let experienceHTML = "";
 let projectsHTML = "";
+
+userIcon.addEventListener("click", (e) => {
+  e.preventDefault();
+  const user = JSON.parse(localStorage.getItem("user")) || "";
+  if (user) {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    window.location.href = "./index.html";
+  } else {
+    window.location.href = "./pages/login.html";
+  }
+});
 
 experience.forEach((experience) => {
   experienceHTML += `
@@ -62,6 +77,7 @@ projects.forEach((project) => {
 const getBlogs = (blogs, likesMap, commentsMap) => {
   let blogsHTML = "";
   blogs.map((blog) => {
+    blog.description = JSON.parse(blog.description) || blog.description;
     let ratingsHTML = "";
 
     const generateStars = (rating) => {
@@ -102,7 +118,7 @@ const getBlogs = (blogs, likesMap, commentsMap) => {
         <div class="blog-details">
           <h3 class="blog-title">${blog.title}</h3>
           <div class="summary">
-            <p class="date">${formatedDate(blog.updatedAt)}</p>
+            <p class="date">${formatedDate(blog.createdAt)}</p>
             <article class="blog-description text-small">${truncatedDescription}</article>
             <span class="readMore">read more </span>
           </div>
@@ -127,9 +143,7 @@ const getBlogs = (blogs, likesMap, commentsMap) => {
     Allblogs.forEach((blog) => {
       blog.addEventListener("click", (e) => {
         const id = e.target.closest(".blog").getAttribute("key");
-        const urlToOpen = currentUrl.includes("admin")
-          ? `./updateBlog.html?id=${id}`
-          : `./pages/blogDetails.html?id=${id}`;
+        const urlToOpen = `./pages/blogDetails.html?id=${id}`
         // window.open(urlToOpen, '_blank');
         window.location.href = urlToOpen;
       });
@@ -204,13 +218,27 @@ if (currentUrl.includes("index")) {
   };
 
   window.onload = async () => {
-    const user = JSON.parse(localStorage.getItem("user")) || "";
-    if (user) {
-      userContainer.innerHTML = user.userName;
-      emailInput.value = user.email;
-      const email = document.querySelector("#email");
-      email.classList.add("correct");
-      email.style.display = "none";
+    const token = JSON.parse(localStorage.getItem("token")) || "";
+    if (token) {
+      const validated = await validateToken();
+      if (!validated.data) {
+        localStorage.removeItem("user");
+        localStorage.removeItem("token");
+      } else {
+        const user = {
+          userName: validated.data.userName,
+          email: validated.data.email,
+        };
+        userContainer.innerHTML = "Logout";
+        emailInput.value = user.email;
+        const email = document.querySelector("#email");
+        email.classList.add("correct");
+        email.style.display = "none";
+        localStorage.setItem("user", JSON.stringify(user));
+        if(validated.data.role == "admin"){
+          changeMode.innerHTML = `<a href="./pages/admin/dashboard.html" target="_blank">Dashboard</a>`;
+        }
+      }
     }
 
     const blogs = await getAllBlogs();
@@ -249,64 +277,69 @@ if (currentUrl.includes("index")) {
   };
 }
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  form.classList.add("submitted");
-  const allInputs = form.querySelectorAll(".input-text");
-  const allValid = Array.from(allInputs).every((input) =>
-    input.classList.contains("correct")
-  );
-
-  if (allValid) {
-    loader.classList.add("show");
-    form.classList.remove("submitted");
-
-    const formData = {
-      name: fullNameInput.value,
-      email: emailInput.value,
-      description: messageInput.value,
-    };
-
-    const result = await addQuery(formData);
-    if (!result.error) {
-      Toastify({
-        text: "Message sent successfully!",
-        duration: 3000,
-        close: true,
-        gravity: "top",
-        position: "right",
-        backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
-        stopOnFocus: true,
-      }).showToast();
-      loader.classList.remove("show");
-      messageInput.value = "";
-      fullNameInput.value = "";
+if(form){
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    form.classList.add("submitted");
+    const allInputs = form.querySelectorAll(".input-text");
+    const allValid = Array.from(allInputs).every((input) =>
+      input.classList.contains("correct")
+    );
+  
+    if (allValid) {
+      loader.classList.add("show");
       form.classList.remove("submitted");
-      allInputs.forEach((input) => {
-        input.classList.remove("correct");
-
-        const user = JSON.parse(localStorage.getItem("user")) || "";
-        if (user) {
-          userContainer.innerHTML = user.userName;
-          emailInput.value = user.email;
-          const email = document.querySelector("#email");
-          email.classList.add("correct");
-          email.style.display = "none";
-        }
-      });
+  
+      const formData = {
+        name: fullNameInput.value,
+        email: emailInput.value,
+        description: messageInput.value,
+      };
+  
+      const result = await addQuery(formData);
+      if (!result.error) {
+        Toastify({
+          text: "Message sent successfully!",
+          duration: 3000,
+          close: true,
+          gravity: "top",
+          position: "right",
+          backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+          stopOnFocus: true,
+        }).showToast();
+  
+        loader.classList.remove("show");
+        messageInput.value = "";
+        fullNameInput.value = "";
+        emailInput.value = ""; 
+        form.classList.remove("submitted");
+        allInputs.forEach((input) => {
+          input.classList.remove("correct");
+  
+          const user = JSON.parse(localStorage.getItem("user")) || "";
+          if (user) {
+            userContainer.innerHTML = user.userName;
+            emailInput.value = user.email;
+            const email = document.querySelector("#email");
+            email.classList.add("correct");
+            email.style.display = "none";
+          }
+        });
+      } else {
+        loader.classList.remove("show");
+        Toastify({
+          text: result.message || result.error,
+          duration: 3000,
+          close: true,
+          gravity: "top",
+          position: "right",
+          backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+          stopOnFocus: true,
+        }).showToast();
+      }
     } else {
-      loader.classList.remove("show");
-      Toastify({
-        text: result.message || result.error,
-        duration: 3000,
-        close: true,
-        gravity: "top",
-        position: "right",
-        backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
-        stopOnFocus: true,
-      }).showToast();
+      return;
     }
-  } else {
-    return;
-  }
-});
+  });
+}
+

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../../css/admin.css" />
     <link rel="stylesheet" href="../../css/adminBlogs.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/> 
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
@@ -32,10 +32,11 @@
               <img src="../../images/notification.png" alt="user" />
             </a>
           </li>
-        <li class="user">
-          <a href="../../index.html" id="user" class="user flex-col">
-            <img src="../../images/myProfile.png" alt="user" />
-          </a>
+          <li class="user">
+            <a id="user" class="user flex">
+              <img src="../../images/myProfile.png" alt="user" />
+              <span id="currentUser">Logout</span>
+            </a>
         </li>
       </ul>
       <div id="humberger" class="navigation">
@@ -56,10 +57,11 @@
                   <img src="../../images/notification.png" alt="user" />
                 </a>
               </li>
-            <li class="user">
-              <a href="../../index.html" id="user" class="user flex-col">
-                <img src="../../images/myProfile.png" alt="user" />
-              </a>
+              <li class="user">
+                <a id="user" class="user flex">
+                  <img src="../../images/myProfile.png" alt="user" />
+                  <span id="currentUser">Logout</span>
+                </a>
             </li>
           </ul>
         </div>
@@ -81,51 +83,33 @@
             <span>Add new</span>
             <img src="../../images/add.png" alt="add" />
         </a>
-          <div class="metrics">
-            <li class="data visits flex">
-                <div class="info">
-                    <h3 class="title-small">Visits</h3>
-                    <span>42</span>
-                </div>
-                <img src="../../images/users.png" alt="visits" />
-            </li>
-            <li class="data comments flex">
-              <div class="info">
-                  <h3 class="title-small">published</h3>
-                  <span>8</span>
-              </div>
-              <img src="../../images/blogs.png" alt="visits" />
-          </li>
-            <li class="data likes flex">  
-                <div class="info">
-                    <h3 class="title-small">Likes</h3>
-                    <span>32</span>
-                </div>
-                <img src="../../images/Liked.png" alt="visits" />
-            </li>
-            <li class="data comments flex">
-                <div class="info">
-                    <h3 class="title-small">Comments</h3>
-                    <span>8</span>
-                </div>
-                <img src="../../images/messaged.png" alt="visits" />
-            </li>
-        </div>
+
           
-      <div id="blogs" class="blog-container"></div>
+      <div id="blogs" class="blog-container">
+        <div class="over full"></div>
+        <div class="over" id="loading">
+          <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+          </div>
+        </div>
+      </div>
       </section>
       <div class="modal" id="modal">
         <div class="modal-content">
           <div class="modal-header">
-            <h2 class="title">Delete blog</h2>
-            <span class="close" id="close">&times;</span>
+            <h3 class="title">Delete blog</h3>
           </div>
           <div class="modal-body">
             <p>Are you sure you want to delete this blog?</p>
           </div>
           <div class="modal-footer">
             <button class="btn" id="cancel">Cancel</button>
-            <button class="btn" id="delete">Delete</button>
+            <button class="btn" id="delete">
+              <span class="loader"></span>
+               Delete
+            </button>
           </div>
         </div>
       </div>
@@ -136,5 +120,6 @@
     <script type="module" src="../../js/admin.js"></script>
     <script type="module" src="../../js/admin/blogs/getBlogs.js"></script>
     <script type="module" src="../../js/admin/blogs/deleteBlog.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   </body>
 </html>

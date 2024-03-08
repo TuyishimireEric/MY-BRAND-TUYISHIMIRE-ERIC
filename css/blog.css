@@ -18,7 +18,7 @@
 }
 
 .comments {
-    width: 80%;
+    width: 100%;
     margin: 4vw auto;
     display: flex;
     flex-direction: column;

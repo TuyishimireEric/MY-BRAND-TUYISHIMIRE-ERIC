@@ -15,6 +15,8 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
     />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
   </head>
   <body>
     <nav class="flex">
@@ -32,10 +34,11 @@
               <img src="../../images/notification.png" alt="user" />
             </a>
           </li>
-        <li class="user">
-          <a href="../../index.html" id="user" class="user flex-col">
-            <img src="../../images/myProfile.png" alt="user" />
-          </a>
+          <li class="user">
+            <a id="user" class="user flex">
+              <img src="../../images/myProfile.png" alt="user" />
+              <span id="currentUser">Logout</span>
+            </a>
         </li>
       </ul>
       <div id="humberger" class="navigation">
@@ -56,10 +59,11 @@
                   <img src="../../images/notification.png" alt="user" />
                 </a>
               </li>
-            <li class="user">
-              <a href="../../index.html" id="user" class="user flex-col">
-                <img src="../../images/myProfile.png" alt="user" />
-              </a>
+              <li class="user">
+                <a id="user" class="user flex">
+                  <img src="../../images/myProfile.png" alt="user" />
+                  <span id="currentUser">Logout</span>
+                </a>
             </li>
           </ul>
         </div>
@@ -135,11 +139,52 @@
               <span class="error-message">Please enter blog content.</span>
         </div>
 
-        <button type="submit" class="button">Publish</button>
+        <button type="submit" class="button">
+          <span class="loader"></span>
+          Update</button>
       </form>
 
         
+      <section class="contact flex-col" id="leaveAComment" >
+        <h2 class="title"> Reactions <span>( )</span</h2>
+  
+        <div class="comments">
+          <div class="sticker" id="likeButton" data-aos="fade-up" data-aos-duration="1000">
+              <img src="../../images/heart.png" alt="heart" />
+              <div><span id="liked">0</span> Likes</div>
+          </div>
+          <div class="blogComments">
+            <div class="over full"></div>
+            <div class="over" id="loading">
+              <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+              </div>
+            </div>
+          </div>
+          
+      </div>
       </section>
+      </section>
+
+      <div class="modal" id="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="title">Delete blog</h3>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to delete this blog?</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn" id="cancel">Cancel</button>
+            <button class="btn" id="delete">
+              <span class="loader"></span>
+               Delete
+            </button>
+          </div>
+        </div>
+      </div>
 
     <!---------------------- footer section start --------------------->
 
@@ -147,7 +192,7 @@
     <script type="module" src="../../js/admin.js"></script>
     <script type="module" src="../../js/index.js"></script>
     <script type="module" src="../../js/textEditor.js"></script>
-    <!-- <script type="module" src="../../js/admin/blogs/updateBlog.js"></script> -->
-    <script type="module" src="../../ts/admin/blogs/updateBlog.js"></script>
+    <script type="module" src="../../js/admin/blogs/updateBlog.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   </body>
 </html>

@@ -5,12 +5,29 @@ import {
   getBlogLikes,
   getBlogComments,
   addBlogComment,
+  likeABlog,
+  validateToken
 } from "../api/index.js";
 
 const humberger = document.getElementById("humberger");
 const extraMenu = document.querySelector(".extra-menu");
 const navigation = document.querySelector(".navigation");
 const loader = document.querySelector(".loader");
+const userContainer = document.querySelector("#currentUser");
+const userIcon = document.querySelector("#user");
+const changeMode = document.querySelector("#changeMode");
+
+userIcon.addEventListener("click", (e) => {
+  e.preventDefault();
+  const user = JSON.parse(localStorage.getItem("user")) || "";
+  if (user) {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    window.location.href = "../index.html";
+  } else {
+    window.location.href = "./login.html";
+  }
+});
 
 let blogId = "";
 humberger.addEventListener("click", () => {
@@ -44,14 +61,15 @@ const generateStars = (rating) => {
 };
 
 const showBlog = (blog) => {
+  blog.description = JSON.parse(blog.description) || blog.description;
   blogContainer.innerHTML = `
     <div class="blogDetails" data-aos="zoom-out">
         <img src="${blog.image}" alt="${blog.title}" class="mainImage"/>
         <div class="comment_head">
             <img src="../images/myProfile.png" alt="user" class="profilePicture"/>
             <div class="comment_details">
-                <h3 class="userName">Eric Tuyishimire</h3>
-                <p class="date">11/Jan/2023</p>
+                <h3 class="userName">${blog.createdBy}</h3>
+                <p class="date">${formatedDate(blog.createdAt)}</p>
             </div>
         </div>
         <div class="blogDetails_content">
@@ -105,11 +123,6 @@ const showComments = (comments) => {
   commented.innerHTML = commentsHTML;
 };
 
-like.addEventListener("click", async(e)=>{
-  e.preventDefault();
-  const liked = await likeABlog(blogId);
-})
-
 export const checkInput = (regEx, input) => {
   const nearestCorrectIcon = input.closest(".input-text");
 
@@ -143,7 +156,6 @@ if (messageInput) {
   });
 }
 
-
 leaveAComment.addEventListener("submit", async (e) => {
   e.preventDefault();
   form.classList.add("submitted");
@@ -172,18 +184,29 @@ leaveAComment.addEventListener("submit", async (e) => {
         position: "right",
         backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
         stopOnFocus: true,
-    }).showToast();
-    loader.classList.remove("show");
+      }).showToast();
+
+      loader.classList.remove("show");
       const comments = await getBlogComments(blogId);
       if (comments.data) showComments(comments.data);
       messageInput.value = "";
-      emailInput.value = "";
       fullNameInput.value = "";
+      emailInput.value = "";
       form.classList.remove("submitted");
       allInputs.forEach((input) => {
         input.classList.remove("correct");
+
+        const user = JSON.parse(localStorage.getItem("user")) || "";
+        if (user) {
+          userContainer.innerHTML = "Logout";
+          emailInput.value = user.email;
+          const email = document.querySelector("#email");
+          email.classList.add("correct");
+          email.style.display = "none";
+        }
       });
     } else {
+      loader.classList.remove("show");
       Toastify({
         text: result.message || result.error,
         duration: 3000,
@@ -199,11 +222,75 @@ leaveAComment.addEventListener("submit", async (e) => {
   }
 });
 
+like.addEventListener("click", async (e) => {
+  e.preventDefault();
+  if (!localStorage.getItem("user")) {
+    Toastify({
+      text: "Please sign in",
+      duration: 3000,
+      close: true,
+      gravity: "top",
+      position: "right",
+      backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+      stopOnFocus: true,
+    }).showToast();
+    return;
+  }
+
+  const liked = await likeABlog(blogId);
+  if (!liked.error) {
+    Toastify({
+      text: liked.message,
+      duration: 3000,
+      close: true,
+      gravity: "top",
+      position: "right",
+      backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+      stopOnFocus: true,
+    }).showToast();
+    showLikes(liked.data);
+  } else {
+    Toastify({
+      text: liked.message || liked.error,
+      duration: 3000,
+      close: true,
+      gravity: "top",
+      position: "right",
+      backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+      stopOnFocus: true,
+    }).showToast();
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+  }
+});
 
 window.onload = async () => {
   const currentUrl = new URL(window.location.href);
   const searchParams = new URLSearchParams(currentUrl.search);
   blogId = searchParams.get("id");
+
+  const token = JSON.parse(localStorage.getItem("token")) || "";
+  if (token) {
+    const validated = await validateToken();
+    if (!validated.data) {
+      localStorage.removeItem("user");
+      localStorage.removeItem("token");
+    } else {
+      const user = {
+        userName: validated.data.userName,
+        email: validated.data.email,
+      };
+      userContainer.innerHTML = "Logout";
+      emailInput.value = user.email;
+      const email = document.querySelector("#email");
+      email.classList.add("correct");
+      email.style.display = "none";
+      localStorage.setItem("user", JSON.stringify(user));
+      if(validated.data.role == "admin"){
+        changeMode.innerHTML = `<a href="./admin/dashboard.html" target="_blank">Dashboard</a>`;
+      }
+    }
+  }
 
   const selectedBlog = await getABlog(blogId);
 
