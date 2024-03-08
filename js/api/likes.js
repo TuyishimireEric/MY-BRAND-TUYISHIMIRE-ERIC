@@ -17,7 +17,7 @@ export const getBlogLikes = async (blogId) => {
 }
 
 export const likeABlog = async (blogId) => {
-    const token = JSON.parse(localStorage.getItem('token') || "")||"";
+    const token = JSON.parse(localStorage.getItem('token'))||"";
     try {
         const response = await fetch(`${API_URL}/api/blogs/${blogId}/likes`,{
             method: 'POST',
