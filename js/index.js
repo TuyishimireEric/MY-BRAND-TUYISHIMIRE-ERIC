@@ -1,13 +1,13 @@
-import { experience } from "./js/data/experience.js";
-import { projects } from "./js/data/projects.js";
+import { experience } from "./data/experience.js";
+import { projects } from "./data/projects.js";
 import {
   getAllBlogs,
   getBlogLikes,
   getBlogComments,
   addQuery,
   validateToken,
-} from "./js/api/index.js";
-import { formatedDate } from "./js/utils.js";
+} from "./api/index.js";
+import { formatedDate } from "./utils.js";
 
 const currentUrl = window.location.href;
 const experienceList = document.getElementById("experiences");
@@ -217,7 +217,7 @@ if (currentUrl.includes("index")) {
     return comments || [];
   };
 
-  document.getElementById("preLoader").style.display = "none";
+
   window.onload = async () => {
     const token = JSON.parse(localStorage.getItem("token")) || "";
     if (token) {

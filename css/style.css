@@ -1300,10 +1300,10 @@ footer {
 
   #preLoader {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
+    top: -8vw;
+    left: -8vw;
+    width: 120%;
+    height: 120vh;
     background: var(--dark-color) url("../images/codeNinja.png") no-repeat center;
     background-size: 20%;
     display: flex;
