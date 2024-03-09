@@ -217,8 +217,8 @@ if (currentUrl.includes("index")) {
     return comments || [];
   };
 
+  document.getElementById("preLoader").style.display = "none";
   window.onload = async () => {
-    document.getElementById("preLoader").style.display = "none";
     const token = JSON.parse(localStorage.getItem("token")) || "";
     if (token) {
       const validated = await validateToken();
