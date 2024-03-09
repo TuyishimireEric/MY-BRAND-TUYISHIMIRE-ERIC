@@ -1,13 +1,13 @@
-import { experience } from "./data/experience.js";
-import { projects } from "./data/projects.js";
+import { experience } from "./js/data/experience.js";
+import { projects } from "./js/data/projects.js";
 import {
   getAllBlogs,
   getBlogLikes,
   getBlogComments,
   addQuery,
   validateToken,
-} from "./api/index.js";
-import { formatedDate } from "./utils.js";
+} from "./js/api/index.js";
+import { formatedDate } from "./js/utils.js";
 
 const currentUrl = window.location.href;
 const experienceList = document.getElementById("experiences");
