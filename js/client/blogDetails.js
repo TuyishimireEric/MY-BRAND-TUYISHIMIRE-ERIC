@@ -1,61 +1,60 @@
-import { regExPatterns } from "../utils.js";
-import { formatedDate } from "../utils.js";
+import { regExPatterns, formatedDate } from '../utils.js';
+import checkInput from '../formValidation.js';
 import {
   getABlog,
   getBlogLikes,
   getBlogComments,
   addBlogComment,
   likeABlog,
-  validateToken
-} from "../api/index.js";
+  validateToken,
+} from '../api/index.js';
 
-const humberger = document.getElementById("humberger");
-const extraMenu = document.querySelector(".extra-menu");
-const navigation = document.querySelector(".navigation");
-const loader = document.querySelector(".loader");
-const userContainer = document.querySelector("#currentUser");
-const userIcon = document.querySelector("#user");
-const changeMode = document.querySelector("#changeMode");
+const humberger = document.getElementById('humberger');
+const extraMenu = document.querySelector('.extra-menu');
+const navigation = document.querySelector('.navigation');
+const loader = document.querySelector('.loader');
+const userContainer = document.querySelector('#currentUser');
+const userIcon = document.querySelector('#user');
+const changeMode = document.querySelector('#changeMode');
 
-userIcon.addEventListener("click", (e) => {
+userIcon.addEventListener('click', (e) => {
   e.preventDefault();
-  const user = JSON.parse(localStorage.getItem("user")) || "";
+  const user = JSON.parse(localStorage.getItem('user')) || '';
   if (user) {
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-    window.location.href = "../index.html";
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    window.location.href = '../index.html';
   } else {
-    window.location.href = "./login.html";
+    window.location.href = './login.html';
   }
 });
 
-let blogId = "";
-humberger.addEventListener("click", () => {
-  extraMenu.classList.toggle("active");
-  navigation.classList.toggle("active");
+let blogId = '';
+humberger.addEventListener('click', () => {
+  extraMenu.classList.toggle('active');
+  navigation.classList.toggle('active');
 });
 
-extraMenu.addEventListener("click", () => {
-  extraMenu.classList.remove("active");
-  navigation.classList.remove("active");
+extraMenu.addEventListener('click', () => {
+  extraMenu.classList.remove('active');
+  navigation.classList.remove('active');
 });
 
-const addRatings = document.querySelector(".addRatings");
+const addRatings = document.querySelector('.addRatings');
 
-const blogContainer = document.getElementById("Blogs");
+const blogContainer = document.getElementById('Blogs');
 
-let ratingsHTML = "";
+let ratingsHTML = '';
 
 const generateStars = (rating) => {
-  ratingsHTML = "";
+  ratingsHTML = '';
   const fullStars = Math.floor(rating);
-  const halfStar = rating % 1 !== 0;
 
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 5; i += 1) {
     if (i < fullStars) {
-      ratingsHTML += `<img src="../images/fullStar.svg" alt="star" class="star">`;
+      ratingsHTML += '<img src="../images/fullStar.svg" alt="star" class="star">';
     } else {
-      ratingsHTML += `<img src="../images/emptyStar.svg" alt="star" class="star">`;
+      ratingsHTML += '<img src="../images/emptyStar.svg" alt="star" class="star">';
     }
   }
 };
@@ -87,14 +86,14 @@ const showBlog = (blog) => {
   `;
 };
 
-const like = document.querySelector("#likeButton");
-const liked = document.querySelector("#liked");
-const commented = document.querySelector(".blogComments");
-const leaveAComment = document.querySelector("#leaveAComment");
-const messageInput = document.querySelector("#messageInput");
-const emailInput = document.querySelector("#emailInput");
-const fullNameInput = document.querySelector("#fullNameInput");
-const form = document.querySelector("form");
+const like = document.querySelector('#likeButton');
+const liked = document.querySelector('#liked');
+const commented = document.querySelector('.blogComments');
+const leaveAComment = document.querySelector('#leaveAComment');
+const messageInput = document.querySelector('#messageInput');
+const emailInput = document.querySelector('#emailInput');
+const fullNameInput = document.querySelector('#fullNameInput');
+const form = document.querySelector('form');
 
 const showLikes = (likes) => {
   liked.innerHTML = `${likes}
@@ -102,11 +101,10 @@ const showLikes = (likes) => {
 };
 
 const showComments = (comments) => {
-  let commentsHTML = "";
+  let commentsHTML = '';
 
   commentsHTML += `${comments
-    .map((comment) => {
-      return `
+    .map((comment) => `
             <div class="comment" data-aos="fade-up"  data-aos-duration="1000">
                 <div class="comment_head">
                     <img src="../images/user.png" alt="user" class="profilePicture" onerror="this.onerror=null; this.src='https://www.signfix.com.au/wp-content/uploads/2017/09/placeholder-600x400.png';"/>
@@ -117,56 +115,38 @@ const showComments = (comments) => {
                 </div>
                 <p class="text-small">${comment.description}</p>
             </div>
-        `;
-    })
-    .join("")}`;
+        `)
+    .join('')}`;
   commented.innerHTML = commentsHTML;
 };
 
-export const checkInput = (regEx, input) => {
-  const nearestCorrectIcon = input.closest(".input-text");
-
-  if (regEx.test(input.value) && input.value.trim() !== "") {
-    nearestCorrectIcon.classList.add("correct");
-    nearestCorrectIcon.classList.remove("notCorrect");
-  } else if (!regEx.test(input.value) && input.value.length > 0) {
-    nearestCorrectIcon.classList.add("notCorrect");
-    nearestCorrectIcon.classList.remove("correct");
-  } else {
-    nearestCorrectIcon.classList.remove("correct");
-    nearestCorrectIcon.classList.remove("notCorrect");
-  }
-};
-
 if (fullNameInput) {
-  fullNameInput.addEventListener("input", (e) => {
+  fullNameInput.addEventListener('input', (e) => {
     checkInput(regExPatterns.fullName, e.target);
   });
 }
 
 if (emailInput) {
-  emailInput.addEventListener("input", (e) => {
+  emailInput.addEventListener('input', (e) => {
     checkInput(regExPatterns.email, e.target);
   });
 }
 
 if (messageInput) {
-  messageInput.addEventListener("input", (e) => {
+  messageInput.addEventListener('input', (e) => {
     checkInput(regExPatterns.blogContent, e.target);
   });
 }
 
-leaveAComment.addEventListener("submit", async (e) => {
+leaveAComment.addEventListener('submit', async (e) => {
   e.preventDefault();
-  form.classList.add("submitted");
-  const allInputs = form.querySelectorAll(".input-text");
-  const allValid = Array.from(allInputs).every((input) =>
-    input.classList.contains("correct")
-  );
+  form.classList.add('submitted');
+  const allInputs = form.querySelectorAll('.input-text');
+  const allValid = Array.from(allInputs).every((input) => input.classList.contains('correct'));
 
   if (allValid) {
-    loader.classList.add("show");
-    form.classList.remove("submitted");
+    loader.classList.add('show');
+    form.classList.remove('submitted');
 
     const formData = {
       commentedBy: fullNameInput.value,
@@ -174,64 +154,65 @@ leaveAComment.addEventListener("submit", async (e) => {
     };
 
     const result = await addBlogComment(blogId, formData);
-    if (result.data) {
-      loader.classList.remove("show");
+    if (result.ok) {
+      loader.classList.remove('show');
+      // eslint-disable-next-line no-undef
       Toastify({
-        text: result.message,
+        text: result.data.message,
         duration: 3000,
         close: true,
-        gravity: "top",
-        position: "right",
-        backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+        gravity: 'top',
+        position: 'right',
+        backgroundColor: 'linear-gradient(to right, #00b09b, #96c93d)',
         stopOnFocus: true,
       }).showToast();
 
-      loader.classList.remove("show");
+      loader.classList.remove('show');
       const comments = await getBlogComments(blogId);
-      if (comments.data) showComments(comments.data);
-      messageInput.value = "";
-      fullNameInput.value = "";
-      emailInput.value = "";
-      form.classList.remove("submitted");
+      if (comments.data) showComments(comments.data.data);
+      messageInput.value = '';
+      fullNameInput.value = '';
+      emailInput.value = '';
+      form.classList.remove('submitted');
       allInputs.forEach((input) => {
-        input.classList.remove("correct");
+        input.classList.remove('correct');
 
-        const user = JSON.parse(localStorage.getItem("user")) || "";
+        const user = JSON.parse(localStorage.getItem('user')) || '';
         if (user) {
-          userContainer.innerHTML = "Logout";
+          userContainer.innerHTML = 'Logout';
           emailInput.value = user.email;
-          const email = document.querySelector("#email");
-          email.classList.add("correct");
-          email.style.display = "none";
+          const email = document.querySelector('#email');
+          email.classList.add('correct');
+          email.style.display = 'none';
         }
       });
     } else {
-      loader.classList.remove("show");
+      loader.classList.remove('show');
+      // eslint-disable-next-line no-undef
       Toastify({
-        text: result.message || result.error,
+        text: result.data.message || result.error,
         duration: 3000,
         close: true,
-        gravity: "top",
-        position: "right",
-        backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+        gravity: 'top',
+        position: 'right',
+        backgroundColor: 'linear-gradient(to right, #ff5f6d, #ffc371)',
         stopOnFocus: true,
       }).showToast();
     }
-  } else {
-    return;
   }
 });
 
-like.addEventListener("click", async (e) => {
+like.addEventListener('click', async (e) => {
   e.preventDefault();
-  if (!localStorage.getItem("user")) {
+  if (!localStorage.getItem('user')) {
+    // eslint-disable-next-line no-undef
     Toastify({
-      text: "Please sign in",
+      text: 'Please sign in',
       duration: 3000,
       close: true,
-      gravity: "top",
-      position: "right",
-      backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+      gravity: 'top',
+      position: 'right',
+      backgroundColor: 'linear-gradient(to right, #ff5f6d, #ffc371)',
       stopOnFocus: true,
     }).showToast();
     return;
@@ -239,56 +220,58 @@ like.addEventListener("click", async (e) => {
 
   const liked = await likeABlog(blogId);
   if (!liked.error) {
+    // eslint-disable-next-line no-undef
     Toastify({
       text: liked.message,
       duration: 3000,
       close: true,
-      gravity: "top",
-      position: "right",
-      backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+      gravity: 'top',
+      position: 'right',
+      backgroundColor: 'linear-gradient(to right, #00b09b, #96c93d)',
       stopOnFocus: true,
     }).showToast();
     showLikes(liked.data);
   } else {
+    // eslint-disable-next-line no-undef
     Toastify({
       text: liked.message || liked.error,
       duration: 3000,
       close: true,
-      gravity: "top",
-      position: "right",
-      backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+      gravity: 'top',
+      position: 'right',
+      backgroundColor: 'linear-gradient(to right, #ff5f6d, #ffc371)',
       stopOnFocus: true,
     }).showToast();
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
   }
 });
 
 window.onload = async () => {
-  document.getElementById("preLoader").style.display = "none";
+  document.getElementById('preLoader').style.display = 'none';
   const currentUrl = new URL(window.location.href);
   const searchParams = new URLSearchParams(currentUrl.search);
-  blogId = searchParams.get("id");
+  blogId = searchParams.get('id');
 
-  const token = JSON.parse(localStorage.getItem("token")) || "";
+  const token = JSON.parse(localStorage.getItem('token')) || '';
   if (token) {
     const validated = await validateToken();
     if (!validated.data) {
-      localStorage.removeItem("user");
-      localStorage.removeItem("token");
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
     } else {
       const user = {
         userName: validated.data.userName,
         email: validated.data.email,
       };
-      userContainer.innerHTML = "Logout";
+      userContainer.innerHTML = 'Logout';
       emailInput.value = user.email;
-      const email = document.querySelector("#email");
-      email.classList.add("correct");
-      email.style.display = "none";
-      localStorage.setItem("user", JSON.stringify(user));
-      if(validated.data.role == "admin"){
-        changeMode.innerHTML = `<a href="./admin/dashboard.html" target="_blank">Dashboard</a>`;
+      const email = document.querySelector('#email');
+      email.classList.add('correct');
+      email.style.display = 'none';
+      localStorage.setItem('user', JSON.stringify(user));
+      if (validated.data.role === 'admin') {
+        changeMode.innerHTML = '<a href="./admin/dashboard.html" target="_blank">Dashboard</a>';
       }
     }
   }
@@ -296,9 +279,9 @@ window.onload = async () => {
   const selectedBlog = await getABlog(blogId);
 
   if (selectedBlog.data) {
-    showBlog(selectedBlog.data);
+    showBlog(selectedBlog.data.data);
   } else {
-    window.location.href = "../index.html";
+    window.location.href = '../index.html';
   }
 
   const likes = await getBlogLikes(blogId);
@@ -307,5 +290,5 @@ window.onload = async () => {
 
   const comments = await getBlogComments(blogId);
 
-  if (comments.data) showComments(comments.data);
+  if (comments.data) showComments(comments.data.data);
 };

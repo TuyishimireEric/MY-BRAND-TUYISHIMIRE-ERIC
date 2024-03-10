@@ -1,12 +1,13 @@
-import { getQueries } from "../api/index.js";
-import { formatedDate } from "../utils.js";
+import { formatedDate } from '../utils.js';
 
-const queryContainer = document.querySelector(".queries-container");
-const queriesCounter = document.querySelector("#queriesCounter");
+const queryContainer = document.querySelector('.queries-container');
+const queriesCounter = document.querySelector('#queriesCounter');
 
-export const showQueries = (queries) => {
-  let queriesHTML = "";
-  queries.forEach((query) => {
+const showQueries = (queries) => {
+  let queriesHTML = '';
+  const sortedQueries = queries.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+  sortedQueries.forEach((query) => {
     queriesHTML += `
     <div class="querry" > 
             <div class="querry-header flex" >
@@ -33,3 +34,5 @@ export const showQueries = (queries) => {
   queryContainer.innerHTML = queriesHTML;
   queriesCounter.innerHTML = queries.length;
 };
+
+export default showQueries;

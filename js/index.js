@@ -1,5 +1,6 @@
-import { experience } from "./data/experience.js";
-import { projects } from "./data/projects.js";
+// import 'regenerator-runtime/runtime';
+import experience from "./data/experience.js";
+import projects from "./data/projects.js";
 import {
   getAllBlogs,
   getBlogLikes,
@@ -13,11 +14,10 @@ const currentUrl = window.location.href;
 const experienceList = document.getElementById("experiences");
 const projectList = document.getElementById("projects");
 const blogList = document.getElementById("blogs");
-const blogContainer = document.querySelector(".blog-container");
 const humberger = document.getElementById("humberger");
 const extraMenu = document.querySelector(".extra-menu");
 const navigation = document.querySelector(".navigation");
-const userContainer = document.querySelector("#currentUser");
+const userContainer = document.querySelectorAll("#currentUser");
 const emailInput = document.querySelector("#emailInput");
 const navLinks = document.querySelectorAll(".link");
 const sections = document.querySelectorAll("section");
@@ -25,22 +25,24 @@ const form = document.querySelector("#queryForm");
 const loader = document.querySelector(".loader");
 const fullNameInput = document.querySelector("#fullNameInput");
 const messageInput = document.querySelector("#messageInput");
-const userIcon = document.querySelector("#user");
-const changeMode = document.querySelector("#changeMode");
+const userIcon = document.querySelectorAll("#user");
+const changeMode = document.querySelectorAll("#changeMode");
 
 let experienceHTML = "";
 let projectsHTML = "";
 
-userIcon.addEventListener("click", (e) => {
-  e.preventDefault();
-  const user = JSON.parse(localStorage.getItem("user")) || "";
-  if (user) {
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-    window.location.href = "./index.html";
-  } else {
-    window.location.href = "./pages/login.html";
-  }
+userIcon.forEach((user) => {
+  user.addEventListener("click", (e) => {
+    e.preventDefault();
+    const user = JSON.parse(localStorage.getItem("user")) || "";
+    if (user) {
+      localStorage.removeItem("user");
+      localStorage.removeItem("token");
+      window.location.href = "./index.html";
+    } else {
+      window.location.href = "./pages/login.html";
+    }
+  });
 });
 
 experience.forEach((experience) => {
@@ -76,19 +78,18 @@ projects.forEach((project) => {
 
 const getBlogs = (blogs, likesMap, commentsMap) => {
   let blogsHTML = "";
-  blogs.map((blog) => {
+  blogs.forEach((blog) => {
     blog.description = JSON.parse(blog.description) || blog.description;
     let ratingsHTML = "";
 
     const generateStars = (rating) => {
       const fullStars = Math.floor(rating);
-      const halfStar = rating % 1 !== 0;
 
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 5; i += 1) {
         if (i < fullStars) {
-          ratingsHTML += `<i class="fa fa-star"></i>`;
+          ratingsHTML += '<i class="fa fa-star"></i>';
         } else {
-          ratingsHTML += `<i class="fa-regular fa-star"></i>`;
+          ratingsHTML += '<i class="fa-regular fa-star"></i>';
         }
       }
     };
@@ -97,7 +98,7 @@ const getBlogs = (blogs, likesMap, commentsMap) => {
       if (!description) return "";
       const words = description.split(" ");
       if (words.length > maxLength) {
-        return words.slice(0, maxLength).join(" ") + "...";
+        return `${words.slice(0, maxLength).join(" ")}...`;
       }
       return description;
     };
@@ -113,7 +114,9 @@ const getBlogs = (blogs, likesMap, commentsMap) => {
     blogsHTML += `
       <article class="blog" key=${blog._id} data-aos="zoom-in-up">
         <div class="blog-image">
-          <img src="${blog.image}" alt="${blog.title}" onerror="this.onerror=null; this.src='https://www.signfix.com.au/wp-content/uploads/2017/09/placeholder-600x400.png';">
+          <img src="${blog.image}" alt="${
+      blog.title
+    }" onerror="this.onerror=null; this.src='https://www.signfix.com.au/wp-content/uploads/2017/09/placeholder-600x400.png';">
         </div>
         <div class="blog-details">
           <h3 class="blog-title">${blog.title}</h3>
@@ -143,7 +146,7 @@ const getBlogs = (blogs, likesMap, commentsMap) => {
     Allblogs.forEach((blog) => {
       blog.addEventListener("click", (e) => {
         const id = e.target.closest(".blog").getAttribute("key");
-        const urlToOpen = `./pages/blogDetails.html?id=${id}`
+        const urlToOpen = `./pages/blogDetails.html?id=${id}`;
         // window.open(urlToOpen, '_blank');
         window.location.href = urlToOpen;
       });
@@ -204,21 +207,20 @@ extraMenu.addEventListener("click", () => {
   navigation.classList.remove("active");
 });
 
-// ------------------- NavLinks selection ----------------- //
+export const getLikes = async (blogId) => {
+  const likes = await getBlogLikes(blogId);
+  return likes || 0;
+};
+
+export const getComments = async (blogId) => {
+  const comments = await getBlogComments(blogId);
+  return comments.data || [];
+};
 
 if (currentUrl.includes("index")) {
-  const getLikes = async (blogId) => {
-    const likes = await getBlogLikes(blogId);
-    return likes || 0;
-  };
-
-  const getComments = async (blogId) => {
-    const comments = await getBlogComments(blogId);
-    return comments || [];
-  };
-
-
   window.onload = async () => {
+    const preLoader = document.getElementById("preLoader");
+    preLoader.style.display = "none";
     const token = JSON.parse(localStorage.getItem("token")) || "";
     if (token) {
       const validated = await validateToken();
@@ -230,14 +232,19 @@ if (currentUrl.includes("index")) {
           userName: validated.data.userName,
           email: validated.data.email,
         };
-        userContainer.innerHTML = "Logout";
+
+        userContainer.forEach((user) => (user.innerHTML = "Logout"));
         emailInput.value = user.email;
         const email = document.querySelector("#email");
         email.classList.add("correct");
         email.style.display = "none";
         localStorage.setItem("user", JSON.stringify(user));
-        if(validated.data.role == "admin"){
-          changeMode.innerHTML = `<a href="./pages/admin/dashboard.html" target="_blank">Dashboard</a>`;
+        if (validated.data.role === "admin") {
+          changeMode.forEach(
+            (button) =>
+              (button.innerHTML =
+                '<a href="./pages/admin/dashboard.html" target="_blank">Dashboard</a>')
+          );
         }
       }
     }
@@ -245,12 +252,17 @@ if (currentUrl.includes("index")) {
     const blogs = await getAllBlogs();
     const likesMap = {};
     const commentsMap = {};
-    for (const blog of blogs.data) {
-      const likes = await getLikes(blog._id);
-      const comments = await getComments(blog._id);
-      likesMap[blog._id] = likes.data;
-      commentsMap[blog._id] = comments.data.length;
-    }
+
+    const blogIds = blogs.data.map((blog) => blog._id);
+    const likesPromises = blogIds.map((id) => getLikes(id));
+    const commentsPromises = blogIds.map((id) => getComments(id));
+
+    const likesResults = await Promise.all(likesPromises);
+    const commentsResults = await Promise.all(commentsPromises);
+    blogs.data.forEach((blog, index) => {
+      likesMap[blog._id] = likesResults[index].data;
+      commentsMap[blog._id] = commentsResults[index].data.length;
+    });
 
     if (blogs) {
       getBlogs(blogs.data, likesMap, commentsMap);
@@ -259,10 +271,10 @@ if (currentUrl.includes("index")) {
 
   window.onscroll = () => {
     sections.forEach((sect) => {
-      let top = window.scrollY;
-      let offset = sect.offsetTop;
-      let height = sect.offsetHeight;
-      let id = sect.getAttribute("id");
+      const top = window.scrollY;
+      const offset = sect.offsetTop;
+      const height = sect.offsetHeight;
+      const id = sect.getAttribute("id");
       if (top >= offset && top < offset + height) {
         navLinks.forEach((link) => {
           link.classList.remove("active");
@@ -278,7 +290,7 @@ if (currentUrl.includes("index")) {
   };
 }
 
-if(form){
+if (form) {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     form.classList.add("submitted");
@@ -286,19 +298,20 @@ if(form){
     const allValid = Array.from(allInputs).every((input) =>
       input.classList.contains("correct")
     );
-  
+
     if (allValid) {
       loader.classList.add("show");
       form.classList.remove("submitted");
-  
+
       const formData = {
         name: fullNameInput.value,
         email: emailInput.value,
         description: messageInput.value,
       };
-  
+
       const result = await addQuery(formData);
       if (!result.error) {
+        // eslint-disable-next-line no-undef
         Toastify({
           text: "Message sent successfully!",
           duration: 3000,
@@ -308,18 +321,18 @@ if(form){
           backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
           stopOnFocus: true,
         }).showToast();
-  
+
         loader.classList.remove("show");
         messageInput.value = "";
         fullNameInput.value = "";
-        emailInput.value = ""; 
+        emailInput.value = "";
         form.classList.remove("submitted");
         allInputs.forEach((input) => {
           input.classList.remove("correct");
-  
+
           const user = JSON.parse(localStorage.getItem("user")) || "";
           if (user) {
-            userContainer.innerHTML = user.userName;
+            userContainer.innerHTML = "Logout";
             emailInput.value = user.email;
             const email = document.querySelector("#email");
             email.classList.add("correct");
@@ -328,6 +341,7 @@ if(form){
         });
       } else {
         loader.classList.remove("show");
+        // eslint-disable-next-line no-undef
         Toastify({
           text: result.message || result.error,
           duration: 3000,
@@ -338,9 +352,6 @@ if(form){
           stopOnFocus: true,
         }).showToast();
       }
-    } else {
-      return;
     }
   });
 }
-
