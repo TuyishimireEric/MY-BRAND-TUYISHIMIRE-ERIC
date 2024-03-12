@@ -32,7 +32,7 @@ This portfolio is a reflection of my journey in software development and showcas
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://tuyishimireeric.github.io/my-brand-tuyishimire-eric/)
+- [Live Demo Link](https://tuyishimireeric.github.io/index.html)
 
 ## Design
 
@@ -72,7 +72,7 @@ This portfolio is a reflection of my journey in software development and showcas
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/TuyishimireEric/MyBrand-BE/issues).
+Feel free to check the [issues page](https://github.com/TuyishimireEric/TuyishimireEric.github.io/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
