@@ -57,7 +57,7 @@ const showLikes = (likes) => {
 export const showComments = (comments) => {
   let commentsHTML = '';
 
-  commentsHTML += `${comments
+  commentsHTML += `${comments.data
     .map((comment) => `
             <div class="comment" data-aos="fade-up"  data-aos-duration="1000">
                 <div class="comment_head">
@@ -171,7 +171,7 @@ window.onload = async () => {
 
   if (selectedBlog.data) {
     blogTitle.value = selectedBlog.data.title;
-    blogContent.innerHTML = JSON.parse(selectedBlog.data.description)
+    blogContent.innerHTML = selectedBlog.data.description
     || selectedBlog.data.description;
     imageInput.style.backgroundImage = `url(${selectedBlog.data.image})`;
     imageUrl = selectedBlog.data.image;

@@ -76,83 +76,83 @@ projects.forEach((project) => {
     </div>`;
 });
 
-const getBlogs = (blogs, likesMap, commentsMap) => {
-  let blogsHTML = "";
-  blogs.forEach((blog) => {
-    blog.description = JSON.parse(blog.description) || blog.description;
-    let ratingsHTML = "";
+// const getBlogs = (blogs, likesMap, commentsMap) => {
+//   let blogsHTML = "";
+//   blogs.forEach((blog) => {
+//     blog.description = JSON.parse(blog.description) || blog.description;
+//     let ratingsHTML = "";
 
-    const generateStars = (rating) => {
-      const fullStars = Math.floor(rating);
+//     const generateStars = (rating) => {
+//       const fullStars = Math.floor(rating);
 
-      for (let i = 0; i < 5; i += 1) {
-        if (i < fullStars) {
-          ratingsHTML += '<i class="fa fa-star"></i>';
-        } else {
-          ratingsHTML += '<i class="fa-regular fa-star"></i>';
-        }
-      }
-    };
+//       for (let i = 0; i < 5; i += 1) {
+//         if (i < fullStars) {
+//           ratingsHTML += '<i class="fa fa-star"></i>';
+//         } else {
+//           ratingsHTML += '<i class="fa-regular fa-star"></i>';
+//         }
+//       }
+//     };
 
-    const truncateDescription = (description, maxLength) => {
-      if (!description) return "";
-      const words = description.split(" ");
-      if (words.length > maxLength) {
-        return `${words.slice(0, maxLength).join(" ")}...`;
-      }
-      return description;
-    };
+//     const truncateDescription = (description, maxLength) => {
+//       if (!description) return "";
+//       const words = description.split(" ");
+//       if (words.length > maxLength) {
+//         return `${words.slice(0, maxLength).join(" ")}...`;
+//       }
+//       return description;
+//     };
 
-    generateStars(4.4);
+//     generateStars(4.4);
 
-    const truncatedDescription =
-      truncateDescription(blog.description, 40) || "";
+//     const truncatedDescription =
+//       truncateDescription(blog.description, 40) || "";
 
-    const likes = likesMap[blog._id] || 0;
-    const comments = commentsMap[blog._id] || 0;
+//     const likes = likesMap[blog._id] || 0;
+//     const comments = commentsMap[blog._id] || 0;
 
-    blogsHTML += `
-      <article class="blog" key=${blog._id} data-aos="zoom-in-up">
-        <div class="blog-image">
-          <img src="${blog.image}" alt="${
-      blog.title
-    }" onerror="this.onerror=null; this.src='https://www.signfix.com.au/wp-content/uploads/2017/09/placeholder-600x400.png';">
-        </div>
-        <div class="blog-details">
-          <h3 class="blog-title">${blog.title}</h3>
-          <div class="summary">
-            <p class="date">${formatedDate(blog.createdAt)}</p>
-            <article class="blog-description text-small">${truncatedDescription}</article>
-            <span class="readMore">read more </span>
-          </div>
-          <div class="reviews flex">
-            <span>${ratingsHTML}</span>
-            <span class="likes flex">
-              <p>${likes}
-              <i class="fa fa-heart"></i>
-              </p>
-              <p>${comments}
-                <i class="fa fa-comment"></i>
-              </p>
-            </span>
-          </div>
-        </div>
-      </article>`;
-  });
-  blogList.innerHTML = blogsHTML;
+//     blogsHTML += `
+//       <article class="blog" key=${blog._id} data-aos="zoom-in-up">
+//         <div class="blog-image">
+//           <img src="${blog.image}" alt="${
+//       blog.title
+//     }" onerror="this.onerror=null; this.src='https://www.signfix.com.au/wp-content/uploads/2017/09/placeholder-600x400.png';">
+//         </div>
+//         <div class="blog-details">
+//           <h3 class="blog-title">${blog.title}</h3>
+//           <div class="summary">
+//             <p class="date">${formatedDate(blog.createdAt)}</p>
+//             <article class="blog-description text-small">${truncatedDescription}</article>
+//             <span class="readMore">read more </span>
+//           </div>
+//           <div class="reviews flex">
+//             <span>${ratingsHTML}</span>
+//             <span class="likes flex">
+//               <p>${likes}
+//               <i class="fa fa-heart"></i>
+//               </p>
+//               <p>${comments}
+//                 <i class="fa fa-comment"></i>
+//               </p>
+//             </span>
+//           </div>
+//         </div>
+//       </article>`;
+//   });
+//   blogList.innerHTML = blogsHTML;
 
-  const Allblogs = document.querySelectorAll(".blog-details");
-  if (Allblogs) {
-    Allblogs.forEach((blog) => {
-      blog.addEventListener("click", (e) => {
-        const id = e.target.closest(".blog").getAttribute("key");
-        const urlToOpen = `./pages/blogDetails.html?id=${id}`;
-        // window.open(urlToOpen, '_blank');
-        window.location.href = urlToOpen;
-      });
-    });
-  }
-};
+//   const Allblogs = document.querySelectorAll(".blog-details");
+//   if (Allblogs) {
+//     Allblogs.forEach((blog) => {
+//       blog.addEventListener("click", (e) => {
+//         const id = e.target.closest(".blog").getAttribute("key");
+//         const urlToOpen = `./pages/blogDetails.html?id=${id}`;
+//         // window.open(urlToOpen, '_blank');
+//         window.location.href = urlToOpen;
+//       });
+//     });
+//   }
+// };
 
 if (projectList) {
   projectList.innerHTML = projectsHTML + projectsHTML;
@@ -220,7 +220,7 @@ export const getComments = async (blogId) => {
 if (currentUrl.includes("index")) {
   window.onload = async () => {
     const preLoader = document.getElementById("preLoader");
-    preLoader.style.display = "none";
+    // preLoader.style.display = "none";
     const token = JSON.parse(localStorage.getItem("token")) || "";
     if (token) {
       const validated = await validateToken();
@@ -249,24 +249,24 @@ if (currentUrl.includes("index")) {
       }
     }
 
-    const blogs = await getAllBlogs();
-    const likesMap = {};
-    const commentsMap = {};
+    // const blogs = await getAllBlogs();
+    // const likesMap = {};
+    // const commentsMap = {};
 
-    const blogIds = blogs.data.map((blog) => blog._id);
-    const likesPromises = blogIds.map((id) => getLikes(id));
-    const commentsPromises = blogIds.map((id) => getComments(id));
+    // const blogIds = blogs.data.map((blog) => blog._id);
+    // const likesPromises = blogIds.map((id) => getLikes(id));
+    // const commentsPromises = blogIds.map((id) => getComments(id));
 
-    const likesResults = await Promise.all(likesPromises);
-    const commentsResults = await Promise.all(commentsPromises);
-    blogs.data.forEach((blog, index) => {
-      likesMap[blog._id] = likesResults[index].data;
-      commentsMap[blog._id] = commentsResults[index].data.length;
-    });
+    // const likesResults = await Promise.all(likesPromises);
+    // const commentsResults = await Promise.all(commentsPromises);
+    // blogs.data.forEach((blog, index) => {
+    //   likesMap[blog._id] = likesResults[index].data;
+    //   commentsMap[blog._id] = commentsResults[index].data.length;
+    // });
 
-    if (blogs) {
-      getBlogs(blogs.data, likesMap, commentsMap);
-    }
+    // if (blogs) {
+    //   getBlogs(blogs.data, likesMap, commentsMap);
+    // }
   };
 
   window.onscroll = () => {

@@ -994,6 +994,9 @@ ul {
   max-height: 220px;
   overflow-y: hidden;
   text-overflow: ellipsis;
+  /* display: -webkit-box; 
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; */
 }
 
 .readMore {

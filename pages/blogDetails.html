@@ -15,7 +15,16 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>   
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-  </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- BABEL -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  
+    <script src="https://unpkg.com/@reduxjs/toolkit@1.7.1/dist/redux-toolkit.umd.js"></script>
+     </head>
   <body>
     <div id="preLoader"></div>
     <nav class="flex">
@@ -76,7 +85,7 @@
             </li>
             <li class="user">
               <a id="user" class="user flex-col">
-                <img src="../images/user.png" alt="user" onerror="this.onerror=null; this.src='https://www.signfix.com.au/wp-content/uploads/2017/09/placeholder-600x400.png';"/>
+                <img src="../images/user.png" alt="user" />
                 <span id="currentUser">Login</span>
               </a>
             </li>
@@ -94,55 +103,7 @@
     <!---------------------- blog section start --------------------->
 
     <section class="blogs" id="Blogs">
-        <div class="over full"></div>
-        <div class="over" id="loading">
-            <div class="spinner">
-              <div class="bounce1"></div>
-              <div class="bounce2"></div>
-              <div class="bounce3"></div>
-            </div>
-        </div>
-      </section>
-
-    <section class="contact flex-col" id="leaveAComment" data-aos="fade-up" data-aos-duration="1000">
-      <h2 class="title" data-aos="fade-up" data-aos-duration="1000"> Reactions <span>( )</span</h2>
-
-      <div class="comments">
-        <div class="sticker" id="likeButton" data-aos="fade-up" data-aos-duration="1000">
-            <img src="../images/heart.png" alt="heart" onerror="this.onerror=null; this.src='https://www.signfix.com.au/wp-content/uploads/2017/09/placeholder-600x400.png';"/>
-            <div><span id="liked">0</span> Likes</div>
-        </div>
-        <div class="blogComments"></div>
-        
-    </div>
-
-      <h2 class="title">leaveAComment <span>( )</span</h2>
-        <span class="addRatings"></span>
-        <form class="contactMe">
-          <span class="input-text" id="fullName">
-            <label for="fullNameInput">Full name:</label>
-            <input type="text" id="fullNameInput" name="fullName" maxlength="30">
-            <span class="error-message">Please enter your full name!</span>
-            <span class="formIcon"></span>
-          </span>
-          <span class="input-text" id="email">
-            <label for="emailInput">Email:</label>
-            <input type="text" id="emailInput" name="email">
-            <span class="error-message">Please enter your email. example@gmai.com</span>
-            <span class="formIcon"></span>
-          </span>
-          <span class="input-text" id="message">
-            <label for="messageInput">Comment:</label>
-            <textarea placeholder="Type your message ..." id="messageInput"></textarea>
-            <span class="error-message">Please add comment here.</span>
-            <span class="formIcon"></span>
-          </span>
-          <button type="submit" class="button">
-            <span class="loader"></span>
-            submit
-          </button>
-        </form>
-     </section>
+    </section>
 
     <!---------------------- footer section start --------------------->
 
@@ -178,12 +139,22 @@
         </li>
       </ul>
     </footer>
+      
 
+    <script src="https://unpkg.com/react-icons@4.2.0/umd/react-icons.production.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
       <script>
         AOS.init();
       </script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script type="module" src="../js/client/blogDetails.js"></script>
+    <script src="../react/src/api/blogs.js" type="text/babel"></script>
+    <script src="../react/src/api/likes.js"></script>
+    <script src="../react/src/api/comments.js"></script>
+    <script type="text/babel" src="../react/src/config.js"></script>
+    <script type="text/babel" src="../react/src/components/commentForm.js"></script>
+    <script type="text/babel" src="../react/src/components/reactions.js"></script>
+    <script type="text/babel" src="../react/src/components/blogDetails.js"></script>
+
   </body>
 </html>

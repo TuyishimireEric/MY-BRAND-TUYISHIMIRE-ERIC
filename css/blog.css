@@ -27,22 +27,22 @@
 }
 
 .comments .sticker {
-    width: 40%;
+    width: 30%;
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 40px;
     height: 100px;
     margin-bottom: 40px;
 }
 
-.comments .sticker img {
-    width: 50px;
-    height: 40px;
-    object-fit: fill;
+.comments .sticker i {
+    font-size: larger;
+    color: var(--second-color)
 }
 
 .blogComments {
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -104,6 +104,11 @@
     background-blend-mode: multiply;
   }
   
+
+.addComment {
+    width: 80%;
+    margin-bottom: 40px;
+}
 
 @media only screen and (max-width: 1100px) {
     .blogs {
