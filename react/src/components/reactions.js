@@ -1,8 +1,8 @@
 const Reactions = (props) => {
   const { blogId } = props;
+
   const [likes, setLikes] = React.useState(0);
   const [comments, setComments] = React.useState([]);
-  const [result, setResult] = React.useState(null);
   const [updateComments, setUpdateComments] = React.useState(false);
 
   const CommentForm = window.CommentForm;
@@ -16,11 +16,11 @@ const Reactions = (props) => {
       .catch((error) => console.error(error));
   }, []);
 
-  React.useEffect(()=>{
+  React.useEffect(() => {
     CommentServices.getBlogComments(blogId)
-    .then((data) => setComments(data.data.data))
-    .catch((error) => console.error(error));
-  },[updateComments])
+      .then((data) => setComments(data.data.data))
+      .catch((error) => console.error(error));
+  }, [updateComments]);
 
   const handleClick = () => {
     if (!blogId) return;
@@ -38,10 +38,10 @@ const Reactions = (props) => {
       return;
     }
 
-    LikeServices.likeABlog(blogId)
+    likeABlog(blogId)
       .then((data) => {
-        setResult(data);
-        setLikes(data.data);
+        // setResult(data);
+        // setLikes(data.data);
         Toastify({
           text: data.message,
           duration: 3000,

@@ -2,7 +2,6 @@ const BlogDetails = () => {
   const [blogId, setBlogId] = React.useState("");
   const [blog, setBlog] = React.useState(null);
   const Reactions = window.Reactions;
-  // const CommentForm = window.CommentForm;
 
   React.useEffect(() => {
     const currentUrl = new URL(window.location.href);

@@ -1,12 +1,15 @@
-// const { createStore } = Redux;
+const { createStore, applyMiddleware, combineReducers } = Redux;
+const thunk = ReduxThunk.default;
 
-// const blogsReducer = (state = [], action) => {
-//   switch (action.type) {
-//     case "SET_BLOGS":
-//       return action.payload;
-//     default:
-//       return state;
-//   }
-// };
+const blogReducer = window.blogReducer;
+const likeReducer = window.likeReducer;
+const commentReducer = window.commentReducer;
 
-// window.Store = createStore(blogsReducer);
+const rootReducer = combineReducers({
+    blogs: blogReducer,
+    comments: commentReducer, 
+    likes: likeReducer
+});
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
+window.StoreData = store;

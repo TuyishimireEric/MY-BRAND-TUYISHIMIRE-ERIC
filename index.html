@@ -14,28 +14,16 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-  <!-- REACT -->
+
   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-  <!-- BABEL -->
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
-  <!-- <script src="https://cdn.jsdelivr.net/npm/@reduxjs/toolkit@2.2.1/dist/redux-toolkit.legacy-esm.min.js"></script> -->
-  <!-- <script src="https://unpkg.com/react-redux@8.0.5/dist/react-redux.min.js"></script> -->
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/redux-toolkit/1.7.0/redux-toolkit.min.js"></script> -->
-
-  <!-- <script src="https://unpkg.com/redux@4.1.2/dist/redux.min.js"></script>
-    <script src="https://unpkg.com/react-redux@7.2.6/dist/react-redux.min.js"></script> -->
-
-    <!-- Redux -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.1.2/redux.min.js"></script>
-
-<!-- React Redux -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.2.6/react-redux.min.js"></script>
-
-<!-- Redux Thunk -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/redux-thunk/2.3.0/redux-thunk.min.js"></script>
-  <script src="https://unpkg.com/typescript@4.5.4/lib/typescriptServices.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.1.2/redux.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/redux-thunk/2.3.0/redux-thunk.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.2.6/react-redux.min.js"></script>
+  
   </head>
   <body>
     <div id="preLoader"></div>
@@ -279,6 +267,7 @@
           </li>
         </ul>
       </footer>
+
       <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
       <script>
         AOS.init();
@@ -289,14 +278,13 @@
      <script type="text/babel" src="./react/src/config.js"></script>
      <script src="../react/src/api/likes.js"></script>
      <script src="../react/src/api/comments.js"></script>
-     <!-- <script src="https://unpkg.com/@reduxjs/toolkit@1.7.1/dist/redux-toolkit.umd.js"></script> -->
-     <!-- <script type="text/babel" src="./react/redux/blogSlicer.js"></script> -->
-     <!-- <script type="text/babel" src="./react/redux/store.js"></script> -->
-     <script src="https://unpkg.com/redux-thunk@2.3.0/dist/redux-thunk.min.js"></script>
-     <script src="./react/src/components/blog.js" type="text/babel"></script>
-     <script src="./react/src/api/blogs.js" type="text/babel"></script>   
+     <script type="text/babel" src="./react/src/api/blogs.js" ></script>   
+     <script type="text/babel" src="./react/redux/blogReducer.js"></script>
+     <script type="text/babel" src="./react/redux/likeReducer.js"></script>
+     <script type="text/babel" src="./react/redux/commentReducer.js"></script>
+     <script type="text/babel" src="./react/redux/store.js"></script>
+     <script type="text/babel" src="./react/src/components/blog.js"></script>
     <script type="text/babel" src="./react/src/components/allBlogs.js"></script>
-    <!-- <script type="module" src="./react/App.js"></script> -->
-    </script>
+    <script type="text/babel" src="./react/index.js"></script>
   </body>
 </html>

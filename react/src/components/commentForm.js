@@ -8,7 +8,7 @@ const CommentForm = (props) => {
   const { blogId, setUpdateComments } = props;
   const [formData, setFormData] = React.useState(initialData);
   const [loading, setLoading] = React.useState(false);
-  const [comments, setComments] = React.useState([]);
+  // const [comments, setComments] = React.useState([]);
   const [result, setResult] = React.useState(null);
 
   const handleSubmit = async (e) => {
@@ -39,12 +39,6 @@ const CommentForm = (props) => {
           allInputs.forEach((input) => {
             input.classList.remove('correct');
     
-            // const user = JSON.parse(localStorage.getItem('user')) || '';
-            // if (user) {
-            //   setFormData({...formData, email: user.email});
-            //   const email = document.querySelector('#email');
-            //   email.classList.add('correct');
-            // }
           });
           // eslint-disable-next-line no-undef
           Toastify({
